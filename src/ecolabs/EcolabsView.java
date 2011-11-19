@@ -26,10 +26,17 @@ import javax.swing.JLabel;
  */
 public class EcolabsView extends FrameView {
 
+    /**
+     * Домашняя страница
+     */
+    public HomeJPanel homeJPanel = new HomeJPanel();
+
     public EcolabsView(SingleFrameApplication app) {
         super(app);
 
         initComponents();
+        
+        ShowScreen(-1);
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -109,6 +116,8 @@ public class EcolabsView extends FrameView {
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -119,17 +128,7 @@ public class EcolabsView extends FrameView {
         progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
-
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
-        );
+        mainPanel.setLayout(new java.awt.BorderLayout());
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -141,6 +140,14 @@ public class EcolabsView extends FrameView {
         jMenuItem1.setAction(actionMap.get("ShowLab1")); // NOI18N
         jMenuItem1.setName("jMenuItem1"); // NOI18N
         fileMenu.add(jMenuItem1);
+
+        jMenuItem2.setAction(actionMap.get("ShowHomeScreen")); // NOI18N
+        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
+        jMenuItem2.setName("jMenuItem2"); // NOI18N
+        fileMenu.add(jMenuItem2);
+
+        jSeparator1.setName("jSeparator1"); // NOI18N
+        fileMenu.add(jSeparator1);
 
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setText(resourceMap.getString("exitMenuItem.text")); // NOI18N
@@ -202,25 +209,46 @@ public class EcolabsView extends FrameView {
 
     @Action
     public void ShowLab1() {
-        ShowLab(1);
+        ShowScreen(1);
     }
 
-    private void ShowLab(int labNo) {
+    /**
+     * Переключает центральну область на отображение лабораторной работы или начального экрана
+     * @param labNo Номер лабораторной работы. -1 соответствует начальному экрану.
+     */
+    private void ShowScreen(int labNo) {
         LabJPanel labJPanel;
         switch (labNo) {
+            case -1:
+                mainPanel.removeAll();
+                mainPanel.add(homeJPanel);
+                mainPanel.validate();
+                mainPanel.repaint();
+                getFrame().setTitle("Лабораторные работы");
+                return;                
             case 1:
                 labJPanel = new Lab1JPanel();                
                 break;
             default:
                 throw new AssertionError();
         }
+        mainPanel.removeAll();
         mainPanel.add(labJPanel);
-        getFrame().setTitle(labJPanel.Caption);
+        
+        getFrame().setTitle(labJPanel.Title);
         mainPanel.validate();
+        mainPanel.repaint();
+    }
+
+    @Action
+    public void ShowHomeScreen() {
+       ShowScreen(-1);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
