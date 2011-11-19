@@ -16,7 +16,14 @@ package ecolabs.labs;
  */
 public class LabJPanel extends javax.swing.JPanel {
 
-    public String Caption = "Лабораторная работа";
+    /**
+     * Заголовок короткий (для заголовка окна)
+     */
+    public String Title = "Лабораторная работа";
+    /**
+     * Полное название лабораторной исключая номер.
+     */
+    public String Caption = "Полное название лабораторной работы";
     
     /** Creates new form LabJPanel */
     public LabJPanel() {
