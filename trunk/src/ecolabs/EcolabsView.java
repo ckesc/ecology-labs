@@ -4,9 +4,8 @@
 
 package ecolabs;
 
-import ecolabs.labs.LabJPanel;
+import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
-import java.awt.Color;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -16,24 +15,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 /**
  * The application's main frame.
  */
 public class EcolabsView extends FrameView {
-
+        
     /**
      * Домашняя страница
      */
-    public HomeJPanel homeJPanel = new HomeJPanel();
+    public HomeJPanel homeJPanel = new HomeJPanel(this);
+    
+    /**
+     * Массив экранов лаб
+     */
+    public ScreenJPanel[] LabScreens = new ScreenJPanel[6];
 
+    private void  myInit() {
+        LabScreens[0] = new Lab1JPanel(this);
+    }
+    
     public EcolabsView(SingleFrameApplication app) {
         super(app);
-
+        
+        myInit();
         initComponents();
         
         ShowScreen(-1);
@@ -115,7 +122,6 @@ public class EcolabsView extends FrameView {
         mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -137,10 +143,6 @@ public class EcolabsView extends FrameView {
         fileMenu.setName("fileMenu"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getActionMap(EcolabsView.class, this);
-        jMenuItem1.setAction(actionMap.get("ShowLab1")); // NOI18N
-        jMenuItem1.setName("jMenuItem1"); // NOI18N
-        fileMenu.add(jMenuItem1);
-
         jMenuItem2.setAction(actionMap.get("ShowHomeScreen")); // NOI18N
         jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
         jMenuItem2.setName("jMenuItem2"); // NOI18N
@@ -149,7 +151,7 @@ public class EcolabsView extends FrameView {
         jSeparator1.setName("jSeparator1"); // NOI18N
         fileMenu.add(jSeparator1);
 
-        exitMenuItem.setAction(actionMap.get("ShowLab1")); // NOI18N
+        exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setText(resourceMap.getString("exitMenuItem.text")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
@@ -209,33 +211,36 @@ public class EcolabsView extends FrameView {
 
     @Action
     public void ShowLab1() {
-        ShowScreen(1);
     }
 
     /**
      * Переключает центральну область на отображение лабораторной работы или начального экрана
      * @param labNo Номер лабораторной работы. -1 соответствует начальному экрану.
      */
-    private void ShowScreen(int labNo) {
-        LabJPanel labJPanel;
+    public final void ShowScreen(int labNo) {
+        ScreenJPanel newScreen;
         switch (labNo) {
             case -1:
                 mainPanel.removeAll();
                 mainPanel.add(homeJPanel);
                 mainPanel.validate();
                 mainPanel.repaint();
-                getFrame().setTitle("Лабораторные работы");
+                getFrame().setTitle(homeJPanel.Title);
                 return;                
             case 1:
-                labJPanel = new Lab1JPanel();                
+                newScreen = LabScreens[0];
                 break;
             default:
                 throw new AssertionError();
         }
-        mainPanel.removeAll();
-        mainPanel.add(labJPanel);
         
-        getFrame().setTitle(labJPanel.Title);
+        if (newScreen == null) {
+            return;
+        }
+        mainPanel.removeAll();
+        mainPanel.add(newScreen);
+        
+        getFrame().setTitle(newScreen.Title);
         mainPanel.validate();
         mainPanel.repaint();
     }
@@ -246,7 +251,6 @@ public class EcolabsView extends FrameView {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel mainPanel;
