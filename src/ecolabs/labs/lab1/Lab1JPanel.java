@@ -10,15 +10,14 @@
  */
 package ecolabs.labs.lab1;
 
-import ecolabs.labs.LabJPanel;
+import ecolabs.EcolabsView;
+import ecolabs.labs.ScreenJPanel;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
@@ -33,7 +32,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  *
  * @author Ск
  */
-public class Lab1JPanel extends LabJPanel {
+public class Lab1JPanel extends ScreenJPanel {
 
     /**
      * Средний медианный размер капель воды, мм
@@ -52,24 +51,24 @@ public class Lab1JPanel extends LabJPanel {
      *  Коэффициент захвата частицы каплей воды;
      */
     double ησ = 1.2;
-    
     /**
      * Точки графика для первого размера частиц
      */
-    HashMap<Double, Double> points1 = new HashMap<Double, Double>();
-    
+    HashMap<Double, Double> points1 = new HashMap<>();
     /**
      * Точки графика для второго размера частиц
      */
-    HashMap<Double, Double> points2 = new HashMap<Double, Double>();
-    
-    ArrayList<XYSeries> serieses1 = new ArrayList<XYSeries>();
-    ArrayList<XYSeries> serieses2 = new ArrayList<XYSeries>();
-    
+    HashMap<Double, Double> points2 = new HashMap<>();
+    ArrayList<XYSeries> serieses1 = new ArrayList<>();
+    ArrayList<XYSeries> serieses2 = new ArrayList<>();
+
     /** Creates new form Lab1JPanel */
-    public Lab1JPanel() {
+    public Lab1JPanel(EcolabsView parent) {
+        super(parent);
         initComponents();
-        Caption = "Лабораторная работа №1";
+        Title = "Лабораторная работа №1";
+        Caption = "Некое длинное описание лабораторной работы 1";
+        
     }
 
     /**
@@ -79,34 +78,32 @@ public class Lab1JPanel extends LabJPanel {
      * @return 
      */
     public double η(double H, double Dh2o, double Dsol) {
-        double numerator  = -3 * Vaq * ησ * H;
+        double numerator = -3 * Vaq * ησ * H;
         double denominator = 2 * Va * Dh2o * 0.001f;
         return 1 - (double) Math.exp(numerator / denominator);
     }
-    
+
     /**
      * Вычисляет точки кривой
      * @param Dsol
      * @return 
      */
-    public HashMap<Double, Double> Calculate(double Dh2o, double Dsol)
-    {   
-        HashMap<Double, Double> points = new HashMap<Double, Double>();
-        
+    public HashMap<Double, Double> Calculate(double Dh2o, double Dsol) {
+        HashMap<Double, Double> points = new HashMap<>();
+
         for (double H = 0.02; H <= 2; H += 0.02) {
             points.put(H, η(H, Dh2o, Dsol));
         }
-        
+
         return points;
     }
-    
+
     /**
      * Выводит график
      */
-    public void showChart(CombinedDomainXYPlot parent, JLabel jLabel, boolean showLegend)
-    {     
+    public void showChart(CombinedDomainXYPlot parent, JLabel jLabel, boolean showLegend) {
         JFreeChart chart = new JFreeChart(parent);
-        BufferedImage image = chart.createBufferedImage(jLabel.getWidth(),jLabel.getHeight());
+        BufferedImage image = chart.createBufferedImage(jLabel.getWidth(), jLabel.getHeight());
         jLabel.setIcon(new ImageIcon(image));
     }
 
@@ -115,38 +112,36 @@ public class Lab1JPanel extends LabJPanel {
      * @param Dsol
      * @return 
      */
-    public CombinedDomainXYPlot createChart(double Dsol)
-    {
+    public CombinedDomainXYPlot createChart(double Dsol) {
         CombinedDomainXYPlot parent = new CombinedDomainXYPlot(
-                        new NumberAxis("x-angle argument"));
-        
-        for (int Dh2o = 1; Dh2o <= 3; Dh2o++)
-        {
+                new NumberAxis("x-angle argument"));
+
+        for (int Dh2o = 1; Dh2o <= 3; Dh2o++) {
             XYSeries series = new XYSeries(Dh2o);
-            
-            HashMap<Double, Double> points = 
+
+            HashMap<Double, Double> points =
                     Calculate(Dh2o, Dsol);
-            
+
             for (Double H : points.keySet()) {
                 series.add(H, points.get(H));
             }
-            
+
             XYDataset dataset = new XYSeriesCollection(series);
-            
+
             XYItemRenderer renderer = new StandardXYItemRenderer();
-            
-            XYPlot subplot = new XYPlot(dataset, null, new NumberAxis("η(H)"),renderer);
-            
-            NumberAxis axis = (NumberAxis)subplot.getRangeAxis();
-            axis.setTickLabelFont(new Font("Monospaced", Font.PLAIN,7));
-            axis.setLabelFont(new Font("SansSerif", Font.PLAIN,7));
+
+            XYPlot subplot = new XYPlot(dataset, null, new NumberAxis("η(H)"), renderer);
+
+            NumberAxis axis = (NumberAxis) subplot.getRangeAxis();
+            axis.setTickLabelFont(new Font("Monospaced", Font.PLAIN, 7));
+            axis.setLabelFont(new Font("SansSerif", Font.PLAIN, 7));
             axis.setAutoRangeIncludesZero(false);
-            
-            parent.add(subplot, 1); 
+
+            parent.add(subplot, 1);
         }
         return parent;
     }
-            
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -321,17 +316,16 @@ public class Lab1JPanel extends LabJPanel {
 
 private void jButtonExecuteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonExecuteMouseClicked
     try {
-        Vaq = Double.parseDouble(jTextFieldVaq.getText()); 
-        Va = Double.parseDouble(jTextFieldVa.getText()); 
+        Vaq = Double.parseDouble(jTextFieldVaq.getText());
+        Va = Double.parseDouble(jTextFieldVa.getText());
         ησ = Double.parseDouble(jTextFieldησ.getText());
-        
+
         showChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())), jLabelChart1, true);
         showChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())), jLabelChart2, true);
 
     } catch (Exception e) {
     }
 }//GEN-LAST:event_jButtonExecuteMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExecute;
     private javax.swing.JComboBox jComboBoxVar;

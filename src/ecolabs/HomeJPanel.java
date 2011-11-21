@@ -10,19 +10,20 @@
  */
 package ecolabs;
 
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
+import ecolabs.labs.ScreenJPanel;
+
 
 /**
  *
  * @author Ск
  */
-public class HomeJPanel extends javax.swing.JPanel {
-
-    //public ActionEvent LabSelectedEvent = new ActionEvent
+public class HomeJPanel extends ScreenJPanel {
     
     /** Creates new form HomeJPanel */
-    public HomeJPanel() {
+    public HomeJPanel(EcolabsView parent) {
+        super(parent);
+        
+        
         initComponents();
     }
 
@@ -55,7 +56,12 @@ public class HomeJPanel extends javax.swing.JPanel {
         jPanelCenter.setName("jPanelCenter"); // NOI18N
         jPanelCenter.setLayout(new java.awt.GridLayout(3, 2, 10, 10));
 
+        jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
+        jButton1.setMnemonic('1');
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setActionCommand(resourceMap.getString("jButton1.actionCommand")); // NOI18N
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.setName("jButton1"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,24 +70,74 @@ public class HomeJPanel extends javax.swing.JPanel {
         });
         jPanelCenter.add(jButton1);
 
+        jButton2.setIcon(resourceMap.getIcon("jButton2.icon")); // NOI18N
+        jButton2.setMnemonic('2');
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setActionCommand(resourceMap.getString("jButton2.actionCommand")); // NOI18N
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton2.setName("jButton2"); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
         jPanelCenter.add(jButton2);
 
+        jButton3.setIcon(resourceMap.getIcon("jButton3.icon")); // NOI18N
+        jButton3.setMnemonic('3');
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setActionCommand(resourceMap.getString("jButton3.actionCommand")); // NOI18N
+        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton3.setName("jButton3"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
         jPanelCenter.add(jButton3);
 
+        jButton4.setIcon(resourceMap.getIcon("jButton4.icon")); // NOI18N
+        jButton4.setMnemonic('4');
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setActionCommand(resourceMap.getString("jButton4.actionCommand")); // NOI18N
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton4.setName("jButton4"); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
         jPanelCenter.add(jButton4);
 
+        jButton5.setIcon(resourceMap.getIcon("jButton5.icon")); // NOI18N
+        jButton5.setMnemonic('5');
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
+        jButton5.setActionCommand(resourceMap.getString("jButton5.actionCommand")); // NOI18N
+        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton5.setName("jButton5"); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
         jPanelCenter.add(jButton5);
 
+        jButton6.setIcon(resourceMap.getIcon("jButton6.icon")); // NOI18N
+        jButton6.setMnemonic('6');
         jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
+        jButton6.setActionCommand(resourceMap.getString("jButton6.actionCommand")); // NOI18N
+        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton6.setName("jButton6"); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
         jPanelCenter.add(jButton6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -91,8 +147,8 @@ public class HomeJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelCenter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                    .addComponent(jLabelHead, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
+                    .addComponent(jPanelCenter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+                    .addComponent(jLabelHead, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,13 +156,17 @@ public class HomeJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(jPanelCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabSelect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSelect
-        
+       switch (evt.getActionCommand()) {
+           case "1":
+               parentFrame.ShowScreen(1);
+               break;
+       }
     }//GEN-LAST:event_LabSelect
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
