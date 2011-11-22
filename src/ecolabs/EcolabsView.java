@@ -17,6 +17,7 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * The application's main frame.
@@ -26,7 +27,7 @@ public class EcolabsView extends FrameView {
     /**
      * Домашняя страница
      */
-    public HomeJPanel homeJPanel = new HomeJPanel(this);
+    public HomeJPanel homeJPanel;
     
     /**
      * Массив экранов лаб
@@ -34,14 +35,15 @@ public class EcolabsView extends FrameView {
     public ScreenJPanel[] LabScreens = new ScreenJPanel[6];
 
     private void  myInit() {
-        LabScreens[0] = new Lab1JPanel(this);
+        LabScreens[0] = new Lab1JPanel(this);    
+        homeJPanel = new HomeJPanel(this);
     }
     
     public EcolabsView(SingleFrameApplication app) {
         super(app);
-        
-        myInit();
-        initComponents();
+             
+        myInit();    
+        initComponents();    
         
         ShowScreen(-1);
 
@@ -120,6 +122,10 @@ public class EcolabsView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        jPanelTop = new javax.swing.JPanel();
+        jButtonBack = new javax.swing.JButton();
+        jLabelCaption = new javax.swing.JLabel();
+        jPanelContent = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -134,15 +140,58 @@ public class EcolabsView extends FrameView {
         progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setLayout(new java.awt.BorderLayout());
+
+        jPanelTop.setName("jPanelTop"); // NOI18N
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getActionMap(EcolabsView.class, this);
+        jButtonBack.setAction(actionMap.get("ShowHomeScreen")); // NOI18N
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(EcolabsView.class);
+        jButtonBack.setText(resourceMap.getString("jButtonBack.text")); // NOI18N
+        jButtonBack.setName("jButtonBack"); // NOI18N
+
+        jLabelCaption.setFont(resourceMap.getFont("jLabelCaption.font")); // NOI18N
+        jLabelCaption.setText("<html>\nПолное описание лабораторной работы\n</html>"); // NOI18N
+        jLabelCaption.setName("jLabelCaption"); // NOI18N
+
+        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
+        jPanelTop.setLayout(jPanelTopLayout);
+        jPanelTopLayout.setHorizontalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelCaption)
+                .addContainerGap())
+        );
+        jPanelTopLayout.setVerticalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+
+        jPanelContent.setName("jPanelContent"); // NOI18N
+        jPanelContent.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(jPanelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+        );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(EcolabsView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getActionMap(EcolabsView.class, this);
         jMenuItem2.setAction(actionMap.get("ShowHomeScreen")); // NOI18N
         jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
         jMenuItem2.setName("jMenuItem2"); // NOI18N
@@ -182,11 +231,11 @@ public class EcolabsView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -209,22 +258,21 @@ public class EcolabsView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-    @Action
-    public void ShowLab1() {
-    }
 
     /**
      * Переключает центральну область на отображение лабораторной работы или начального экрана
      * @param labNo Номер лабораторной работы. -1 соответствует начальному экрану.
      */
     public final void ShowScreen(int labNo) {
+        JPanel workingPanel = jPanelContent;
         ScreenJPanel newScreen;
         switch (labNo) {
             case -1:
-                mainPanel.removeAll();
-                mainPanel.add(homeJPanel);
-                mainPanel.validate();
-                mainPanel.repaint();
+                jPanelTop.setVisible(false);
+                workingPanel.removeAll();
+                workingPanel.add(homeJPanel);
+                workingPanel.validate();
+                workingPanel.repaint();
                 getFrame().setTitle(homeJPanel.Title);
                 return;                
             case 1:
@@ -237,12 +285,14 @@ public class EcolabsView extends FrameView {
         if (newScreen == null) {
             return;
         }
-        mainPanel.removeAll();
-        mainPanel.add(newScreen);
+        jPanelTop.setVisible(true);
+        workingPanel.removeAll();
+        workingPanel.add(newScreen);
         
         getFrame().setTitle(newScreen.Title);
-        mainPanel.validate();
-        mainPanel.repaint();
+        jLabelCaption.setText(newScreen.Caption);
+        workingPanel.validate();
+        workingPanel.repaint();
     }
 
     @Action
@@ -251,7 +301,11 @@ public class EcolabsView extends FrameView {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBack;
+    private javax.swing.JLabel jLabelCaption;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanelContent;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;

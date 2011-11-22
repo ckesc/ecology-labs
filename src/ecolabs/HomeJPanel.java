@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * HomeJPanel.java
  *
  * Created on 19.11.2011, 16:52:21
@@ -11,20 +6,32 @@
 package ecolabs;
 
 import ecolabs.labs.ScreenJPanel;
-
+import javax.swing.JButton;
 
 /**
- *
+ * Панель с кнопками-лабораторными
  * @author Ск
  */
 public class HomeJPanel extends ScreenJPanel {
-    
+
     /** Creates new form HomeJPanel */
     public HomeJPanel(EcolabsView parent) {
-        super(parent);
-        
-        
+        super(parent);        
         initComponents();
+        myInit();
+    }
+    
+    private void myInit(){        
+        JButton[] buttons = {jButton1,jButton2,jButton3,jButton4,jButton5,jButton6};
+        for(int i=0;i<6;i++) {
+            if (parentFrame.LabScreens[i]!=null) {
+                buttons[i].setText(
+                        "<html><center>"+
+                        parentFrame.LabScreens[i].Caption+
+                        "</center></html>"
+                        );
+            }
+        }
     }
 
     /** This method is called from within the constructor to
@@ -162,13 +169,12 @@ public class HomeJPanel extends ScreenJPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabSelect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSelect
-       switch (evt.getActionCommand()) {
-           case "1":
-               parentFrame.ShowScreen(1);
-               break;
-       }
+        switch (evt.getActionCommand()) {
+            case "1":
+                parentFrame.ShowScreen(1);
+                break;
+        }
     }//GEN-LAST:event_LabSelect
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
