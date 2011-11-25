@@ -10,16 +10,12 @@
  */
 package ecolabs.labs.lab1;
 
-import ecolabs.ChartPanel;
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -33,7 +29,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
- * @author Ск
+ * @author Fh
  */
 public class Lab1JPanel extends ScreenJPanel {
 
