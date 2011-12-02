@@ -169,11 +169,11 @@ public class HomeJPanel extends ScreenJPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabSelect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSelect
-        switch (evt.getActionCommand()) {
-            case "1":
-                parentFrame.ShowScreen(1);
-                break;
-        }
+        
+        int no = Integer.parseInt(evt.getActionCommand());
+        parentFrame.ShowScreen(no);
+        
+        
     }//GEN-LAST:event_LabSelect
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

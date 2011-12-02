@@ -1,11 +1,11 @@
 /*
  * EcolabsView.java
  */
-
 package ecolabs;
 
 import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
+import ecolabs.labs.lab2.Lab2JPanel;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -24,35 +24,36 @@ import javax.swing.JPanel;
  * The application's main frame.
  */
 public class EcolabsView extends FrameView {
-        
+
     /**
      * Домашняя страница
      */
     public HomeJPanel homeJPanel;
-    
     /**
      * Массив экранов лаб
      */
     public ScreenJPanel[] LabScreens = new ScreenJPanel[6];
 
-    private void  myInit() {
-        LabScreens[0] = new Lab1JPanel(this);    
+    private void myInit() {
+        LabScreens[0] = new Lab1JPanel(this);
+        LabScreens[1] = new Lab2JPanel(this);
         homeJPanel = new HomeJPanel(this);
     }
-    
+
     public EcolabsView(SingleFrameApplication app) {
         super(app);
-             
-        myInit();    
-        initComponents(); 
+
+        myInit();
+        initComponents();
         menuBar.setVisible(false);
-        
+
         ShowScreen(-1);
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 statusMessageLabel.setText("");
             }
@@ -63,6 +64,7 @@ public class EcolabsView extends FrameView {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
                 statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
@@ -75,6 +77,7 @@ public class EcolabsView extends FrameView {
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
@@ -91,11 +94,11 @@ public class EcolabsView extends FrameView {
                     progressBar.setVisible(false);
                     progressBar.setValue(0);
                 } else if ("message".equals(propertyName)) {
-                    String text = (String)(evt.getNewValue());
+                    String text = (String) (evt.getNewValue());
                     statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
-                    int value = (Integer)(evt.getNewValue());
+                    int value = (Integer) (evt.getNewValue());
                     progressBar.setVisible(true);
                     progressBar.setIndeterminate(false);
                     progressBar.setValue(value);
@@ -279,14 +282,13 @@ public class EcolabsView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-
     /**
      * Переключает центральну область на отображение лабораторной работы или начального экрана
      * @param labNo Номер лабораторной работы. -1 соответствует начальному экрану.
      */
     public final void ShowScreen(int labNo) {
         JComponent workingPanel = jPanel1;
-        ScreenJPanel newScreen;
+        ScreenJPanel newScreen = null;
         switch (labNo) {
             case -1:
                 jPanelTop.setVisible(false);
@@ -295,21 +297,22 @@ public class EcolabsView extends FrameView {
                 workingPanel.validate();
                 workingPanel.repaint();
                 getFrame().setTitle(homeJPanel.Title);
-                return;                
-            case 1:
-                newScreen = LabScreens[0];
-                break;
+                return;
+
             default:
-                throw new AssertionError();
+                if (LabScreens[labNo-1] != null) {
+                    newScreen = LabScreens[labNo-1];
+                }
+                break;
         }
-        
+
         if (newScreen == null) {
             return;
         }
         jPanelTop.setVisible(true);
         workingPanel.removeAll();
         workingPanel.add(newScreen);
-        
+
         getFrame().setTitle(newScreen.Title);
         jLabelCaption.setText(newScreen.Caption);
         workingPanel.validate();
@@ -318,9 +321,8 @@ public class EcolabsView extends FrameView {
 
     @Action
     public void ShowHomeScreen() {
-       ShowScreen(-1);
+        ShowScreen(-1);
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
@@ -338,12 +340,10 @@ public class EcolabsView extends FrameView {
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
-
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-
     private JDialog aboutBox;
 }
