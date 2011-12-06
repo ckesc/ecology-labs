@@ -14,6 +14,9 @@ import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.Console;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JPanel;
@@ -33,23 +36,33 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class Lab1JPanel extends ScreenJPanel {
 
-    /**
-     * Средний медианный размер капель воды, мм
-     */
-    //double Dh2o = 10;
-    /**
-     * Расход воды для орошения газа, м3/с;
-     */
-    double Vaq = 2;
-    /**
-     * объемный расход газа на выходе из скруббера при рабочих условиях,
-     * м3/с;
-     */
-    double Va = 20;
-    /**
-     *  Коэффициент захвата частицы каплей воды;
-     */
-    double ησ = 1.2;
+    class Variant {
+
+        /**
+         * Расход воды для орошения газа, м3/с;
+         */
+        public double Vaq = 2;
+        /**
+         * объемный расход газа на выходе из скруббера при рабочих условиях,
+         * м3/с;
+         */
+        public double Va = 20;
+        /**
+         *  Коэффициент захвата частицы каплей воды;
+         */
+        public double ησ = 1.2;
+        public double H0 = 0;
+        public double dH = 0;
+        public double Hn = 0;
+        public double Dh2o1 = 0;
+        public double Dh2o2 = 0;
+        public double Dh2o3 = 0;
+        public double Dsol1 = 0;
+        public double Dsol2 = 0;
+    }
+    private static String fileName = "inputLab1.txt";
+    private Variant data = new Variant();
+    private HashMap<Integer, Variant> variants = new HashMap<>();
     /**
      * Точки графика для первого размера частиц
      */
@@ -60,18 +73,17 @@ public class Lab1JPanel extends ScreenJPanel {
     HashMap<Double, Double> points2 = new HashMap<>();
     ArrayList<XYSeries> serieses1 = new ArrayList<>();
     ArrayList<XYSeries> serieses2 = new ArrayList<>();
-
     JFreeChart chart1;
-            
     JFreeChart chart2;
-    
+
     /** Creates new form Lab1JPanel */
     public Lab1JPanel(EcolabsView parent) {
         super(parent);
         initComponents();
         Title = "Лабораторная работа №1";
-        Caption = "Некое длинное описание лабораторной работы 1";
-        jButtonExecuteMouseClicked(null);
+        Caption = "Расчет параметров полого форсуночного скруббера";
+        loadVariants();
+        Execute();
     }
 
     /**
@@ -81,8 +93,8 @@ public class Lab1JPanel extends ScreenJPanel {
      * @return 
      */
     public double η(double H, double Dh2o, double Dsol) {
-        double numerator = -3 * Vaq * ησ * H;
-        double denominator = 2 * Va * Dh2o * 0.001f;
+        double numerator = -3 * data.Vaq * data.ησ * H;
+        double denominator = 2 * data.Va * Dh2o * 0.001f;
         return 1 - (double) Math.exp(numerator / denominator);
     }
 
@@ -124,6 +136,7 @@ public class Lab1JPanel extends ScreenJPanel {
         Dh2os.add(Double.parseDouble(jTextFieldDh2o1.getText()));
         Dh2os.add(Double.parseDouble(jTextFieldDh2o2.getText()));
         Dh2os.add(Double.parseDouble(jTextFieldDh2o3.getText()));
+        XYSeriesCollection dataset = new XYSeriesCollection();
         for (Double Dh2o : Dh2os) {
             XYSeries series = new XYSeries(Dh2o);
 
@@ -133,20 +146,30 @@ public class Lab1JPanel extends ScreenJPanel {
                 series.add(H, points.get(H));
             }
 
-            XYDataset dataset = new XYSeriesCollection(series);
-
-            XYItemRenderer renderer = new StandardXYItemRenderer();
-
-            XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(""), renderer);
-
-            NumberAxis axis = (NumberAxis) subplot.getRangeAxis();
-            axis.setTickLabelFont(new Font("Monospaced", Font.PLAIN, 7));
-            axis.setLabelFont(new Font("SansSerif", Font.PLAIN, 7));
-            axis.setAutoRangeIncludesZero(false);
-
-            plot.add(subplot, 1);
+            dataset.addSeries(series);
         }
+        XYItemRenderer renderer = new StandardXYItemRenderer();
+        XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(null), renderer);
+        plot.add(subplot);
         return plot;
+    }
+
+    private void Execute() {
+        try {
+            data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
+            data.Va = Double.parseDouble(jTextFieldVa.getText());
+            data.ησ = Double.parseDouble(jTextFieldησ.getText());
+
+            //showChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())), jLabelChart1, true);
+            //showChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())), jPanel1, false);
+
+            chart1 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())));
+            chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
+
+            chartPanel1.setChart(chart1);
+            chartPanel2.setChart(chart2);
+        } catch (Exception e) {
+        }
     }
 
     /** This method is called from within the constructor to
@@ -167,7 +190,6 @@ public class Lab1JPanel extends ScreenJPanel {
         jTextFieldVaq = new javax.swing.JTextField();
         jTextFieldVa = new javax.swing.JTextField();
         jTextFieldησ = new javax.swing.JTextField();
-        jButtonExecute = new javax.swing.JButton();
         jLabelVaq = new javax.swing.JLabel();
         jLabelVa = new javax.swing.JLabel();
         jLabelησ = new javax.swing.JLabel();
@@ -177,12 +199,12 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelH0 = new javax.swing.JLabel();
         jLabeldH = new javax.swing.JLabel();
         jLabelHn = new javax.swing.JLabel();
-        jTextFieldDh2o3 = new javax.swing.JTextField();
-        jTextFieldDh2o2 = new javax.swing.JTextField();
-        jTextFieldDh2o1 = new javax.swing.JTextField();
         jLabelDh2o1 = new javax.swing.JLabel();
         jLabeldDh2o2 = new javax.swing.JLabel();
         jLabelDh2o3 = new javax.swing.JLabel();
+        jTextFieldDh2o3 = new javax.swing.JTextField();
+        jTextFieldDh2o2 = new javax.swing.JTextField();
+        jTextFieldDh2o1 = new javax.swing.JTextField();
         jPanelCharts = new javax.swing.JPanel();
         jTextFieldDsol1 = new javax.swing.JTextField();
         jTextFieldDsol2 = new javax.swing.JTextField();
@@ -191,8 +213,12 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel1 = new ecolabs.ChartPanel();
         chartPanel2 = new ecolabs.ChartPanel();
 
-        jComboBoxVar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         jComboBoxVar.setName("jComboBoxVar"); // NOI18N
+        jComboBoxVar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxVarItemStateChanged(evt);
+            }
+        });
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab1JPanel.class);
         jLabelVar.setText(resourceMap.getString("jLabelVar.text")); // NOI18N
@@ -211,24 +237,30 @@ public class Lab1JPanel extends ScreenJPanel {
 
         jTextFieldVaq.setText(resourceMap.getString("jTextFieldVaq.text")); // NOI18N
         jTextFieldVaq.setName("jTextFieldVaq"); // NOI18N
-        jPanelPicture.add(jTextFieldVaq, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 90, -1));
+        jTextFieldVaq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldVaq, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 50, -1));
 
         jTextFieldVa.setText(resourceMap.getString("jTextFieldVa.text")); // NOI18N
         jTextFieldVa.setName("jTextFieldVa"); // NOI18N
-        jPanelPicture.add(jTextFieldVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 90, -1));
+        jTextFieldVa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 50, -1));
 
         jTextFieldησ.setText(resourceMap.getString("jTextFieldησ.text")); // NOI18N
         jTextFieldησ.setName("jTextFieldησ"); // NOI18N
-        jPanelPicture.add(jTextFieldησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 90, -1));
-
-        jButtonExecute.setLabel(resourceMap.getString("jButtonExecute.label")); // NOI18N
-        jButtonExecute.setName("jButtonExecute"); // NOI18N
-        jButtonExecute.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonExecuteMouseClicked(evt);
+        jTextFieldησ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jButtonExecute, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, -1));
+        jPanelPicture.add(jTextFieldησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 50, -1));
 
         jLabelVaq.setText(resourceMap.getString("jLabelVaq.text")); // NOI18N
         jLabelVaq.setName("jLabelVaq"); // NOI18N
@@ -244,51 +276,81 @@ public class Lab1JPanel extends ScreenJPanel {
 
         jTextFieldH0.setText(resourceMap.getString("jTextFieldH0.text")); // NOI18N
         jTextFieldH0.setName("jTextFieldH0"); // NOI18N
-        jPanelPicture.add(jTextFieldH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 90, -1));
+        jTextFieldH0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 60, -1));
 
         jTextFielddH.setText(resourceMap.getString("jTextFielddH.text")); // NOI18N
         jTextFielddH.setName("jTextFielddH"); // NOI18N
-        jPanelPicture.add(jTextFielddH, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 90, -1));
+        jTextFielddH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFielddH, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 60, -1));
 
         jTextFieldHn.setText(resourceMap.getString("jTextFieldHn.text")); // NOI18N
         jTextFieldHn.setName("jTextFieldHn"); // NOI18N
-        jPanelPicture.add(jTextFieldHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, -1));
+        jTextFieldHn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 60, -1));
 
         jLabelH0.setText(resourceMap.getString("jLabelH0.text")); // NOI18N
         jLabelH0.setName("jLabelH0"); // NOI18N
-        jPanelPicture.add(jLabelH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
+        jPanelPicture.add(jLabelH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         jLabeldH.setText(resourceMap.getString("jLabeldH.text")); // NOI18N
         jLabeldH.setName("jLabeldH"); // NOI18N
-        jPanelPicture.add(jLabeldH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
+        jPanelPicture.add(jLabeldH, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         jLabelHn.setText(resourceMap.getString("jLabelHn.text")); // NOI18N
         jLabelHn.setName("jLabelHn"); // NOI18N
-        jPanelPicture.add(jLabelHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, -1));
-
-        jTextFieldDh2o3.setText(resourceMap.getString("jTextFieldDh2o3.text")); // NOI18N
-        jTextFieldDh2o3.setName("jTextFieldDh2o3"); // NOI18N
-        jPanelPicture.add(jTextFieldDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 90, -1));
-
-        jTextFieldDh2o2.setText(resourceMap.getString("jTextFieldDh2o2.text")); // NOI18N
-        jTextFieldDh2o2.setName("jTextFieldDh2o2"); // NOI18N
-        jPanelPicture.add(jTextFieldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 90, -1));
-
-        jTextFieldDh2o1.setText(resourceMap.getString("jTextFieldDh2o1.text")); // NOI18N
-        jTextFieldDh2o1.setName("jTextFieldDh2o1"); // NOI18N
-        jPanelPicture.add(jTextFieldDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 90, -1));
+        jPanelPicture.add(jLabelHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         jLabelDh2o1.setText(resourceMap.getString("jLabelDh2o1.text")); // NOI18N
         jLabelDh2o1.setName("jLabelDh2o1"); // NOI18N
-        jPanelPicture.add(jLabelDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+        jPanelPicture.add(jLabelDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         jLabeldDh2o2.setText(resourceMap.getString("jLabeldDh2o2.text")); // NOI18N
         jLabeldDh2o2.setName("jLabeldDh2o2"); // NOI18N
-        jPanelPicture.add(jLabeldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+        jPanelPicture.add(jLabeldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         jLabelDh2o3.setText(resourceMap.getString("jLabelDh2o3.text")); // NOI18N
         jLabelDh2o3.setName("jLabelDh2o3"); // NOI18N
-        jPanelPicture.add(jLabelDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+        jPanelPicture.add(jLabelDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+
+        jTextFieldDh2o3.setText(resourceMap.getString("jTextFieldDh2o3.text")); // NOI18N
+        jTextFieldDh2o3.setName("jTextFieldDh2o3"); // NOI18N
+        jTextFieldDh2o3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 56, -1));
+
+        jTextFieldDh2o2.setText(resourceMap.getString("jTextFieldDh2o2.text")); // NOI18N
+        jTextFieldDh2o2.setName("jTextFieldDh2o2"); // NOI18N
+        jTextFieldDh2o2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 56, -1));
+
+        jTextFieldDh2o1.setText(resourceMap.getString("jTextFieldDh2o1.text")); // NOI18N
+        jTextFieldDh2o1.setName("jTextFieldDh2o1"); // NOI18N
+        jTextFieldDh2o1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
+        jPanelPicture.add(jTextFieldDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 56, -1));
 
         jPanelCharts.setName("jPanelCharts"); // NOI18N
         jPanelCharts.setLayout(new java.awt.GridBagLayout());
@@ -296,8 +358,13 @@ public class Lab1JPanel extends ScreenJPanel {
         jTextFieldDsol1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDsol1.setText(resourceMap.getString("jTextFieldDsol1.text")); // NOI18N
         jTextFieldDsol1.setName("jTextFieldDsol1"); // NOI18N
+        jTextFieldDsol1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jTextFieldDsol1, gridBagConstraints);
@@ -310,8 +377,13 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldDsol2ActionPerformed(evt);
             }
         });
+        jTextFieldDsol2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jTextFieldDsol2, gridBagConstraints);
@@ -321,7 +393,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelDsol2.setText(resourceMap.getString("jLabelDsol2.text")); // NOI18N
         jLabelDsol2.setName("jLabelDsol2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         jPanelCharts.add(jLabelDsol2, gridBagConstraints);
 
@@ -330,7 +402,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelDsol1.setText(resourceMap.getString("jLabelDsol1.text")); // NOI18N
         jLabelDsol1.setName("jLabelDsol1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         jPanelCharts.add(jLabelDsol1, gridBagConstraints);
 
@@ -340,15 +412,15 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel1.setLayout(chartPanel1Layout);
         chartPanel1Layout.setHorizontalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGap(0, 435, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
@@ -363,15 +435,15 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel2.setLayout(chartPanel2Layout);
         chartPanel2Layout.setHorizontalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGap(0, 435, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
@@ -394,14 +466,14 @@ public class Lab1JPanel extends ScreenJPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelCharts, javax.swing.GroupLayout.PREFERRED_SIZE, 636, Short.MAX_VALUE))
+                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelCharts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 572, Short.MAX_VALUE)
+                    .addComponent(jPanelCharts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelVar)
@@ -414,33 +486,65 @@ public class Lab1JPanel extends ScreenJPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-private void jButtonExecuteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonExecuteMouseClicked
-    try {
-        Vaq = Double.parseDouble(jTextFieldVaq.getText());
-        Va = Double.parseDouble(jTextFieldVa.getText());
-        ησ = Double.parseDouble(jTextFieldησ.getText());
-
-        //showChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())), jLabelChart1, true);
-        //showChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())), jPanel1, false);
-        
-        chart1 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())));
-        chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
-        
-        chartPanel1.setChart(chart1);
-        chartPanel2.setChart(chart2);
-    } catch (Exception e) {
-       
-    }
-}//GEN-LAST:event_jButtonExecuteMouseClicked
-
 private void jTextFieldDsol2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDsol2ActionPerformed
-
 }//GEN-LAST:event_jTextFieldDsol2ActionPerformed
 
+private void jTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldKeyTyped
+    Execute();
+}//GEN-LAST:event_jTextFieldKeyTyped
+
+    public void loadVariants() {
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 12);
+        int varNum;
+        Variant v = new Variant();
+        for (String[] parameters : lines) {
+            try {
+                v.Vaq = Double.parseDouble(parameters[1].trim());
+                v.Va = Double.parseDouble(parameters[2].trim());
+                v.ησ = Double.parseDouble(parameters[3].trim());
+                v.H0 = Double.parseDouble(parameters[4].trim());
+                v.dH = Double.parseDouble(parameters[5].trim());
+                v.Hn = Double.parseDouble(parameters[6].trim());
+                v.Dh2o1 = Double.parseDouble(parameters[7].trim());
+                v.Dh2o2 = Double.parseDouble(parameters[8].trim());
+                v.Dh2o3 = Double.parseDouble(parameters[9].trim());
+                v.Dsol1 = Double.parseDouble(parameters[10].trim());
+                v.Dsol2 = Double.parseDouble(parameters[11].trim());
+                varNum = Integer.parseInt(parameters[0].trim());
+            } catch (Exception e) {
+                // Произошла ошибка??
+                // Да ну её к чёёёёёёёёрту!
+                // Пойдём я тебе лучше пааааасеку покажу
+                continue;
+            }
+            variants.put(varNum, v);
+            jComboBoxVar.addItem(varNum);
+        }
+    }
+
+    /**
+     * Выбор элемента списка вариантов
+     * @param evt 
+     */
+private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxVarItemStateChanged
+    //loadVariant(Integer.parseInt(jComboBoxVar.getSelectedItem().toString()));
+    int varNum = Integer.parseInt(jComboBoxVar.getSelectedItem().toString());
+    Variant var = variants.get(varNum);
+    jTextFieldDh2o1.setText(Double.toString(var.Dh2o1));
+    jTextFieldDh2o2.setText(Double.toString(var.Dh2o2));
+    jTextFieldDh2o3.setText(Double.toString(var.Dh2o3));
+    jTextFieldDsol1.setText(Double.toString(var.Dsol1));
+    jTextFieldDsol2.setText(Double.toString(var.Dsol2));
+    jTextFieldH0.setText(Double.toString(var.H0));
+    jTextFieldHn.setText(Double.toString(var.Hn));
+    jTextFieldVa.setText(Double.toString(var.Va));
+    jTextFieldVaq.setText(Double.toString(var.Vaq));
+    jTextFielddH.setText(Double.toString(var.dH));
+    jTextFieldησ.setText(Double.toString(var.ησ));
+}//GEN-LAST:event_jComboBoxVarItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ecolabs.ChartPanel chartPanel1;
     private ecolabs.ChartPanel chartPanel2;
-    private javax.swing.JButton jButtonExecute;
     private javax.swing.JComboBox jComboBoxVar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
