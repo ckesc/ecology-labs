@@ -25,7 +25,7 @@ public class Lab2JPanel extends ScreenJPanel  {
         super(parent);
         initComponents();
         Title = "Лабораторная работа №2";
-        Caption = "Некое длинное описание лабораторной работы 2";        
+        Caption = "Расчет времени фильтрации тканевого фильтра";        
     }
 
     /** This method is called from within the constructor to
