@@ -6,6 +6,7 @@ package ecolabs;
 import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
 import ecolabs.labs.lab2.Lab2JPanel;
+import ecolabs.labs.lab3.Lab3JPanel;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -13,6 +14,7 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -37,6 +39,7 @@ public class EcolabsView extends FrameView {
     private void myInit() {
         LabScreens[0] = new Lab1JPanel(this);
         LabScreens[1] = new Lab2JPanel(this);
+        LabScreens[2] = new Lab3JPanel(this);
         homeJPanel = new HomeJPanel(this);
     }
 
@@ -115,6 +118,15 @@ public class EcolabsView extends FrameView {
             aboutBox.setLocationRelativeTo(mainFrame);
         }
         EcolabsApp.getApplication().show(aboutBox);
+    }
+    
+    /**
+     * Устанавливает статусное состояние. приписывается текущее время.
+     * @param msg сообщение для установки
+     */
+    public void setStatus(String msg){
+        String s = String.format("%T %s", new Date() ,msg);
+        statusMessageLabel.setText(s);
     }
 
     /** This method is called from within the constructor to
