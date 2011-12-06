@@ -8,6 +8,9 @@ import ecolabs.EcolabsView;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import org.jdesktop.application.ResourceMap;
 
 /**
  * Экран - т.е. то что может быть отображено в центральной части
@@ -24,10 +27,14 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
      */
     public String Caption = "Полное название лабораторной работы";
     /**
+     * Иконка лаборатоной работы
+     */
+    public Icon ScreenIcon =new ImageIcon("../resources/lab_icon.png");
+    /**
      * ссылка на главное окно
      */
     protected EcolabsView parentFrame;
-
+    
     /**
      * Переключает на начальный экран
      */
