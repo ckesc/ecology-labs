@@ -18,18 +18,19 @@ public class HomeJPanel extends ScreenJPanel {
     public HomeJPanel(EcolabsView parent) {
         super(parent);        
         initComponents();
-        myInit();
+        initButtons();
     }
     
-    private void myInit(){        
+    private void initButtons(){        
         JButton[] buttons = {jButton1,jButton2,jButton3,jButton4,jButton5,jButton6};
         for(int i=0;i<6;i++) {
             if (parentFrame.LabScreens[i]!=null) {
-                buttons[i].setText(
-                        "<html><center>"+
-                        parentFrame.LabScreens[i].Caption+
-                        "</center></html>"
-                        );
+                buttons[i].setText(String.format(
+                        "<html><b>%s</b><br>%s</html>",
+                        parentFrame.LabScreens[i].Title,
+                        parentFrame.LabScreens[i].Caption
+                        ));
+                buttons[i].setIcon(parentFrame.LabScreens[i].ScreenIcon);
             }
         }
     }
@@ -119,7 +120,6 @@ public class HomeJPanel extends ScreenJPanel {
         });
         jPanelCenter.add(jButton4);
 
-        jButton5.setIcon(resourceMap.getIcon("jButton5.icon")); // NOI18N
         jButton5.setMnemonic('5');
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
         jButton5.setActionCommand(resourceMap.getString("jButton5.actionCommand")); // NOI18N
