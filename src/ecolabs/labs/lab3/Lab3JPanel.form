@@ -133,6 +133,9 @@
             <Property name="toolTipText" type="java.lang.String" resourceKey="jTextFieldD.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jTextFieldD" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldw">
           <Properties>
@@ -140,6 +143,9 @@
             <Property name="toolTipText" type="java.lang.String" resourceKey="jTextFieldw.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jTextFieldw" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldd">
           <Properties>
@@ -147,6 +153,9 @@
             <Property name="toolTipText" type="java.lang.String" resourceKey="jTextFieldd.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jTextFieldd" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldk">
           <Properties>
@@ -154,6 +163,9 @@
             <Property name="toolTipText" type="java.lang.String" resourceKey="jTextFieldk.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jTextFieldk" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldu">
           <Properties>
@@ -163,6 +175,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFielduActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldp">
@@ -171,6 +184,9 @@
             <Property name="toolTipText" type="java.lang.String" resourceKey="jTextFieldp.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jTextFieldp" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -181,9 +197,9 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
       <SubComponents>
-        <Container class="ecolabs.ChartPanel" name="chartPanel1">
+        <Container class="ecolabs.ChartPanel" name="chartPanel2">
           <Properties>
-            <Property name="name" type="java.lang.String" value="chartPanel1" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="chartPanel2" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -204,9 +220,9 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="ecolabs.ChartPanel" name="chartPanel2">
+        <Container class="ecolabs.ChartPanel" name="chartPanel1">
           <Properties>
-            <Property name="name" type="java.lang.String" value="chartPanel2" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="chartPanel1" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

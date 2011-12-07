@@ -13,6 +13,7 @@ package ecolabs.labs.lab3;
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
@@ -32,15 +33,15 @@ public class Lab3JPanel extends ScreenJPanel {
     /**
      * Диаметр циклона. 1.N
      */
-    double D;
+    double D = 1.1;
     /**
      * Скорость движения газа
      */
-    double ω;
+    double ω = 1;
     /**
      * средний размер частиц пыли, улавливаемых на 50 %, мкм;
      */
-    double d;
+    double d = 1;
     /**
      * коэффициент, учитывающий тип циклона;
      */
@@ -58,7 +59,7 @@ public class Lab3JPanel extends ScreenJPanel {
      * Расчет минимального размера частиц пыли, улавливаемых циклоном
      */
     private double d_min(double D, double ω) {
-        return (d * k * 1000 * Math.sqrt(1000 * μ / (ρ * ω)));
+        return (d * k * 1000d * Math.sqrt(1000d * μ / (ρ * ω)));
     }
 
     public Lab3JPanel(EcolabsView parent) {
@@ -75,7 +76,7 @@ public class Lab3JPanel extends ScreenJPanel {
         jTextFieldp.setText(String.valueOf(ρ));
         jTextFieldw.setText(String.valueOf(ω));
         jTextFieldu.setText(String.valueOf(μ));
-        
+
         Execute();
 
     }
@@ -84,13 +85,10 @@ public class Lab3JPanel extends ScreenJPanel {
      * Вычисляет точки кривой при постоянной D
      * @param w1 начальное значение w
      * @param w2 конечное хзначение w
+     * @param w_delta приращение
      */
     public HashMap<Double, Double> Calc_constD(double D, double w1, double w2, double w_delta) {
         HashMap<Double, Double> points = new HashMap<>();
-        d = Double.valueOf(jTextFieldd.getText());
-        k = Double.valueOf(jTextFieldk.getText());
-        ρ = Double.valueOf(jTextFieldp.getText());
-        μ = Double.valueOf(jTextFieldu.getText());
 
         for (double w = w1; w <= w2; w += w_delta) {
             points.put(w, d_min(D, w));
@@ -98,15 +96,29 @@ public class Lab3JPanel extends ScreenJPanel {
 
         return points;
     }
+    
+    /**
+     * Вычисляет точки кривой при постоянной W
+     * @param D1 начальное значение D
+     * @param D2 конечное значение D
+     * @param D_delta приращение D
+     */
+    public HashMap<Double, Double> Calc_constW(double w, double D1, double D2, double D_delta) {
+        HashMap<Double, Double> points = new HashMap<>();
+
+        for (double D = D1; w <= D2; D += D_delta) {
+            points.put(D, d_min(D, w));
+        }
+
+        return points;
+    }    
 
     /**
      * Вычистяет все 3 кривых на одном графике
-     * @param Dsol
-     * @return 
      */
     public CombinedDomainXYPlot createChart_Dconst() {
         CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
-                new NumberAxis("η(H)"));
+                new NumberAxis("ω"));
         ArrayList<Double> D_list = new ArrayList<>();
         D_list.add(0.2d);
         D_list.add(0.8d);
@@ -116,10 +128,35 @@ public class Lab3JPanel extends ScreenJPanel {
         for (Double curr_D : D_list) {
             XYSeries series = new XYSeries(curr_D);
 
-            HashMap<Double, Double> points = Calc_constD(curr_D, 1.2, 10, 0.1);
+            HashMap<Double, Double> points = Calc_constD(curr_D, 1.2, 10, 1);
 
             for (Double w : points.keySet()) {
                 series.add(w, points.get(w));
+            }
+
+            dataset.addSeries(series);
+        }
+        XYItemRenderer renderer = new StandardXYItemRenderer();
+        XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(null), renderer);
+        plot.add(subplot);
+        return plot;
+    }
+    
+        /**
+     * Вычистяет все 3 кривых на одном графике для постоянной ω
+     */
+    public CombinedDomainXYPlot createChart_Wconst() {
+        CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
+                new NumberAxis("D"));        
+        ArrayList<Double> W_list = new ArrayList<>(Arrays.asList(1d,4d,7d,10d));
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        for (Double curr_W : W_list) {
+            XYSeries series = new XYSeries(curr_W);
+
+            HashMap<Double, Double> points = Calc_constD(curr_W, 0.1d, 2d, 0.1d);
+
+            for (Double D : points.keySet()) {
+                series.add(D, points.get(D));
             }
 
             dataset.addSeries(series);
@@ -135,18 +172,21 @@ public class Lab3JPanel extends ScreenJPanel {
      */
     private void Execute() {
         try {
+            d = Double.valueOf(jTextFieldd.getText());
+            k = Double.valueOf(jTextFieldk.getText());
+            ρ = Double.valueOf(jTextFieldp.getText());
+            μ = Double.valueOf(jTextFieldu.getText());
+
             JFreeChart chart1;
             JFreeChart chart2;
-//            data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
-//            data.Va = Double.parseDouble(jTextFieldVa.getText());
-//            data.ησ = Double.parseDouble(jTextFieldησ.getText());
 
             chart1 = new JFreeChart(createChart_Dconst());
-            //chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
+            chart2 = new JFreeChart(createChart_Wconst());
 
             chartPanel1.setChart(chart1);
-            //chartPanel2.setChart(chart2);
+            chartPanel2.setChart(chart2);
         } catch (Exception e) {
+            parentFrame.setStatus("Ошибка в ходе вычислений. Возможно вы ввели не правильно число");
         }
     }
 
@@ -171,8 +211,8 @@ public class Lab3JPanel extends ScreenJPanel {
         jTextFieldu = new javax.swing.JTextField();
         jTextFieldp = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        chartPanel1 = new ecolabs.ChartPanel();
         chartPanel2 = new ecolabs.ChartPanel();
+        chartPanel1 = new ecolabs.ChartPanel();
 
         setName("Form"); // NOI18N
 
@@ -192,18 +232,38 @@ public class Lab3JPanel extends ScreenJPanel {
 
         jTextFieldD.setToolTipText(resourceMap.getString("jTextFieldD.toolTipText")); // NOI18N
         jTextFieldD.setName("jTextFieldD"); // NOI18N
+        jTextFieldD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         jTextFieldw.setText(resourceMap.getString("jTextFieldw.text")); // NOI18N
         jTextFieldw.setToolTipText(resourceMap.getString("jTextFieldw.toolTipText")); // NOI18N
         jTextFieldw.setName("jTextFieldw"); // NOI18N
+        jTextFieldw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         jTextFieldd.setText(resourceMap.getString("jTextFieldd.text")); // NOI18N
         jTextFieldd.setToolTipText(resourceMap.getString("jTextFieldd.toolTipText")); // NOI18N
         jTextFieldd.setName("jTextFieldd"); // NOI18N
+        jTextFieldd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         jTextFieldk.setText(resourceMap.getString("jTextFieldk.text")); // NOI18N
         jTextFieldk.setToolTipText(resourceMap.getString("jTextFieldk.toolTipText")); // NOI18N
         jTextFieldk.setName("jTextFieldk"); // NOI18N
+        jTextFieldk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         jTextFieldu.setText(resourceMap.getString("jTextFieldu.text")); // NOI18N
         jTextFieldu.setToolTipText(resourceMap.getString("jTextFieldu.toolTipText")); // NOI18N
@@ -213,10 +273,20 @@ public class Lab3JPanel extends ScreenJPanel {
                 jTextFielduActionPerformed(evt);
             }
         });
+        jTextFieldu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         jTextFieldp.setText(resourceMap.getString("jTextFieldp.text")); // NOI18N
         jTextFieldp.setToolTipText(resourceMap.getString("jTextFieldp.toolTipText")); // NOI18N
         jTextFieldp.setName("jTextFieldp"); // NOI18N
+        jTextFieldp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -253,29 +323,6 @@ public class Lab3JPanel extends ScreenJPanel {
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        chartPanel1.setName("chartPanel1"); // NOI18N
-
-        javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
-        chartPanel1.setLayout(chartPanel1Layout);
-        chartPanel1Layout.setHorizontalGroup(
-            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
-        );
-        chartPanel1Layout.setVerticalGroup(
-            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 100;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        jPanel2.add(chartPanel1, gridBagConstraints);
-
         chartPanel2.setName("chartPanel2"); // NOI18N
 
         javax.swing.GroupLayout chartPanel2Layout = new javax.swing.GroupLayout(chartPanel2);
@@ -290,7 +337,7 @@ public class Lab3JPanel extends ScreenJPanel {
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
@@ -298,6 +345,29 @@ public class Lab3JPanel extends ScreenJPanel {
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
         jPanel2.add(chartPanel2, gridBagConstraints);
+
+        chartPanel1.setName("chartPanel1"); // NOI18N
+
+        javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
+        chartPanel1.setLayout(chartPanel1Layout);
+        chartPanel1Layout.setHorizontalGroup(
+            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 165, Short.MAX_VALUE)
+        );
+        chartPanel1Layout.setVerticalGroup(
+            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipady = 100;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel2.add(chartPanel1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -309,7 +379,7 @@ public class Lab3JPanel extends ScreenJPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -332,8 +402,13 @@ public class Lab3JPanel extends ScreenJPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFielduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielduActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFielduActionPerformed
+
+    private void jTextFieldDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDKeyTyped
+        Execute();
+    }//GEN-LAST:event_jTextFieldDKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ecolabs.ChartPanel chartPanel1;
     private ecolabs.ChartPanel chartPanel2;
