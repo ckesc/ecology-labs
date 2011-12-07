@@ -27,14 +27,16 @@ public class ChartPanel extends JComponent {
     public void paint(Graphics grphcs) {
         Graphics2D graphics2D = (Graphics2D) grphcs;
         super.paint(grphcs);
-        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (chart == null) {
+            //Если нечего отображать            
             graphics2D.setPaint(new RadialGradientPaint(new Point2D.Double(getWidth() / 2.0,
-                getHeight() / 2.0), getHeight(),
-                new float[] { 0.0f, 1.0f },
-                new Color[] { new Color(6, 76, 160, 127),
-                    new Color(0.0f, 0.0f, 0.0f, 0.8f) }));
+                    getHeight() / 2.0), getHeight(),
+                    new float[]{0.0f, 1.0f},
+                    new Color[]{new Color(6, 76, 160, 127),
+                        new Color(0.0f, 0.0f, 0.0f, 0.8f)}));
             graphics2D.fillRect(0, 0, getWidth(), getHeight());
+            graphics2D.drawString("График ещё не построен", 5, 15);
             return;
         }
         BufferedImage image = chart.createBufferedImage(getWidth(), getHeight());
