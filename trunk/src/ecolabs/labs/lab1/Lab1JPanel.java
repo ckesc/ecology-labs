@@ -12,11 +12,7 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
-import java.awt.Font;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.Console;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JPanel;
@@ -26,7 +22,6 @@ import org.jfree.chart.plot.CombinedDomainXYPlot;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
-import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -115,14 +110,14 @@ public class Lab1JPanel extends ScreenJPanel {
         return points;
     }
 
-    /**
-     * Выводит график
-     */
-    public void showChart(CombinedDomainXYPlot parent, JPanel jLabel, boolean showLegend) {
-        JFreeChart chart = new JFreeChart(parent);
-        BufferedImage image = chart.createBufferedImage(jLabel.getWidth(), jLabel.getHeight());
-        jLabel.getGraphics().drawImage(image, 0, 0, this);
-    }
+//    /**
+//     * Выводит график
+//     */
+//    public void showChart(CombinedDomainXYPlot parent, JPanel jLabel, boolean showLegend) {
+//        JFreeChart chart = new JFreeChart(parent);
+//        BufferedImage image = chart.createBufferedImage(jLabel.getWidth(), jLabel.getHeight());
+//        jLabel.getGraphics().drawImage(image, 0, 0, this);
+//    }
 
     /**
      * Вычистяет все 3 кривых на одном графике
