@@ -46,8 +46,8 @@ public class EcolabsView extends FrameView {
     public EcolabsView(SingleFrameApplication app) {
         super(app);
 
-        myInit();
         initComponents();
+        myInit();
         menuBar.setVisible(false);
 
         ShowScreen(-1);
@@ -125,7 +125,7 @@ public class EcolabsView extends FrameView {
      * @param msg сообщение для установки
      */
     public void setStatus(String msg){
-        String s = String.format("%T %s", new Date() ,msg);
+        String s = String.format("%tT %s", new Date() ,msg);
         statusMessageLabel.setText(s);
     }
 
@@ -321,6 +321,7 @@ public class EcolabsView extends FrameView {
         if (newScreen == null) {
             return;
         }
+        newScreen.ScreenInit();
         jPanelTop.setVisible(true);
         workingPanel.removeAll();
         workingPanel.add(newScreen);

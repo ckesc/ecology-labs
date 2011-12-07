@@ -50,6 +50,11 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
         this.parentFrame = parent;
     }
     
+    public void ScreenInit()
+    {
+        
+    }
+    
     /**
      * Загрузка вариантов из файла
      * Формат файла:

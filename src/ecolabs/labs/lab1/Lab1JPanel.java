@@ -12,10 +12,8 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
@@ -36,24 +34,24 @@ public class Lab1JPanel extends ScreenJPanel {
         /**
          * Расход воды для орошения газа, м3/с;
          */
-        public double Vaq = 2;
+        public double Vaq;
         /**
          * объемный расход газа на выходе из скруббера при рабочих условиях,
          * м3/с;
          */
-        public double Va = 20;
+        public double Va;
         /**
          *  Коэффициент захвата частицы каплей воды;
          */
-        public double ησ = 1.2;
-        public double H0 = 0;
-        public double dH = 0;
-        public double Hn = 0;
-        public double Dh2o1 = 0;
-        public double Dh2o2 = 0;
-        public double Dh2o3 = 0;
-        public double Dsol1 = 0;
-        public double Dsol2 = 0;
+        public double ησ;
+        public double H0;
+        public double dH;
+        public double Hn;
+        public double Dh2o1;
+        public double Dh2o2;
+        public double Dh2o3;
+        public double Dsol1;
+        public double Dsol2;
     }
     private static String fileName = "inputLab1.txt";
     private Variant data = new Variant();
@@ -77,10 +75,15 @@ public class Lab1JPanel extends ScreenJPanel {
         initComponents();
         Title = "Лабораторная работа №1";
         Caption = "Расчет параметров полого форсуночного скруббера";
+    }
+
+    @Override
+    public void ScreenInit() {
+        super.ScreenInit();
         loadVariants();
         Execute();
     }
-
+    
     /**
      * Степень очистки газа
      * @param H Высота скруббера,
@@ -166,7 +169,40 @@ public class Lab1JPanel extends ScreenJPanel {
         } catch (Exception e) {
         }
     }
-
+    
+    /**
+     * Загрузка вариантов
+     */
+    public void loadVariants() {
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 12);
+        int varNum;
+        Variant v = new Variant();
+        for (String[] parameters : lines) {
+            try {
+                varNum = Integer.parseInt(parameters[0].trim());
+                v.Vaq = Double.parseDouble(parameters[1].trim());
+                v.Va = Double.parseDouble(parameters[2].trim());
+                v.ησ = Double.parseDouble(parameters[3].trim());
+                v.H0 = Double.parseDouble(parameters[4].trim());
+                v.dH = Double.parseDouble(parameters[5].trim());
+                v.Hn = Double.parseDouble(parameters[6].trim());
+                v.Dh2o1 = Double.parseDouble(parameters[7].trim());
+                v.Dh2o2 = Double.parseDouble(parameters[8].trim());
+                v.Dh2o3 = Double.parseDouble(parameters[9].trim());
+                v.Dsol1 = Double.parseDouble(parameters[10].trim());
+                v.Dsol2 = Double.parseDouble(parameters[11].trim());
+            } catch (Exception e) {
+                // Произошла ошибка??
+                // Да ну её к чёёёёёёёёрту!
+                // Пойдём я тебе лучше пааааасеку покажу
+                parentFrame.setStatus("Ошибка при обработке файла с вариантами в строке " + (lines.indexOf(parameters) + 1));
+                continue;
+            }
+            variants.put(varNum, v);
+            jComboBoxVar.addItem(varNum);
+        }
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -258,14 +294,18 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelPicture.add(jTextFieldησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 50, -1));
 
         jLabelVaq.setText(resourceMap.getString("jLabelVaq.text")); // NOI18N
+        jLabelVaq.setToolTipText(resourceMap.getString("jLabelVaq.toolTipText")); // NOI18N
         jLabelVaq.setName("jLabelVaq"); // NOI18N
         jPanelPicture.add(jLabelVaq, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jLabelVa.setText(resourceMap.getString("jLabelVa.text")); // NOI18N
+        jLabelVa.setToolTipText(resourceMap.getString("jLabelVa.toolTipText")); // NOI18N
         jLabelVa.setName("jLabelVa"); // NOI18N
         jPanelPicture.add(jLabelVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jLabelVa.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelVa.AccessibleContext.accessibleName")); // NOI18N
 
         jLabelησ.setText(resourceMap.getString("jLabelησ.text")); // NOI18N
+        jLabelησ.setToolTipText(resourceMap.getString("jLabelησ.toolTipText")); // NOI18N
         jLabelησ.setName("jLabelησ"); // NOI18N
         jPanelPicture.add(jLabelησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
@@ -297,26 +337,32 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelPicture.add(jTextFieldHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 60, -1));
 
         jLabelH0.setText(resourceMap.getString("jLabelH0.text")); // NOI18N
+        jLabelH0.setToolTipText(resourceMap.getString("jLabelH0.toolTipText")); // NOI18N
         jLabelH0.setName("jLabelH0"); // NOI18N
         jPanelPicture.add(jLabelH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         jLabeldH.setText(resourceMap.getString("jLabeldH.text")); // NOI18N
+        jLabeldH.setToolTipText(resourceMap.getString("jLabeldH.toolTipText")); // NOI18N
         jLabeldH.setName("jLabeldH"); // NOI18N
         jPanelPicture.add(jLabeldH, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         jLabelHn.setText(resourceMap.getString("jLabelHn.text")); // NOI18N
+        jLabelHn.setToolTipText(resourceMap.getString("jLabelHn.toolTipText")); // NOI18N
         jLabelHn.setName("jLabelHn"); // NOI18N
         jPanelPicture.add(jLabelHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         jLabelDh2o1.setText(resourceMap.getString("jLabelDh2o1.text")); // NOI18N
+        jLabelDh2o1.setToolTipText(resourceMap.getString("jLabelDh2o1.toolTipText")); // NOI18N
         jLabelDh2o1.setName("jLabelDh2o1"); // NOI18N
         jPanelPicture.add(jLabelDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         jLabeldDh2o2.setText(resourceMap.getString("jLabeldDh2o2.text")); // NOI18N
+        jLabeldDh2o2.setToolTipText(resourceMap.getString("jLabeldDh2o2.toolTipText")); // NOI18N
         jLabeldDh2o2.setName("jLabeldDh2o2"); // NOI18N
         jPanelPicture.add(jLabeldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         jLabelDh2o3.setText(resourceMap.getString("jLabelDh2o3.text")); // NOI18N
+        jLabelDh2o3.setToolTipText(resourceMap.getString("jLabelDh2o3.toolTipText")); // NOI18N
         jLabelDh2o3.setName("jLabelDh2o3"); // NOI18N
         jPanelPicture.add(jLabelDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
@@ -359,7 +405,7 @@ public class Lab1JPanel extends ScreenJPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jTextFieldDsol1, gridBagConstraints);
@@ -378,7 +424,7 @@ public class Lab1JPanel extends ScreenJPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jTextFieldDsol2, gridBagConstraints);
@@ -386,19 +432,23 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelDsol2.setFont(resourceMap.getFont("jLabelDsol2.font")); // NOI18N
         jLabelDsol2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDsol2.setText(resourceMap.getString("jLabelDsol2.text")); // NOI18N
+        jLabelDsol2.setToolTipText(resourceMap.getString("jLabelDsol2.toolTipText")); // NOI18N
         jLabelDsol2.setName("jLabelDsol2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jLabelDsol2, gridBagConstraints);
 
         jLabelDsol1.setFont(resourceMap.getFont("jLabelDsol1.font")); // NOI18N
         jLabelDsol1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDsol1.setText(resourceMap.getString("jLabelDsol1.text")); // NOI18N
+        jLabelDsol1.setToolTipText(resourceMap.getString("jLabelDsol1.toolTipText")); // NOI18N
         jLabelDsol1.setName("jLabelDsol1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 100;
         jPanelCharts.add(jLabelDsol1, gridBagConstraints);
 
         chartPanel1.setName("chartPanel1"); // NOI18N
@@ -411,11 +461,11 @@ public class Lab1JPanel extends ScreenJPanel {
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
@@ -434,11 +484,11 @@ public class Lab1JPanel extends ScreenJPanel {
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
@@ -453,13 +503,13 @@ public class Lab1JPanel extends ScreenJPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelPicture, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
@@ -488,34 +538,7 @@ private void jTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     Execute();
 }//GEN-LAST:event_jTextFieldKeyTyped
 
-    public void loadVariants() {
-        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 12);
-        int varNum;
-        Variant v = new Variant();
-        for (String[] parameters : lines) {
-            try {
-                v.Vaq = Double.parseDouble(parameters[1].trim());
-                v.Va = Double.parseDouble(parameters[2].trim());
-                v.ησ = Double.parseDouble(parameters[3].trim());
-                v.H0 = Double.parseDouble(parameters[4].trim());
-                v.dH = Double.parseDouble(parameters[5].trim());
-                v.Hn = Double.parseDouble(parameters[6].trim());
-                v.Dh2o1 = Double.parseDouble(parameters[7].trim());
-                v.Dh2o2 = Double.parseDouble(parameters[8].trim());
-                v.Dh2o3 = Double.parseDouble(parameters[9].trim());
-                v.Dsol1 = Double.parseDouble(parameters[10].trim());
-                v.Dsol2 = Double.parseDouble(parameters[11].trim());
-                varNum = Integer.parseInt(parameters[0].trim());
-            } catch (Exception e) {
-                // Произошла ошибка??
-                // Да ну её к чёёёёёёёёрту!
-                // Пойдём я тебе лучше пааааасеку покажу
-                continue;
-            }
-            variants.put(varNum, v);
-            jComboBoxVar.addItem(varNum);
-        }
-    }
+
 
     /**
      * Выбор элемента списка вариантов
@@ -536,6 +559,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
     jTextFieldVaq.setText(Double.toString(var.Vaq));
     jTextFielddH.setText(Double.toString(var.dH));
     jTextFieldησ.setText(Double.toString(var.ησ));
+    Execute();
 }//GEN-LAST:event_jComboBoxVarItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ecolabs.ChartPanel chartPanel1;
