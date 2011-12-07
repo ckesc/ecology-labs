@@ -30,7 +30,7 @@ public class HomeJPanel extends ScreenJPanel {
                         parentFrame.LabScreens[i].Title,
                         parentFrame.LabScreens[i].Caption
                         ));
-                buttons[i].setIcon(parentFrame.LabScreens[i].ScreenIcon);
+                //buttons[i].setIcon(parentFrame.LabScreens[i].ScreenIcon);
             }
         }
     }
@@ -120,6 +120,7 @@ public class HomeJPanel extends ScreenJPanel {
         });
         jPanelCenter.add(jButton4);
 
+        jButton5.setIcon(resourceMap.getIcon("jButton5.icon")); // NOI18N
         jButton5.setMnemonic('5');
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
         jButton5.setActionCommand(resourceMap.getString("jButton5.actionCommand")); // NOI18N

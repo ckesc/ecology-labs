@@ -12,12 +12,23 @@ package ecolabs.labs.lab3;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CombinedDomainXYPlot;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
  * @author Ск
  */
 public class Lab3JPanel extends ScreenJPanel {
+
     /**
      * Диаметр циклона. 1.N
      */
@@ -42,22 +53,22 @@ public class Lab3JPanel extends ScreenJPanel {
      * плотность пылевых частиц, кг/м3.
      */
     double ρ = 2150;
-    
+
     /**
      * Расчет минимального размера частиц пыли, улавливаемых циклоном
      */
-    private double d_min(double D, double ω){
-        return (d*k*1000*Math.sqrt(1000*μ/(ρ*ω)));
+    private double d_min(double D, double ω) {
+        return (d * k * 1000 * Math.sqrt(1000 * μ / (ρ * ω)));
     }
 
     public Lab3JPanel(EcolabsView parent) {
         super(parent);
         initComponents();
         Title = "Лабораторная работа №3";
-        Caption = "Определение минимального размера частиц пыли,улавливаемых циклоном";        
-        
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
-        String pattern = resourceMap.getString("jLabelVarInfo.text");
+        Caption = "Определение минимального размера частиц пыли,улавливаемых циклоном";
+
+//        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
+//        String pattern = resourceMap.getString("jLabelVarInfo.text");
         jTextFieldD.setText(String.valueOf(D));
         jTextFieldd.setText(String.valueOf(d));
         jTextFieldk.setText(String.valueOf(k));
@@ -65,6 +76,78 @@ public class Lab3JPanel extends ScreenJPanel {
         jTextFieldw.setText(String.valueOf(ω));
         jTextFieldu.setText(String.valueOf(μ));
         
+        Execute();
+
+    }
+
+    /**
+     * Вычисляет точки кривой при постоянной D
+     * @param w1 начальное значение w
+     * @param w2 конечное хзначение w
+     */
+    public HashMap<Double, Double> Calc_constD(double D, double w1, double w2, double w_delta) {
+        HashMap<Double, Double> points = new HashMap<>();
+        d = Double.valueOf(jTextFieldd.getText());
+        k = Double.valueOf(jTextFieldk.getText());
+        ρ = Double.valueOf(jTextFieldp.getText());
+        μ = Double.valueOf(jTextFieldu.getText());
+
+        for (double w = w1; w <= w2; w += w_delta) {
+            points.put(w, d_min(D, w));
+        }
+
+        return points;
+    }
+
+    /**
+     * Вычистяет все 3 кривых на одном графике
+     * @param Dsol
+     * @return 
+     */
+    public CombinedDomainXYPlot createChart_Dconst() {
+        CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
+                new NumberAxis("η(H)"));
+        ArrayList<Double> D_list = new ArrayList<>();
+        D_list.add(0.2d);
+        D_list.add(0.8d);
+        D_list.add(1.4d);
+        D_list.add(2.0d);
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        for (Double curr_D : D_list) {
+            XYSeries series = new XYSeries(curr_D);
+
+            HashMap<Double, Double> points = Calc_constD(curr_D, 1.2, 10, 0.1);
+
+            for (Double w : points.keySet()) {
+                series.add(w, points.get(w));
+            }
+
+            dataset.addSeries(series);
+        }
+        XYItemRenderer renderer = new StandardXYItemRenderer();
+        XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(null), renderer);
+        plot.add(subplot);
+        return plot;
+    }
+
+    /**
+     * Строить графики
+     */
+    private void Execute() {
+        try {
+            JFreeChart chart1;
+            JFreeChart chart2;
+//            data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
+//            data.Va = Double.parseDouble(jTextFieldVa.getText());
+//            data.ησ = Double.parseDouble(jTextFieldησ.getText());
+
+            chart1 = new JFreeChart(createChart_Dconst());
+            //chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
+
+            chartPanel1.setChart(chart1);
+            //chartPanel2.setChart(chart2);
+        } catch (Exception e) {
+        }
     }
 
     /** This method is called from within the constructor to
@@ -251,7 +334,6 @@ public class Lab3JPanel extends ScreenJPanel {
     private void jTextFielduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielduActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFielduActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ecolabs.ChartPanel chartPanel1;
     private ecolabs.ChartPanel chartPanel2;

@@ -119,6 +119,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jButton5.icon"/>
             <Property name="mnemonic" type="int" value="53"/>
             <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
             <Property name="actionCommand" type="java.lang.String" resourceKey="jButton5.actionCommand"/>
