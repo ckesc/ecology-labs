@@ -245,6 +245,7 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel2 = new ecolabs.ChartPanel();
 
         jComboBoxVar.setName("jComboBoxVar"); // NOI18N
+        jComboBoxVar.setOpaque(false);
         jComboBoxVar.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxVarItemStateChanged(evt);
@@ -259,6 +260,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabel1.setName("jLabelFormula"); // NOI18N
 
         jPanelPicture.setName("jPanelScrubber"); // NOI18N
+        jPanelPicture.setOpaque(false);
         jPanelPicture.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
@@ -394,6 +396,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelPicture.add(jTextFieldDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 56, -1));
 
         jPanelCharts.setName("jPanelCharts"); // NOI18N
+        jPanelCharts.setOpaque(false);
         jPanelCharts.setLayout(new java.awt.GridBagLayout());
 
         jTextFieldDsol1.setHorizontalAlignment(javax.swing.JTextField.CENTER);

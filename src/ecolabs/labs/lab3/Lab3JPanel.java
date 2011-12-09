@@ -218,6 +218,7 @@ public class Lab3JPanel extends ScreenJPanel {
 
         jComboBoxVar18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         jComboBoxVar18.setName("jComboBoxVar18"); // NOI18N
+        jComboBoxVar18.setOpaque(false);
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
         jLabelVar.setText(resourceMap.getString("jLabelVar.text")); // NOI18N
@@ -225,6 +226,7 @@ public class Lab3JPanel extends ScreenJPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel1.border.title"))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setOpaque(false);
 
         jLabelVarInfo.setText(resourceMap.getString("jLabelVarInfo.text")); // NOI18N
         jLabelVarInfo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -321,6 +323,7 @@ public class Lab3JPanel extends ScreenJPanel {
         );
 
         jPanel2.setName("jPanel2"); // NOI18N
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         chartPanel2.setName("chartPanel2"); // NOI18N

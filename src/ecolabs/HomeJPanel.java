@@ -62,6 +62,7 @@ public class HomeJPanel extends ScreenJPanel {
         jLabelHead.setName("jLabelHead"); // NOI18N
 
         jPanelCenter.setName("jPanelCenter"); // NOI18N
+        jPanelCenter.setOpaque(false);
         jPanelCenter.setLayout(new java.awt.GridLayout(3, 2, 10, 10));
 
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
@@ -71,6 +72,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
@@ -85,6 +87,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton2.setName("jButton2"); // NOI18N
+        jButton2.setOpaque(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
@@ -99,6 +102,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton3.setName("jButton3"); // NOI18N
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
@@ -113,6 +117,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton4.setName("jButton4"); // NOI18N
+        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
@@ -127,6 +132,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton5.setName("jButton5"); // NOI18N
+        jButton5.setOpaque(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
@@ -141,6 +147,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton6.setName("jButton6"); // NOI18N
+        jButton6.setOpaque(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LabSelect(evt);
