@@ -6,9 +6,9 @@ package ecolabs.labs;
 
 import ecolabs.EcolabsView;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
@@ -17,8 +17,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import org.jdesktop.application.ResourceMap;
 
 /**
  * Экран - т.е. то что может быть отображено в центральной части
@@ -60,11 +58,9 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
 
     }
 
-    public void ScreenInit()
-    {
-        
+    public void ScreenInit() {
     }
-    
+
     /**
      * Загрузка вариантов из файла
      * Формат файла:
@@ -102,16 +98,18 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
     }
 
     @Override
-    public void paint(Graphics g) {        
+    public void paint(Graphics g) {
 //        super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g2.setPaint(new RadialGradientPaint(new Point2D.Double(getWidth() / 2.0,
-                getHeight() / 2.0), getHeight(),
+        g2.setPaint(new RadialGradientPaint(
+                new Point(getWidth() / 2, getHeight() / 2),
+                Math.min(getHeight(), getWidth()),
                 new float[]{0.0f, 1.0f},
-                new Color[]{new Color(6, 76, 160, 127),
-                    Color.lightGray}));
+                new Color[]{
+                    new Color(6, 76, 160, 127),
+                    this.getBackground()}));
         g2.fillRect(0, 0, getWidth(), getHeight());
 
         super.paint(g);

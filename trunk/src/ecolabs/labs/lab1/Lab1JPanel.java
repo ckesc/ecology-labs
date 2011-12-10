@@ -261,12 +261,10 @@ public class Lab1JPanel extends ScreenJPanel {
 
         jPanelPicture.setName("jPanelScrubber"); // NOI18N
         jPanelPicture.setOpaque(false);
-        jPanelPicture.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
-        jPanelPicture.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 270));
 
         jTextFieldVaq.setText(resourceMap.getString("jTextFieldVaq.text")); // NOI18N
         jTextFieldVaq.setName("jTextFieldVaq"); // NOI18N
@@ -275,7 +273,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldVaq, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 50, -1));
 
         jTextFieldVa.setText(resourceMap.getString("jTextFieldVa.text")); // NOI18N
         jTextFieldVa.setName("jTextFieldVa"); // NOI18N
@@ -284,7 +281,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 50, -1));
 
         jTextFieldησ.setText(resourceMap.getString("jTextFieldησ.text")); // NOI18N
         jTextFieldησ.setName("jTextFieldησ"); // NOI18N
@@ -293,23 +289,18 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 50, -1));
 
         jLabelVaq.setText(resourceMap.getString("jLabelVaq.text")); // NOI18N
         jLabelVaq.setToolTipText(resourceMap.getString("jLabelVaq.toolTipText")); // NOI18N
         jLabelVaq.setName("jLabelVaq"); // NOI18N
-        jPanelPicture.add(jLabelVaq, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jLabelVa.setText(resourceMap.getString("jLabelVa.text")); // NOI18N
         jLabelVa.setToolTipText(resourceMap.getString("jLabelVa.toolTipText")); // NOI18N
         jLabelVa.setName("jLabelVa"); // NOI18N
-        jPanelPicture.add(jLabelVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-        jLabelVa.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelVa.AccessibleContext.accessibleName")); // NOI18N
 
         jLabelησ.setText(resourceMap.getString("jLabelησ.text")); // NOI18N
         jLabelησ.setToolTipText(resourceMap.getString("jLabelησ.toolTipText")); // NOI18N
         jLabelησ.setName("jLabelησ"); // NOI18N
-        jPanelPicture.add(jLabelησ, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jTextFieldH0.setText(resourceMap.getString("jTextFieldH0.text")); // NOI18N
         jTextFieldH0.setName("jTextFieldH0"); // NOI18N
@@ -318,7 +309,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 60, -1));
 
         jTextFielddH.setText(resourceMap.getString("jTextFielddH.text")); // NOI18N
         jTextFielddH.setName("jTextFielddH"); // NOI18N
@@ -327,7 +317,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFielddH, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 60, -1));
 
         jTextFieldHn.setText(resourceMap.getString("jTextFieldHn.text")); // NOI18N
         jTextFieldHn.setName("jTextFieldHn"); // NOI18N
@@ -336,37 +325,30 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 60, -1));
 
         jLabelH0.setText(resourceMap.getString("jLabelH0.text")); // NOI18N
         jLabelH0.setToolTipText(resourceMap.getString("jLabelH0.toolTipText")); // NOI18N
         jLabelH0.setName("jLabelH0"); // NOI18N
-        jPanelPicture.add(jLabelH0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         jLabeldH.setText(resourceMap.getString("jLabeldH.text")); // NOI18N
         jLabeldH.setToolTipText(resourceMap.getString("jLabeldH.toolTipText")); // NOI18N
         jLabeldH.setName("jLabeldH"); // NOI18N
-        jPanelPicture.add(jLabeldH, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         jLabelHn.setText(resourceMap.getString("jLabelHn.text")); // NOI18N
         jLabelHn.setToolTipText(resourceMap.getString("jLabelHn.toolTipText")); // NOI18N
         jLabelHn.setName("jLabelHn"); // NOI18N
-        jPanelPicture.add(jLabelHn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         jLabelDh2o1.setText(resourceMap.getString("jLabelDh2o1.text")); // NOI18N
         jLabelDh2o1.setToolTipText(resourceMap.getString("jLabelDh2o1.toolTipText")); // NOI18N
         jLabelDh2o1.setName("jLabelDh2o1"); // NOI18N
-        jPanelPicture.add(jLabelDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         jLabeldDh2o2.setText(resourceMap.getString("jLabeldDh2o2.text")); // NOI18N
         jLabeldDh2o2.setToolTipText(resourceMap.getString("jLabeldDh2o2.toolTipText")); // NOI18N
         jLabeldDh2o2.setName("jLabeldDh2o2"); // NOI18N
-        jPanelPicture.add(jLabeldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         jLabelDh2o3.setText(resourceMap.getString("jLabelDh2o3.text")); // NOI18N
         jLabelDh2o3.setToolTipText(resourceMap.getString("jLabelDh2o3.toolTipText")); // NOI18N
         jLabelDh2o3.setName("jLabelDh2o3"); // NOI18N
-        jPanelPicture.add(jLabelDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
         jTextFieldDh2o3.setText(resourceMap.getString("jTextFieldDh2o3.text")); // NOI18N
         jTextFieldDh2o3.setName("jTextFieldDh2o3"); // NOI18N
@@ -375,7 +357,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldDh2o3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 56, -1));
 
         jTextFieldDh2o2.setText(resourceMap.getString("jTextFieldDh2o2.text")); // NOI18N
         jTextFieldDh2o2.setName("jTextFieldDh2o2"); // NOI18N
@@ -384,7 +365,6 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldDh2o2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 56, -1));
 
         jTextFieldDh2o1.setText(resourceMap.getString("jTextFieldDh2o1.text")); // NOI18N
         jTextFieldDh2o1.setName("jTextFieldDh2o1"); // NOI18N
@@ -393,7 +373,87 @@ public class Lab1JPanel extends ScreenJPanel {
                 jTextFieldKeyTyped(evt);
             }
         });
-        jPanelPicture.add(jTextFieldDh2o1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 56, -1));
+
+        javax.swing.GroupLayout jPanelPictureLayout = new javax.swing.GroupLayout(jPanelPicture);
+        jPanelPicture.setLayout(jPanelPictureLayout);
+        jPanelPictureLayout.setHorizontalGroup(
+            jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPictureLayout.createSequentialGroup()
+                .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPictureLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPictureLayout.createSequentialGroup()
+                                .addComponent(jLabelVaq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(jTextFieldVaq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelH0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jTextFieldH0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jTextFieldDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelPictureLayout.createSequentialGroup()
+                                .addComponent(jLabelVa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19)
+                                .addComponent(jTextFieldVa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabeldH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jTextFielddH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabeldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jTextFieldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelPictureLayout.createSequentialGroup()
+                                .addComponent(jLabelησ)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldησ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelHn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jTextFieldHn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jTextFieldDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelPictureLayout.setVerticalGroup(
+            jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPictureLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelVaq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldVaq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelH0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldH0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelVa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldVa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabeldH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFielddH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabeldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelησ)
+                    .addComponent(jTextFieldησ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelHn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldHn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jLabelVa.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelVa.AccessibleContext.accessibleName")); // NOI18N
 
         jPanelCharts.setName("jPanelCharts"); // NOI18N
         jPanelCharts.setOpaque(false);
@@ -460,11 +520,11 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel1.setLayout(chartPanel1Layout);
         chartPanel1Layout.setHorizontalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 271, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 507, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -483,11 +543,11 @@ public class Lab1JPanel extends ScreenJPanel {
         chartPanel2.setLayout(chartPanel2Layout);
         chartPanel2Layout.setHorizontalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 271, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 507, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -507,21 +567,21 @@ public class Lab1JPanel extends ScreenJPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelPicture, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jPanelPicture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelCharts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addComponent(jPanelCharts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelVar)
