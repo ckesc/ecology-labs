@@ -4,11 +4,14 @@
 
 package ecolabs;
 
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.jdesktop.application.Application;
+import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
 /**
@@ -32,7 +35,23 @@ public class EcolabsApp extends SingleFrameApplication {
 //        } catch (UnsupportedLookAndFeelException ex) {
 //            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        show(new EcolabsView(this));
+        
+        long waitTime = 3000;
+        show(new SplashJFrame());
+        Date date1 = new Date();
+        FrameView e = new EcolabsView(this);
+        // ЭТО работает, но Splash не показывает Label сначала
+//        Date date2 = new Date();
+//        long d = date2.getTime() - date1.getTime();
+//        long time = (d >= waitTime)
+//                 ? 0
+//                 : waitTime - d;
+//        try {
+//            Thread.sleep(time);
+//        } catch (InterruptedException ex) {
+//            ex.printStackTrace();
+//        }
+        show(e);
     }
 
     /**

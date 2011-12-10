@@ -13,6 +13,7 @@ package ecolabs.labs.lab1;
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
 import org.jfree.chart.JFreeChart;
@@ -49,12 +50,17 @@ public class Lab1JPanel extends ScreenJPanel {
         /**
          *  Коэффициент захвата частицы каплей воды;
          */
-        public double ησ1;
-        public double ησ2;
+        public double σ1;
+        public double σ2;
     }
     private final String H0Default = "0.01";
     private final String dHDefault = "0.01";
     private final String HnDefault = "2.0";
+    
+    /**
+     * Для завершения цикла если идёт слишком долго
+     */
+    Date date1;
     
     private static String fileName = "inputLab1.txt";
     private Variant data = new Variant();
@@ -104,13 +110,18 @@ public class Lab1JPanel extends ScreenJPanel {
      * @param Dsol
      * @return 
      */
-    public HashMap<Double, Double> Calculate(double Dh2o, double Dsol) {
+    public HashMap<Double, Double> Calculate(double Dh2o, double Dsol) throws Exception {
         HashMap<Double, Double> points = new HashMap<>();
         double H0 = Double.parseDouble(jTextFieldH0.getText());
         double dH = Double.parseDouble(jTextFielddH.getText());
         double Hn = Double.parseDouble(jTextFieldHn.getText());
+        Date date2;
         for (double H = H0; H <= Hn; H += dH) {
             points.put(H, η(H, Dh2o, Dsol));
+            date2 = new Date(); 
+            if (date2.getTime() - date1.getTime() > 4000){
+                throw new Exception("TimeException");
+            }
         }
 
         return points;
@@ -130,7 +141,7 @@ public class Lab1JPanel extends ScreenJPanel {
      * @param Dsol
      * @return 
      */
-    public CombinedDomainXYPlot createChart(double Dsol) {
+    public CombinedDomainXYPlot createChart(double Dsol) throws Exception {
         CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
                 new NumberAxis("η(H)"));
         ArrayList<Double> Dh2os = new ArrayList<>();
@@ -159,16 +170,22 @@ public class Lab1JPanel extends ScreenJPanel {
         try {
             data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
             data.Va = Double.parseDouble(jTextFieldVa.getText());
-            //data.ησ = Double.parseDouble(jTextFieldησ.getText());
-
+            
+            date1 = new Date();
             chart1 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())));
             chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
 
             chartPanel1.setChart(chart1);
             chartPanel2.setChart(chart2);
+            
             parentFrame.setStatus("Расчёты произведены");
         } catch (Exception e) {
-            parentFrame.setStatus("Ошибка при расчётах");
+            if (e.getMessage().equals("TimeException"))
+            {
+                parentFrame.setStatus("Превышено время расчётов");
+            } else {
+                parentFrame.setStatus("Ошибка при расчётах");
+            }
         }
     }
     
@@ -189,8 +206,8 @@ public class Lab1JPanel extends ScreenJPanel {
                 v.Dh2o1 = Double.parseDouble(parameters[3].trim());
                 v.Dh2o2 = Double.parseDouble(parameters[4].trim());
                 v.Dh2o3 = Double.parseDouble(parameters[5].trim());
-                v.ησ1 = Double.parseDouble(parameters[6].trim());
-                v.ησ2 = Double.parseDouble(parameters[7].trim());
+                v.σ1 = Double.parseDouble(parameters[6].trim());
+                v.σ2 = Double.parseDouble(parameters[7].trim());
             } catch (Exception e) {
                 // Произошла ошибка??
                 // Да ну её к чёёёёёёёёрту!
@@ -265,17 +282,19 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabel2.setName("jLabel2"); // NOI18N
 
         jTextFieldVaq.setText(resourceMap.getString("jTextFieldVaq.text")); // NOI18N
+        jTextFieldVaq.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldVaq.setName("jTextFieldVaq"); // NOI18N
         jTextFieldVaq.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
 
         jTextFieldVa.setText(resourceMap.getString("jTextFieldVa.text")); // NOI18N
+        jTextFieldVa.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldVa.setName("jTextFieldVa"); // NOI18N
         jTextFieldVa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
@@ -289,25 +308,28 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelVa.setName("jLabelVa"); // NOI18N
 
         jTextFieldH0.setText(resourceMap.getString("jTextFieldH0.text")); // NOI18N
+        jTextFieldH0.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldH0.setName("jTextFieldH0"); // NOI18N
         jTextFieldH0.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
 
         jTextFielddH.setText(resourceMap.getString("jTextFielddH.text")); // NOI18N
+        jTextFielddH.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFielddH.setName("jTextFielddH"); // NOI18N
         jTextFielddH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
 
         jTextFieldHn.setText(resourceMap.getString("jTextFieldHn.text")); // NOI18N
+        jTextFieldHn.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldHn.setName("jTextFieldHn"); // NOI18N
         jTextFieldHn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
@@ -337,25 +359,28 @@ public class Lab1JPanel extends ScreenJPanel {
         jLabelDh2o3.setName("jLabelDh2o3"); // NOI18N
 
         jTextFieldDh2o3.setText(resourceMap.getString("jTextFieldDh2o3.text")); // NOI18N
+        jTextFieldDh2o3.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldDh2o3.setName("jTextFieldDh2o3"); // NOI18N
         jTextFieldDh2o3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
 
         jTextFieldDh2o2.setText(resourceMap.getString("jTextFieldDh2o2.text")); // NOI18N
+        jTextFieldDh2o2.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldDh2o2.setName("jTextFieldDh2o2"); // NOI18N
         jTextFieldDh2o2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
 
         jTextFieldDh2o1.setText(resourceMap.getString("jTextFieldDh2o1.text")); // NOI18N
+        jTextFieldDh2o1.setMaximumSize(new java.awt.Dimension(12, 20));
         jTextFieldDh2o1.setName("jTextFieldDh2o1"); // NOI18N
         jTextFieldDh2o1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyTyped(evt);
             }
         });
@@ -378,32 +403,27 @@ public class Lab1JPanel extends ScreenJPanel {
                             .addComponent(jLabelHn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFielddH)
-                            .addComponent(jTextFieldHn)
+                            .addComponent(jTextFielddH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldHn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldH0, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelPictureLayout.createSequentialGroup()
                         .addComponent(jLabelVaq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldVaq)))
+                        .addComponent(jTextFieldVaq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelPictureLayout.createSequentialGroup()
-                        .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelVa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanelPictureLayout.createSequentialGroup()
-                        .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabeldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(jLabelDh2o1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelVa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDh2o3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabeldDh2o2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPictureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldDh2o3)
+                    .addComponent(jTextFieldDh2o3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelPictureLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jTextFieldDh2o2))
+                        .addComponent(jTextFieldDh2o2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jTextFieldDh2o1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(jTextFieldVa))
+                    .addComponent(jTextFieldVa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
         jPanelPictureLayout.setVerticalGroup(
@@ -603,8 +623,8 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
     jTextFieldDh2o1.setText(Double.toString(var.Dh2o1));
     jTextFieldDh2o2.setText(Double.toString(var.Dh2o2));
     jTextFieldDh2o3.setText(Double.toString(var.Dh2o3));
-    jTextFieldDsol1.setText(Double.toString(var.ησ1));
-    jTextFieldDsol2.setText(Double.toString(var.ησ2));
+    jTextFieldDsol1.setText(Double.toString(var.σ1));
+    jTextFieldDsol2.setText(Double.toString(var.σ2));
     jTextFieldH0.setText(H0Default);
     jTextFieldHn.setText(HnDefault);
     jTextFieldVa.setText(Double.toString(var.Va));
