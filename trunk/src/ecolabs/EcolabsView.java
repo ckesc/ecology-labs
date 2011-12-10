@@ -20,7 +20,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  * The application's main frame.
@@ -343,6 +342,8 @@ public class EcolabsView extends FrameView {
         if (newScreen == null) {
             return;
         }
+        setStatus(null);
+        
         newScreen.ScreenInit();
         jPanelTop.setVisible(true);
         workingPanel.removeAll();
@@ -352,7 +353,7 @@ public class EcolabsView extends FrameView {
         jLabelCaption.setText(newScreen.Caption);
         workingPanel.validate();
         workingPanel.repaint();
-        setStatus(null);
+        
     }
 
     @Action

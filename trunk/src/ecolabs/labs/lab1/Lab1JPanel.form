@@ -92,7 +92,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabelVaq" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="14" pref="14" max="14" attributes="0"/>
@@ -103,10 +103,10 @@
                                   <Component id="jTextFieldH0" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                                   <Component id="jLabelDh2o1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="7" pref="7" max="7" attributes="0"/>
-                                  <Component id="jTextFieldDh2o1" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDh2o1" min="-2" pref="59" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="1">
                                   <Component id="jLabelVa" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="19" pref="19" max="19" attributes="0"/>
                                   <Component id="jTextFieldVa" min="-2" pref="50" max="-2" attributes="0"/>
@@ -116,10 +116,10 @@
                                   <Component id="jTextFielddH" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                                   <Component id="jLabeldDh2o2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="7" pref="7" max="7" attributes="0"/>
-                                  <Component id="jTextFieldDh2o2" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDh2o2" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="1">
                                   <Component id="jLabelησ" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="18" pref="18" max="18" attributes="0"/>
                                   <Component id="jTextFieldησ" min="-2" pref="50" max="-2" attributes="0"/>
@@ -129,8 +129,8 @@
                                   <Component id="jTextFieldHn" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                                   <Component id="jLabelDh2o3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="7" pref="7" max="7" attributes="0"/>
-                                  <Component id="jTextFieldDh2o3" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDh2o3" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -153,7 +153,7 @@
                       <Component id="jLabelDh2o1" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldDh2o1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelVa" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldVa" min="-2" max="-2" attributes="0"/>
@@ -162,7 +162,7 @@
                       <Component id="jLabeldDh2o2" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldDh2o2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelησ" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldησ" min="-2" max="-2" attributes="0"/>
@@ -372,20 +372,6 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelDsol2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabelDsol2.font"/>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelDsol2.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDsol2.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelDsol2" noResource="true"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="1" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelDsol1">
           <Properties>
             <Property name="font" type="java.awt.Font" resourceKey="jLabelDsol1.font"/>
@@ -396,7 +382,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -406,7 +392,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="100" ipadY="100" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.1"/>
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="50" ipadY="50" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.1"/>
             </Constraint>
           </Constraints>
 
@@ -418,7 +404,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="513" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -429,7 +415,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="100" ipadY="100" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.1"/>
+              <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="50" ipadY="50" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.1"/>
             </Constraint>
           </Constraints>
 
@@ -441,7 +427,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="513" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
