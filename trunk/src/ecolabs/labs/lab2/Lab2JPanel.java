@@ -37,26 +37,102 @@ public class Lab2JPanel extends ScreenJPanel  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        chartPanel1 = new ecolabs.ChartPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldC = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldV = new javax.swing.JTextField();
+        jTextFieldConz = new javax.swing.JTextField();
+        jTextFieldd = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setName("Form"); // NOI18N
+
+        jPanel1.setName("jPanel1"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab2JPanel.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        chartPanel1.setName("chartPanel1"); // NOI18N
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
 
-        javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
-        chartPanel1.setLayout(chartPanel1Layout);
-        chartPanel1Layout.setHorizontalGroup(
-            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jTextFieldC.setText(resourceMap.getString("jTextFieldC.text")); // NOI18N
+        jTextFieldC.setName("jTextFieldC"); // NOI18N
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jTextFieldV.setText(resourceMap.getString("jTextFieldV.text")); // NOI18N
+        jTextFieldV.setName("jTextFieldV"); // NOI18N
+
+        jTextFieldConz.setText(resourceMap.getString("jTextFieldConz.text")); // NOI18N
+        jTextFieldConz.setName("jTextFieldConz"); // NOI18N
+
+        jTextFieldd.setText(resourceMap.getString("jTextFieldd.text")); // NOI18N
+        jTextFieldd.setName("jTextFieldd"); // NOI18N
+
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldConz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jButton1)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
-        chartPanel1Layout.setVerticalGroup(
-            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldConz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel4)))
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -64,24 +140,57 @@ public class Lab2JPanel extends ScreenJPanel  {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(454, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(chartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(37, 37, 37)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+// TODO add your handling code here:
+    double v20 = 3;
+    double s = Double.parseDouble(jTextFieldV.getText())/(3600*3); //Площадь сечения корпуса аппарата 
+    double D0 = Math.sqrt(4*s/3.14); //диаметр корпуса аппарата
+    double v2 = v20*D0*D0/2.25;//действительная скорость газа в сечении аппарата 
+    // Живое сечение дырчатой решетки S p вычисляем при высоте слоя пены 100 мм, диаметре отверстий 5 мм и плотности жидкости 1000 кг/м3
+    double Sp = 1.37 * Math.pow(v2, 0.458) * Math.pow(1 , 0.152) /(Math.pow(0.1,0.61) * Math.pow(0.005,0.085)* Math.pow(1000,0.61) ); 
+    //действительная высотa слоя пены 
+    double Hp = 4.8 * Math.pow(v2, 0.79) * Math.pow(0.05,0.2)/(Math.pow(0.005,0.14) * Math.pow(Sp,1.9) );
+    double Pp = 1.28 *v2 *v2 * 1.02 /( 2 * Sp);
+    double Pn = 0.447* Hp * 1000 * 9.81/ Math.sqrt(v2);
+    double P6 = 4 * 0.063/0.005;
+    double Pa = 27 * v2 *v2 *1.02 / 2;
+    //полное гидравлическое сопротивление аппарата
+    double P = Pp+Pn+P6+Pa;
+    //степень фракционной очистки
+    double dt = 5 * Math.pow(10, -5);
+    double n = 100*(1 - 87.1*(1.37 - Math.pow(dt,0.1)))/( Hp * v2); //менять все три и строить график 3 шт
+    double Cexit = 2 * (100 - n)/100;//этот тоже график 3 шт
+
+ 
+    
+            
+    
+    
+}//GEN-LAST:event_jButton1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ecolabs.ChartPanel chartPanel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldC;
+    private javax.swing.JTextField jTextFieldConz;
+    private javax.swing.JTextField jTextFieldV;
+    private javax.swing.JTextField jTextFieldd;
     // End of variables declaration//GEN-END:variables
 }
