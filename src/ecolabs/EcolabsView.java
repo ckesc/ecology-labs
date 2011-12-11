@@ -7,7 +7,6 @@ import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
 import ecolabs.labs.lab2.Lab2JPanel;
 import ecolabs.labs.lab3.Lab3JPanel;
-import ecolabs.labs.lab4.Lab4JPanel;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;

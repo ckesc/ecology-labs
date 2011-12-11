@@ -482,10 +482,10 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
             double s = Double.parseDouble(jTextFieldV.getText()) / (3600 * 3); //Площадь сечения корпуса аппарата 
             double D0 = Math.sqrt(4 * s / 3.14); //диаметр корпуса аппарата
             double v2 = v20 * D0 * D0 / 2.25;//действительная скорость газа в сечении аппарата 
-            jLabelv2.setText(Double.toString(v2));
+            jLabelv2.setText(String.format("%6.2f", v2));
             // Живое сечение дырчатой решетки S p вычисляем при высоте слоя пены 100 мм, диаметре отверстий 5 мм и плотности жидкости 1000 кг/м3
             double Sp = 1.37 * Math.pow(v2, 0.458) * Math.pow(1, 0.152) / (Math.pow(0.1, 0.61) * Math.pow(0.005, 0.085) * Math.pow(1000, 0.61));
-            jLabelSp.setText(Double.toString(Sp));
+            jLabelSp.setText(String.format("%6.2f", Sp));
             //действительная высотa слоя пены 
             //double Hp = 4.8 * Math.pow(v2, 0.79) * Math.pow(0.05,0.2)/(Math.pow(0.005,0.14) * Math.pow(Sp,1.9) );
             double Hp = Double.parseDouble(jTextFieldHp.getText());
@@ -495,7 +495,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
             double Pa = 27 * v2 * v2 * 1.02 / 2;
             //полное гидравлическое сопротивление аппарата
             double P = Pp + Pn + P6 + Pa;
-            jLabelP.setText(Double.toString(P));
+            jLabelP.setText(String.format("%6.2f", P));
 
             chart1 = new JFreeChart(createChart_d(Double.parseDouble(jTextFieldV.getText()), Hp));
             chart2 = new JFreeChart(createChart_v(Double.parseDouble(jTextFieldV.getText()), Hp, 5));

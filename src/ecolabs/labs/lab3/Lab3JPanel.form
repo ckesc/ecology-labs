@@ -28,7 +28,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelVar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBoxVar18" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxVar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel_Img" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
               </Group>
@@ -50,7 +50,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelVar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxVar18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxVar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelFormula" min="-2" max="-2" attributes="0"/>
@@ -69,16 +69,19 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="jComboBoxVar18">
+    <Component class="javax.swing.JComboBox" name="jComboBoxVar">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
             <StringItem index="0" value="1"/>
           </StringArray>
         </Property>
-        <Property name="name" type="java.lang.String" value="jComboBoxVar18" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="jComboBoxVar" noResource="true"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxVarItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVar">
       <Properties>
