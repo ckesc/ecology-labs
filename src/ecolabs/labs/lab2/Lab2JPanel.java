@@ -12,6 +12,19 @@ package ecolabs.labs.lab2;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import ecolabs.EcolabsView;
+import ecolabs.labs.ScreenJPanel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CombinedDomainXYPlot;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
@@ -25,7 +38,7 @@ public class Lab2JPanel extends ScreenJPanel  {
         super(parent);
         initComponents();
         Title = "Лабораторная работа №2";
-        Caption = "Расчет времени фильтрации тканевого фильтра";        
+        Caption = "Расчет пенного пылеуловителя";        
     }
 
     /** This method is called from within the constructor to
@@ -39,49 +52,59 @@ public class Lab2JPanel extends ScreenJPanel  {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldC = new javax.swing.JTextField();
+        jTextFieldHp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldV = new javax.swing.JTextField();
-        jTextFieldConz = new javax.swing.JTextField();
-        jTextFieldd = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldv0 = new javax.swing.JTextField();
+        chartPanel1 = new ecolabs.ChartPanel();
+        chartPanel2 = new ecolabs.ChartPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelv2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabelSp = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelP = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
         jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setOpaque(false);
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab2JPanel.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
-
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jTextFieldC.setText(resourceMap.getString("jTextFieldC.text")); // NOI18N
-        jTextFieldC.setName("jTextFieldC"); // NOI18N
+        jTextFieldHp.setText(resourceMap.getString("jTextFieldHp.text")); // NOI18N
+        jTextFieldHp.setName("jTextFieldHp"); // NOI18N
+        jTextFieldHp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldHpKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
         jTextFieldV.setText(resourceMap.getString("jTextFieldV.text")); // NOI18N
         jTextFieldV.setName("jTextFieldV"); // NOI18N
+        jTextFieldV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldVKeyTyped(evt);
+            }
+        });
 
-        jTextFieldConz.setText(resourceMap.getString("jTextFieldConz.text")); // NOI18N
-        jTextFieldConz.setName("jTextFieldConz"); // NOI18N
-
-        jTextFieldd.setText(resourceMap.getString("jTextFieldd.text")); // NOI18N
-        jTextFieldd.setName("jTextFieldd"); // NOI18N
-
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        jTextFieldv0.setText(resourceMap.getString("jTextFieldv0.text")); // NOI18N
+        jTextFieldv0.setName("jTextFieldv0"); // NOI18N
+        jTextFieldv0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldv0KeyTyped(evt);
             }
         });
 
@@ -90,107 +113,365 @@ public class Lab2JPanel extends ScreenJPanel  {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldConz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jButton1)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldHp, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jTextFieldV, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jTextFieldv0, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldv0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldConz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel4)))
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(jTextFieldHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
+
+        chartPanel1.setName("chartPanel1"); // NOI18N
+
+        javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
+        chartPanel1.setLayout(chartPanel1Layout);
+        chartPanel1Layout.setHorizontalGroup(
+            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 576, Short.MAX_VALUE)
+        );
+        chartPanel1Layout.setVerticalGroup(
+            chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        chartPanel2.setName("chartPanel2"); // NOI18N
+
+        javax.swing.GroupLayout chartPanel2Layout = new javax.swing.GroupLayout(chartPanel2);
+        chartPanel2.setLayout(chartPanel2Layout);
+        chartPanel2Layout.setHorizontalGroup(
+            chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+        chartPanel2Layout.setVerticalGroup(
+            chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 356, Short.MAX_VALUE)
+        );
+
+        jPanel2.setName("jPanel2"); // NOI18N
+        jPanel2.setOpaque(false);
+
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        jLabelv2.setText(resourceMap.getString("jLabelv2.text")); // NOI18N
+        jLabelv2.setName("jLabelv2"); // NOI18N
+
+        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
+        jLabel7.setName("jLabel7"); // NOI18N
+
+        jLabelSp.setText(resourceMap.getString("jLabelSp.text")); // NOI18N
+        jLabelSp.setName("jLabelSp"); // NOI18N
+
+        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        jLabelP.setText(resourceMap.getString("jLabelP.text")); // NOI18N
+        jLabelP.setName("jLabelP"); // NOI18N
+
+        jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                                .addComponent(jLabelSp))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                                .addComponent(jLabelP))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                                .addComponent(jLabelv2)
+                                .addGap(6, 6, 6)))
+                        .addContainerGap(132, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabelv2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabelSp))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelP)
+                    .addComponent(jLabel8))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        jLabel6.setIcon(resourceMap.getIcon("jLabel6.icon")); // NOI18N
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(454, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chartPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addComponent(chartPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(chartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(chartPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(580, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    /**
+     * Точки графика для первого размера частиц
+     */
+    HashMap<Double, Double> points1 = new HashMap<>();
+    /**
+     * Точки графика для второго размера частиц
+     */
+    HashMap<Double, Double> points2 = new HashMap<>();
+    ArrayList<XYSeries> serieses1 = new ArrayList<>();
+    ArrayList<XYSeries> serieses2 = new ArrayList<>();
+    JFreeChart chart1;
+    JFreeChart chart2;
+    
+        @Override
+    public void ScreenInit() {
+        super.ScreenInit();
+        //loadVariants();
+        Execute();
+    }
+    
+private void jTextFieldVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldVKeyTyped
 // TODO add your handling code here:
-    double v20 = 3;
+    Execute();
+}//GEN-LAST:event_jTextFieldVKeyTyped
+
+private void jTextFieldv0KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldv0KeyTyped
+// TODO add your handling code here:
+    Execute();
+}//GEN-LAST:event_jTextFieldv0KeyTyped
+
+private void jTextFieldHpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldHpKeyTyped
+// TODO add your handling code here:
+    Execute();
+}//GEN-LAST:event_jTextFieldHpKeyTyped
+
+
+public double η(double dt, double Hp, double v2)
+{
+    return Math.abs(100*(1 - 87.1*(1.37 * Math.pow(dt,0.1)))/( Math.pow(Hp, 0.9) * Math.pow(v2,0.25) )); //менять все три и строить график 3 шт    
+}
+
+    /**
+     * Вычисляет точки кривой
+     * @param Dsol
+     * @return 
+     */
+    public HashMap<Double, Double> Calculate_dt(double dt, double Hp, double v2, double dH) {
+        HashMap<Double, Double> points = new HashMap<>();
+        for (double H = 0; H <= dt; H += dH) {
+            points.put(H, η(H, Hp, v2));
+        }
+
+        return points;
+    }
+    
+        public HashMap<Double, Double> Calculate_v(double dt, double Hp, double v2, double dH) {
+        HashMap<Double, Double> points = new HashMap<>();
+        for (double H = 1; H <= v2; H += dH) {
+            points.put(H, η(dt, Hp, H));
+        }
+
+        return points;
+    }
+    
+        /**
+     * Вычисляет все 3 кривых на одном графике
+     * @param Dsol
+     * @return 
+     */
+    public CombinedDomainXYPlot createChart_d(double V, double Hp) {
+        CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
+                new NumberAxis("η(d)"));
+        double v20 = Double.parseDouble(jTextFieldv0.getText());
+        ArrayList<Double> Dh2os = new ArrayList<>();
+        double s = Double.parseDouble(jTextFieldV.getText()) / (3600 * v20); //Площадь сечения корпуса аппарата 
+        double D0 = Math.sqrt(4 * s / 3.14); //диаметр корпуса аппарата
+        double v2 = v20 * D0 * D0 / 2.25;
+
+        XYSeriesCollection dataset = new XYSeriesCollection();
+
+        XYSeries series = new XYSeries(1);
+
+        HashMap<Double, Double> points = Calculate_dt(30 * Math.pow(10, -5), Hp, v2, Math.pow(10, -5));
+
+        for (Double H : points.keySet()) {
+            series.add(H, points.get(H));
+        }
+
+        dataset.addSeries(series);
+
+        XYItemRenderer renderer = new StandardXYItemRenderer();
+        XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(null), renderer);
+        plot.add(subplot);
+        return plot;
+    }
+    
+            /**
+     * Вычисляет все 3 кривых на одном графике
+     * @param Dsol
+     * @return 
+     */
+    public CombinedDomainXYPlot createChart_v(double V , double Hp ,double v) {
+        CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
+                new NumberAxis("η(v)"));
+        //ArrayList<Double> Dh2os = new ArrayList<>();
+      
+    double v20 = Double.parseDouble(jTextFieldv0.getText());
+    double s = Double.parseDouble(jTextFieldV.getText())/(3600*3); //Площадь сечения корпуса аппарата 
+    double D0 = Math.sqrt(4*s/3.14); //диаметр корпуса аппарата
+    double v2 = v20*D0*D0/2.25;
+    double dt = 5 * Math.pow(10, -5);
+        
+        XYSeriesCollection dataset = new XYSeriesCollection();
+       
+            XYSeries series = new XYSeries(1);
+
+            HashMap<Double, Double> points = Calculate_v(dt , Hp, v, 0.1);
+
+            for (Double H : points.keySet()) {
+                series.add(H, points.get(H));
+            }
+
+            dataset.addSeries(series);
+            
+        XYItemRenderer renderer = new StandardXYItemRenderer();
+        XYPlot subplot = new XYPlot(dataset, null, new NumberAxis(null), renderer);
+        plot.add(subplot);
+        return plot;
+    }
+
+    private void Execute() {
+        try {
+            //data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
+            //data.Va = Double.parseDouble(jTextFieldVa.getText());
+            //data.ησ = Double.parseDouble(jTextFieldησ.getText());
+            
+    double v20 = Double.parseDouble(jTextFieldv0.getText());
     double s = Double.parseDouble(jTextFieldV.getText())/(3600*3); //Площадь сечения корпуса аппарата 
     double D0 = Math.sqrt(4*s/3.14); //диаметр корпуса аппарата
     double v2 = v20*D0*D0/2.25;//действительная скорость газа в сечении аппарата 
+    jLabelv2.setText(Double.toString(v2));
     // Живое сечение дырчатой решетки S p вычисляем при высоте слоя пены 100 мм, диаметре отверстий 5 мм и плотности жидкости 1000 кг/м3
     double Sp = 1.37 * Math.pow(v2, 0.458) * Math.pow(1 , 0.152) /(Math.pow(0.1,0.61) * Math.pow(0.005,0.085)* Math.pow(1000,0.61) ); 
+    jLabelSp.setText(Double.toString(Sp));
     //действительная высотa слоя пены 
-    double Hp = 4.8 * Math.pow(v2, 0.79) * Math.pow(0.05,0.2)/(Math.pow(0.005,0.14) * Math.pow(Sp,1.9) );
+    //double Hp = 4.8 * Math.pow(v2, 0.79) * Math.pow(0.05,0.2)/(Math.pow(0.005,0.14) * Math.pow(Sp,1.9) );
+    double Hp = Double.parseDouble(jTextFieldHp.getText());    
     double Pp = 1.28 *v2 *v2 * 1.02 /( 2 * Sp);
     double Pn = 0.447* Hp * 1000 * 9.81/ Math.sqrt(v2);
     double P6 = 4 * 0.063/0.005;
     double Pa = 27 * v2 *v2 *1.02 / 2;
     //полное гидравлическое сопротивление аппарата
     double P = Pp+Pn+P6+Pa;
-    //степень фракционной очистки
-    double dt = 5 * Math.pow(10, -5);
-    double n = 100*(1 - 87.1*(1.37 - Math.pow(dt,0.1)))/( Hp * v2); //менять все три и строить график 3 шт
-    double Cexit = 2 * (100 - n)/100;//этот тоже график 3 шт
+    jLabelP.setText(Double.toString(P));
 
- 
+            chart1 = new JFreeChart(createChart_d(Double.parseDouble(jTextFieldV.getText()),Hp));
+            chart2 = new JFreeChart(createChart_v(Double.parseDouble(jTextFieldV.getText()),Hp, 5));
+
+            chartPanel1.setChart(chart1);
+            chartPanel2.setChart(chart2);
+            parentFrame.setStatus("Расчёты произведены");
+        } catch (Exception e) {
+            parentFrame.setStatus("Ошибка при расчётах");
+        }
+    }
     
-            
-    
-    
-}//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private ecolabs.ChartPanel chartPanel1;
+    private ecolabs.ChartPanel chartPanel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelP;
+    private javax.swing.JLabel jLabelSp;
+    private javax.swing.JLabel jLabelv2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldC;
-    private javax.swing.JTextField jTextFieldConz;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFieldHp;
     private javax.swing.JTextField jTextFieldV;
-    private javax.swing.JTextField jTextFieldd;
+    private javax.swing.JTextField jTextFieldv0;
     // End of variables declaration//GEN-END:variables
 }
