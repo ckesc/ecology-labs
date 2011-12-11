@@ -12,6 +12,7 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -177,7 +178,7 @@ public class Lab1JPanel extends ScreenJPanel {
 
             chartPanel1.setChart(chart1);
             chartPanel2.setChart(chart2);
-            
+           
             parentFrame.setStatus("Расчёты произведены");
         } catch (Exception e) {
             if (e.getMessage().equals("TimeException"))
@@ -519,6 +520,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelCharts.add(jLabelDsol1, gridBagConstraints);
 
         chartPanel1.setName("chartPanel1"); // NOI18N
+        chartPanel1.setOpaque(true);
 
         javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
         chartPanel1.setLayout(chartPanel1Layout);
@@ -542,6 +544,7 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelCharts.add(chartPanel1, gridBagConstraints);
 
         chartPanel2.setName("chartPanel2"); // NOI18N
+        chartPanel2.setOpaque(true);
 
         javax.swing.GroupLayout chartPanel2Layout = new javax.swing.GroupLayout(chartPanel2);
         chartPanel2.setLayout(chartPanel2Layout);
