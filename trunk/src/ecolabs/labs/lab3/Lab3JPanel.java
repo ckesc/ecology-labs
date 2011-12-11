@@ -15,6 +15,7 @@ import ecolabs.labs.ScreenJPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
 import org.jfree.chart.*;
@@ -30,36 +31,42 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class Lab3JPanel extends ScreenJPanel {
 
-    /**
-     * Диаметр циклона. 1.N
-     */
-    double D = 1.1;
-    /**
-     * Скорость движения газа
-     */
-    double ω = 1;
-    /**
-     * средний размер частиц пыли, улавливаемых на 50 %, мкм;
-     */
-    double d = 1;
-    /**
-     * коэффициент, учитывающий тип циклона;
-     */
-    double k = 41.4d;
-    /**
-     * вязкость газа, Па*c;
-     */
-    double μ = 22.2e-6d;
-    /**
-     * плотность пылевых частиц, кг/м3.
-     */
-    double ρ = 2150;
+    class Variant {
+
+        /**
+         * Диаметр циклона. 1.N
+         */
+        double D = 1.1;
+        /**
+         * Скорость движения газа
+         */
+        double ω = 1;
+        /**
+         * средний размер частиц пыли, улавливаемых на 50 %, мкм;
+         */
+        double d = 1;
+        /**
+         * коэффициент, учитывающий тип циклона;
+         */
+        double k = 41.4d;
+        /**
+         * вязкость газа, Па*c;
+         */
+        double μ = 22.2e-6d;
+        /**
+         * плотность пылевых частиц, кг/м3.
+         */
+        double ρ = 2150;
+    }
+    Variant data = new Variant();
+    private HashMap<Integer, Variant> variants = new HashMap<>();
+    private static String fileName = "LabVariants_№3.txt";
 
     /**
      * Расчет минимального размера частиц пыли, улавливаемых циклоном
      */
     private double d_min(double D, double ω) {
-        return (d * k * 1000d * Math.sqrt(1000d *D* μ / (ρ * ω)));
+        return (data.d * data.k * 1000d * Math.sqrt(1000d * D * data.μ / (data.ρ * ω)));
     }
 
     public Lab3JPanel(EcolabsView parent) {
@@ -70,17 +77,21 @@ public class Lab3JPanel extends ScreenJPanel {
 
 //        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
 //        String pattern = resourceMap.getString("jLabelVarInfo.text");
-        jTextFieldD.setText(String.valueOf(D));
-        jTextFieldd.setText(String.valueOf(d));
-        jTextFieldk.setText(String.valueOf(k));
-        jTextFieldp.setText(String.valueOf(ρ));
-        jTextFieldw.setText(String.valueOf(ω));
-        jTextFieldu.setText(String.valueOf(μ));
-
-        Execute();
-
+        jTextFieldD.setText(String.valueOf(data.D));
+        jTextFieldd.setText(String.valueOf(data.d));
+        jTextFieldk.setText(String.valueOf(data.k));
+        jTextFieldp.setText(String.valueOf(data.ρ));
+        jTextFieldw.setText(String.valueOf(data.ω));
     }
 
+    @Override
+    public void ScreenInit() {
+        super.ScreenInit();
+        loadVariants();
+        Execute();
+    }
+
+    
     /**
      * Вычисляет точки кривой при постоянной D
      * @param w1 начальное значение w
@@ -96,7 +107,7 @@ public class Lab3JPanel extends ScreenJPanel {
 
         return points;
     }
-    
+
     /**
      * Вычисляет точки кривой при постоянной W
      * @param D1 начальное значение D
@@ -111,7 +122,7 @@ public class Lab3JPanel extends ScreenJPanel {
         }
 
         return points;
-    }    
+    }
 
     /**
      * Вычистяет все 3 кривых на одном графике
@@ -141,14 +152,14 @@ public class Lab3JPanel extends ScreenJPanel {
         plot.add(subplot);
         return plot;
     }
-    
-        /**
+
+    /**
      * Вычистяет все 3 кривых на одном графике для постоянной ω
      */
     public CombinedDomainXYPlot createChart_Wconst() {
         CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
-                new NumberAxis("D"));        
-        ArrayList<Double> W_list = new ArrayList<>(Arrays.asList(1d,4d,7d,10d));
+                new NumberAxis("D"));
+        ArrayList<Double> W_list = new ArrayList<>(Arrays.asList(1d, 4d, 7d, 10d));
         XYSeriesCollection dataset = new XYSeriesCollection();
         for (Double curr_W : W_list) {
             XYSeries series = new XYSeries(curr_W);
@@ -173,10 +184,10 @@ public class Lab3JPanel extends ScreenJPanel {
     private void Execute() {
         parentFrame.setStatus(null);
         try {
-            d = Double.valueOf(jTextFieldd.getText());
-            k = Double.valueOf(jTextFieldk.getText());
-            ρ = Double.valueOf(jTextFieldp.getText());
-            μ = Double.valueOf(jTextFieldu.getText());
+            data.d = Double.valueOf(jTextFieldd.getText());
+            data.k = Double.valueOf(jTextFieldk.getText());
+            data.ρ = Double.valueOf(jTextFieldp.getText());
+            data.μ = Double.valueOf(jTextFieldu.getText());
 
             JFreeChart chart1;
             JFreeChart chart2;
@@ -191,6 +202,37 @@ public class Lab3JPanel extends ScreenJPanel {
         }
     }
 
+    /**
+     * Загрузка вариантов
+     */
+    public void loadVariants() {
+        jComboBoxVar.setModel(new DefaultComboBoxModel());
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 7);
+        Variant v;
+        int varNum;
+        for (String[] parameters : lines) {
+            try {
+                v = new Variant();
+                varNum = Integer.parseInt(parameters[0].trim());
+                v.d = Double.parseDouble(parameters[1].trim());
+                v.k = Double.parseDouble(parameters[2].trim());
+                v.ρ = Double.parseDouble(parameters[3].trim());
+                v.μ = Double.parseDouble(parameters[4].trim());
+                v.D = Double.parseDouble(parameters[5].trim());
+                v.ω = Double.parseDouble(parameters[6].trim());
+            } catch (Exception e) {
+                // Произошла ошибка??
+                // Да ну её к чёёёёёёёёрту!
+                // Пойдём я тебе лучше пааааасеку покажу
+                parentFrame.setStatus("Ошибка при обработке файла с вариантами в строке " + (lines.indexOf(parameters) + 1));
+                continue;
+            }
+            variants.put(varNum, v);
+            jComboBoxVar.addItem(varNum);
+        }
+        jComboBoxVarItemStateChanged(null);
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -201,7 +243,7 @@ public class Lab3JPanel extends ScreenJPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jComboBoxVar18 = new javax.swing.JComboBox();
+        jComboBoxVar = new javax.swing.JComboBox();
         jLabelVar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldD = new javax.swing.JTextField();
@@ -227,9 +269,14 @@ public class Lab3JPanel extends ScreenJPanel {
 
         setName("Form"); // NOI18N
 
-        jComboBoxVar18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
-        jComboBoxVar18.setName("jComboBoxVar18"); // NOI18N
-        jComboBoxVar18.setOpaque(false);
+        jComboBoxVar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
+        jComboBoxVar.setName("jComboBoxVar"); // NOI18N
+        jComboBoxVar.setOpaque(false);
+        jComboBoxVar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxVarItemStateChanged(evt);
+            }
+        });
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
         jLabelVar.setText(resourceMap.getString("jLabelVar.text")); // NOI18N
@@ -470,7 +517,7 @@ public class Lab3JPanel extends ScreenJPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxVar18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_Img, 0, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
@@ -487,7 +534,7 @@ public class Lab3JPanel extends ScreenJPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelVar)
-                            .addComponent(jComboBoxVar18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelFormula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -501,17 +548,32 @@ public class Lab3JPanel extends ScreenJPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFielduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielduActionPerformed
-        
     }//GEN-LAST:event_jTextFielduActionPerformed
 
     private void jTextFieldDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDKeyTyped
         Execute();
     }//GEN-LAST:event_jTextFieldDKeyTyped
 
+private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxVarItemStateChanged
+    Variant var;
+    try {
+        int varNum = Integer.parseInt(jComboBoxVar.getSelectedItem().toString());
+        var = variants.get(varNum);
+    } catch (Exception e) {
+        return;
+    }
+    jTextFieldD.setText(Double.toString(var.D));
+    jTextFieldd.setText(Double.toString(var.d));
+    jTextFieldk.setText(Double.toString(var.k));
+    jTextFieldp.setText(Double.toString(var.ρ));
+    jTextFieldu.setText(Double.toString(var.μ));
+    jTextFieldw.setText(Double.toString(var.ω));
+    Execute();
+}//GEN-LAST:event_jComboBoxVarItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ecolabs.ChartPanel chartPanel1;
     private ecolabs.ChartPanel chartPanel2;
-    private javax.swing.JComboBox jComboBoxVar18;
+    private javax.swing.JComboBox jComboBoxVar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
