@@ -52,6 +52,7 @@ public class ChartPanel extends JComponent {
 
     public void setChart(JFreeChart chart) {
         this.chart = chart;
+        chart.setBackgroundPaint(new Color(255,255,255,0));
         repaint();
     }
 }

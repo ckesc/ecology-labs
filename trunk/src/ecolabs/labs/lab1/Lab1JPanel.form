@@ -420,6 +420,7 @@
         <Container class="ecolabs.ChartPanel" name="chartPanel1">
           <Properties>
             <Property name="name" type="java.lang.String" value="chartPanel1" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -443,6 +444,7 @@
         <Container class="ecolabs.ChartPanel" name="chartPanel2">
           <Properties>
             <Property name="name" type="java.lang.String" value="chartPanel2" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
