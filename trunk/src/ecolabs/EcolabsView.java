@@ -200,7 +200,7 @@ public class EcolabsView extends FrameView {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addComponent(jButtonBack)
                 .addGap(12, 12, 12)
-                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,14 +234,14 @@ public class EcolabsView extends FrameView {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+            .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jPanelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
+                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -288,11 +288,11 @@ public class EcolabsView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 413, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 679, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
