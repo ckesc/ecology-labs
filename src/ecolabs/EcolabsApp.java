@@ -1,9 +1,9 @@
 /*
  * EcolabsApp.java
  */
-
 package ecolabs;
 
+import java.awt.SplashScreen;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -15,7 +15,8 @@ public class EcolabsApp extends SingleFrameApplication {
     /**
      * At startup create and show the main frame of the application.
      */
-    @Override protected void startup() {
+    @Override
+    protected void startup() {
         //Устанавливаем внешний вид как в системе
 //        try {
 //            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -28,7 +29,7 @@ public class EcolabsApp extends SingleFrameApplication {
 //        } catch (UnsupportedLookAndFeelException ex) {
 //            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        
+
         show(new EcolabsView(this));
     }
 
@@ -37,7 +38,8 @@ public class EcolabsApp extends SingleFrameApplication {
      * Windows shown in our application come fully initialized from the GUI
      * builder, so this additional configuration is not needed.
      */
-    @Override protected void configureWindow(java.awt.Window root) {
+    @Override
+    protected void configureWindow(java.awt.Window root) {
     }
 
     /**
@@ -52,6 +54,12 @@ public class EcolabsApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+//        final SplashScreen splash = SplashScreen.getSplashScreen();
+//        if (splash == null) {
+//            System.out.println("SplashScreen.getSplashScreen() returned null");
+//            return;
+//        }
+
         launch(EcolabsApp.class, args);
     }
 }
