@@ -36,22 +36,7 @@ public class EcolabsApp extends SingleFrameApplication {
 //            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         
-        long waitTime = 3000;
-        show(new SplashJFrame());
-        Date date1 = new Date();
-        FrameView e = new EcolabsView(this);
-        // ЭТО работает, но Splash не показывает Label сначала
-//        Date date2 = new Date();
-//        long d = date2.getTime() - date1.getTime();
-//        long time = (d >= waitTime)
-//                 ? 0
-//                 : waitTime - d;
-//        try {
-//            Thread.sleep(time);
-//        } catch (InterruptedException ex) {
-//            ex.printStackTrace();
-//        }
-        show(e);
+        show(new EcolabsView(this));
     }
 
     /**
