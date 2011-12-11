@@ -174,6 +174,8 @@ public class HomeJPanel extends ScreenJPanel {
                 .addComponent(jPanelCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabelHead.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelHead.AccessibleContext.accessibleName")); // NOI18N
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabSelect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSelect

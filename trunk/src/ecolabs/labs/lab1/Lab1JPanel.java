@@ -12,7 +12,6 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -63,7 +62,7 @@ public class Lab1JPanel extends ScreenJPanel {
      */
     Date date1;
     
-    private static String fileName = "inputLab1.txt";
+    private static String fileName = "LabVariants_№1.txt";
     private Variant data = new Variant();
     private HashMap<Integer, Variant> variants = new HashMap<>();
     /**
@@ -219,6 +218,7 @@ public class Lab1JPanel extends ScreenJPanel {
             variants.put(varNum, v);
             jComboBoxVar.addItem(varNum);
         }
+        jComboBoxVarItemStateChanged(null);
     }
     
     /** This method is called from within the constructor to
@@ -520,7 +520,6 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelCharts.add(jLabelDsol1, gridBagConstraints);
 
         chartPanel1.setName("chartPanel1"); // NOI18N
-        chartPanel1.setOpaque(true);
 
         javax.swing.GroupLayout chartPanel1Layout = new javax.swing.GroupLayout(chartPanel1);
         chartPanel1.setLayout(chartPanel1Layout);
@@ -544,7 +543,6 @@ public class Lab1JPanel extends ScreenJPanel {
         jPanelCharts.add(chartPanel1, gridBagConstraints);
 
         chartPanel2.setName("chartPanel2"); // NOI18N
-        chartPanel2.setOpaque(true);
 
         javax.swing.GroupLayout chartPanel2Layout = new javax.swing.GroupLayout(chartPanel2);
         chartPanel2.setLayout(chartPanel2Layout);
@@ -613,16 +611,19 @@ private void jTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     Execute();
 }//GEN-LAST:event_jTextFieldKeyTyped
 
-
-
     /**
      * Выбор элемента списка вариантов
      * @param evt 
      */
 private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxVarItemStateChanged
 
-    int varNum = Integer.parseInt(jComboBoxVar.getSelectedItem().toString());
-    Variant var = variants.get(varNum);
+   Variant var;
+    try {
+        int varNum = Integer.parseInt(jComboBoxVar.getSelectedItem().toString());
+        var = variants.get(varNum);
+    } catch (Exception e) {
+        return;
+    }
     jTextFieldDh2o1.setText(Double.toString(var.Dh2o1));
     jTextFieldDh2o2.setText(Double.toString(var.Dh2o2));
     jTextFieldDh2o3.setText(Double.toString(var.Dh2o3));
@@ -633,7 +634,6 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
     jTextFieldVa.setText(Double.toString(var.Va));
     jTextFieldVaq.setText(Double.toString(var.Vaq));
     jTextFielddH.setText(dHDefault);
-    //jTextFieldησ.setText(Double.toString(var.ησ));
     Execute();
 }//GEN-LAST:event_jComboBoxVarItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables

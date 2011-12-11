@@ -48,6 +48,9 @@
         <Property name="text" type="java.lang.String" resourceKey="jLabelHead.text"/>
         <Property name="name" type="java.lang.String" value="jLabelHead" noResource="true"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jLabelHead.AccessibleContext.accessibleName"/>
+      </AccessibilityProperties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanelCenter">
       <Properties>
