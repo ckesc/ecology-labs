@@ -119,17 +119,29 @@ public class EcolabsView extends FrameView {
         EcolabsApp.getApplication().show(aboutBox);
     }
 
+    public String getStatus () {        
+        String[] mas = statusMessageLabel.getText().split("\\p{Space}",2);
+        if (mas.length>1) {
+            return mas[1];
+        } else {
+            return null;
+        }
+    }
+    
     /**
      * Устанавливает статусное состояние. приписывается текущее время.
      * Если msg == null стирает всякое сообщение
      * @param msg сообщение для установки
+     * @return сформированное сообщение
      */
-    public void setStatus(String msg) {
+    public String setStatus(String msg) {         
         if (msg != null) {
-            String s = String.format("%tT %s", new Date(), msg);
-            statusMessageLabel.setText(s);
+            String outMsg =String.format("%tT %s", new Date(), msg);            
+            statusMessageLabel.setText(outMsg);
+            return outMsg;
         } else {
             statusMessageLabel.setText("");
+            return null;
         }
     }
 
@@ -198,23 +210,27 @@ public class EcolabsView extends FrameView {
         jPanelTopLayout.setHorizontalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addComponent(jButtonBack)
-                .addGap(12, 12, 12)
-                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanelTopLayout.setVerticalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTopLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
+                .addContainerGap()
                 .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-            .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+            .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
 
         jPanelContent.setAutoscrolls(true);
@@ -239,9 +255,9 @@ public class EcolabsView extends FrameView {
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(jPanelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelTop, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE))
+                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -342,7 +358,10 @@ public class EcolabsView extends FrameView {
         if (newScreen == null) {
             return;
         }
-        setStatus(null);
+        String oldTitle = getFrame().getTitle();
+        String strLoading = "Загрузка \""+newScreen.Title+"\"";
+        getFrame().setTitle(strLoading);
+        
         
         newScreen.ScreenInit();
         jPanelTop.setVisible(true);
@@ -352,8 +371,11 @@ public class EcolabsView extends FrameView {
         getFrame().setTitle(newScreen.Title);
         jLabelCaption.setText(newScreen.Caption);
         workingPanel.validate();
-        workingPanel.repaint();
+        workingPanel.repaint(); 
         
+        if (getFrame().getTitle().equals(strLoading)) {
+            getFrame().setTitle(oldTitle);
+        }
     }
 
     @Action

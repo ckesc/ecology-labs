@@ -53,6 +53,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
+        setMaximumSize(new java.awt.Dimension(791, 483));
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(HomeJPanel.class);
