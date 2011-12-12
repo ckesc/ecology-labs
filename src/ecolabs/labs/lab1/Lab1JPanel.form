@@ -19,23 +19,23 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanelPicture" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelPicture" alignment="0" min="-2" max="-2" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelVar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jComboBoxVar" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Component id="jPanelCharts" pref="542" max="32767" attributes="0"/>
+              <Component id="jPanelCharts" pref="529" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -45,13 +45,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanelCharts" alignment="0" pref="534" max="32767" attributes="0"/>
+                  <Component id="jPanelCharts" alignment="0" pref="546" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelVar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBoxVar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="jPanelPicture" max="32767" attributes="0"/>
@@ -101,30 +101,22 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabeldH" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelH0" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelHn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFielddH" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jTextFieldHn" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jTextFieldH0" alignment="0" min="-2" pref="86" max="-2" attributes="1"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="1">
-                          <Component id="jLabelVaq" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldVaq" max="32767" attributes="1"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabeldH" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelH0" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHn" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelVaq" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jTextFieldVaq" max="32767" attributes="1"/>
+                      <Component id="jTextFielddH" alignment="0" max="32767" attributes="1"/>
+                      <Component id="jTextFieldHn" alignment="0" max="32767" attributes="1"/>
+                      <Component id="jTextFieldH0" alignment="1" min="-2" pref="86" max="-2" attributes="1"/>
+                  </Group>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabelDh2o1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelVa" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -149,30 +141,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="jLabel2" min="-2" pref="295" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldVaq" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelVaq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldH0" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelH0" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFielddH" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabeldH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldHn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelHn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextFieldVa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelVa" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -191,6 +162,28 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextFieldDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldVaq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelVaq" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldH0" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelH0" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFielddH" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabeldH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldHn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelHn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -233,6 +226,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelVaq">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelVaq.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVaq.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelVaq" noResource="true"/>
@@ -240,6 +234,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelVa">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelVa.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVa.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelVa" noResource="true"/>
@@ -286,6 +281,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelH0">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelH0.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelH0.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelH0" noResource="true"/>
@@ -293,6 +289,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabeldH">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabeldH.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldH.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabeldH" noResource="true"/>
@@ -300,6 +297,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelHn">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelHn.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelHn.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelHn" noResource="true"/>
@@ -307,6 +305,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDh2o1">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o1.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o1.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelDh2o1" noResource="true"/>
@@ -314,6 +313,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabeldDh2o2">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabeldDh2o2.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldDh2o2.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabeldDh2o2" noResource="true"/>
@@ -321,6 +321,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDh2o3">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o3.text"/>
             <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o3.toolTipText"/>
             <Property name="name" type="java.lang.String" value="jLabelDh2o3" noResource="true"/>
@@ -413,7 +414,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="3" insetsLeft="0" insetsBottom="3" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -430,12 +431,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="271" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="497" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="501" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -453,12 +454,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="271" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="497" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="501" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

@@ -6,6 +6,8 @@ package ecolabs.labs;
 
 import ecolabs.EcolabsView;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -17,6 +19,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 /**
  * Экран - т.е. то что может быть отображено в центральной части
@@ -27,7 +30,7 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
     /**
      * Заголовок короткий (для заголовка окна)
      */
-    public String Title = "Лабораторная работа";
+    public String Title = "Лабораторные работы \"Очистка запылённого воздуха\"";
     /**
      * Полное название лабораторной исключая номер.
      */
@@ -58,7 +61,24 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
 
     }
 
+    private static void correntFont(JComponent comp) {
+        for (Component component : comp.getComponents()) {
+            try {
+                Font oldFont = ((JComponent) component).getFont();
+                if (oldFont.getName().equals("tahoma") || oldFont.getName().equals("sansserif")) {
+                    ((JComponent) component).setFont(
+                            new Font("Century Gothic",
+                            oldFont.getStyle(),
+                            oldFont.getSize()));
+                }
+                correntFont((JComponent) component);
+            } catch (Exception e) {
+            }
+        }
+    }
+
     public void ScreenInit() {
+        correntFont(this);
     }
 
     /**
