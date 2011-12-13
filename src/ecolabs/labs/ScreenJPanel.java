@@ -91,14 +91,14 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
      * @return 
      */
     public static ArrayList<String[]> loadVariants(String fileName, int parNumber) {
-        ArrayList<String[]> lines = new ArrayList<>();
+        ArrayList<String[]> lines = new ArrayList<String[]>();
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
-                if (line.isEmpty()) {
+                if (line == "") {
                     continue;
                 }
                 String[] parameters = line.split("\\|");

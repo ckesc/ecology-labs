@@ -38,7 +38,7 @@ public class Lab2JPanel extends ScreenJPanel {
     }
     private final String fileName = "LabVariants_№2.txt";
     private Variant data = new Variant();
-    private HashMap<Integer, Variant> variants = new HashMap<>();
+    private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();
 
     /** Creates new form lab2 */
     /** Creates new form Lab1JPanel */
@@ -73,7 +73,6 @@ public class Lab2JPanel extends ScreenJPanel {
         jLabelSp = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelP = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         chartPanel1 = new ecolabs.ChartPanel();
@@ -85,10 +84,11 @@ public class Lab2JPanel extends ScreenJPanel {
 
         setName("Form"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab2JPanel.class);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel1.border.title"))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab2JPanel.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -136,7 +136,7 @@ public class Lab2JPanel extends ScreenJPanel {
                     .addComponent(jTextFieldHp)
                     .addComponent(jTextFieldv0)
                     .addComponent(jTextFieldV, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,6 +155,7 @@ public class Lab2JPanel extends ScreenJPanel {
                 .addContainerGap())
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel2.border.title"))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
 
@@ -176,34 +177,25 @@ public class Lab2JPanel extends ScreenJPanel {
         jLabelP.setText(resourceMap.getString("jLabelP.text")); // NOI18N
         jLabelP.setName("jLabelP"); // NOI18N
 
-        jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelv2)
-                            .addComponent(jLabelSp)
-                            .addComponent(jLabelP))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelv2)
+                    .addComponent(jLabelSp)
+                    .addComponent(jLabelP))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabelv2))
@@ -214,8 +206,7 @@ public class Lab2JPanel extends ScreenJPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabelP))
-                .addContainerGap())
+                    .addComponent(jLabelP)))
         );
 
         jLabel6.setIcon(resourceMap.getIcon("jLabel6.icon")); // NOI18N
@@ -236,7 +227,7 @@ public class Lab2JPanel extends ScreenJPanel {
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 273, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -259,7 +250,7 @@ public class Lab2JPanel extends ScreenJPanel {
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 273, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -314,10 +305,8 @@ public class Lab2JPanel extends ScreenJPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(365, 365, 365))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 448, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 448, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
                 .addContainerGap())
@@ -326,7 +315,7 @@ public class Lab2JPanel extends ScreenJPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -344,13 +333,13 @@ public class Lab2JPanel extends ScreenJPanel {
     /**
      * Точки графика для первого размера частиц
      */
-    HashMap<Double, Double> points1 = new HashMap<>();
+    HashMap<Double, Double> points1 = new HashMap<Double, Double>();
     /**
      * Точки графика для второго размера частиц
      */
-    HashMap<Double, Double> points2 = new HashMap<>();
-    ArrayList<XYSeries> serieses1 = new ArrayList<>();
-    ArrayList<XYSeries> serieses2 = new ArrayList<>();
+    HashMap<Double, Double> points2 = new HashMap<Double, Double>();
+    ArrayList<XYSeries> serieses1 = new ArrayList<XYSeries>();
+    ArrayList<XYSeries> serieses2 = new ArrayList<XYSeries>();
     JFreeChart chart1;
     JFreeChart chart2;
 
@@ -389,7 +378,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
      * @return 
      */
     public HashMap<Double, Double> Calculate_dt(double dt, double Hp, double v2, double dH) {
-        HashMap<Double, Double> points = new HashMap<>();
+        HashMap<Double, Double> points = new HashMap<Double, Double>();
         for (double H = 0; H <= dt; H += dH) {
             points.put(H, η(H, Hp, v2));
         }
@@ -398,7 +387,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
     }
 
     public HashMap<Double, Double> Calculate_v(double dt, double Hp, double v2, double dH) {
-        HashMap<Double, Double> points = new HashMap<>();
+        HashMap<Double, Double> points = new HashMap<Double, Double>();
         for (double H = 1; H <= v2; H += dH) {
             points.put(H, η(dt, Hp, H));
         }
@@ -415,7 +404,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
         CombinedDomainXYPlot plot = new CombinedDomainXYPlot(
                 new NumberAxis("η(d)"));
         double v20 = Double.parseDouble(jTextFieldv0.getText());
-        ArrayList<Double> Dh2os = new ArrayList<>();
+        ArrayList<Double> Dh2os = new ArrayList<Double>();
         double s = Double.parseDouble(jTextFieldV.getText()) / (3600 * v20); //Площадь сечения корпуса аппарата 
         double D0 = Math.sqrt(4 * s / 3.14); //диаметр корпуса аппарата
         double v2 = v20 * D0 * D0 / 2.25;
@@ -544,7 +533,6 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
