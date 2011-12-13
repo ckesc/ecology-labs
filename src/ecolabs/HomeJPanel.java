@@ -16,20 +16,19 @@ public class HomeJPanel extends ScreenJPanel {
 
     /** Creates new form HomeJPanel */
     public HomeJPanel(EcolabsView parent) {
-        super(parent);        
+        super(parent);
         initComponents();
         initButtons();
     }
-    
-    private void initButtons(){        
-        JButton[] buttons = {jButton1,jButton2,jButton3,jButton4,jButton5,jButton6};
-        for(int i=0;i<6;i++) {
-            if (parentFrame.LabScreens[i]!=null) {
+
+    private void initButtons() {
+        JButton[] buttons = {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6};
+        for (int i = 0; i < 6; i++) {
+            if (parentFrame.LabScreens[i] != null) {
                 buttons[i].setText(String.format(
                         "<html><b>%s</b><br>%s</html>",
                         parentFrame.LabScreens[i].Title,
-                        parentFrame.LabScreens[i].Caption
-                        ));
+                        parentFrame.LabScreens[i].Caption));
                 //buttons[i].setIcon(parentFrame.LabScreens[i].ScreenIcon);
             }
         }
@@ -43,8 +42,10 @@ public class HomeJPanel extends ScreenJPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabelHead = new javax.swing.JLabel();
+        jPanelOuterCenter = new javax.swing.JPanel();
         jPanelCenter = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -62,9 +63,26 @@ public class HomeJPanel extends ScreenJPanel {
         jLabelHead.setText(resourceMap.getString("jLabelHead.text")); // NOI18N
         jLabelHead.setName("jLabelHead"); // NOI18N
 
+        jPanelOuterCenter.setName("jPanelOuterCenter"); // NOI18N
+        jPanelOuterCenter.setOpaque(false);
+        jPanelOuterCenter.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanelOuterCenter.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jPanelOuterCenterComponentResized(evt);
+            }
+        });
+        jPanelOuterCenter.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jPanelOuterCenterPropertyChange(evt);
+            }
+        });
+        jPanelOuterCenter.setLayout(null);
+
+        jPanelCenter.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanelCenter.setMinimumSize(new java.awt.Dimension(490, 347));
         jPanelCenter.setName("jPanelCenter"); // NOI18N
         jPanelCenter.setOpaque(false);
-        jPanelCenter.setLayout(new java.awt.GridLayout(3, 2, 10, 10));
+        jPanelCenter.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setMnemonic('1');
@@ -79,7 +97,13 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton1, gridBagConstraints);
 
         jButton2.setIcon(resourceMap.getIcon("jButton2.icon")); // NOI18N
         jButton2.setMnemonic('2');
@@ -94,7 +118,13 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton2);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton2, gridBagConstraints);
 
         jButton3.setIcon(resourceMap.getIcon("jButton3.icon")); // NOI18N
         jButton3.setMnemonic('3');
@@ -109,7 +139,13 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton3);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton3, gridBagConstraints);
 
         jButton4.setIcon(resourceMap.getIcon("jButton4.icon")); // NOI18N
         jButton4.setMnemonic('4');
@@ -124,7 +160,13 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton4);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton4, gridBagConstraints);
 
         jButton5.setIcon(resourceMap.getIcon("jButton5.icon")); // NOI18N
         jButton5.setMnemonic('5');
@@ -139,7 +181,13 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton5);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton5, gridBagConstraints);
 
         jButton6.setIcon(resourceMap.getIcon("jButton6.icon")); // NOI18N
         jButton6.setMnemonic('6');
@@ -154,7 +202,16 @@ public class HomeJPanel extends ScreenJPanel {
                 LabSelect(evt);
             }
         });
-        jPanelCenter.add(jButton6);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanelCenter.add(jButton6, gridBagConstraints);
+
+        jPanelOuterCenter.add(jPanelCenter);
+        jPanelCenter.setBounds(20, 0, 540, 300);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -162,30 +219,58 @@ public class HomeJPanel extends ScreenJPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelCenter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
-                    .addComponent(jLabelHead, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jLabelHead, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE))
+            .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
         );
 
         jLabelHead.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelHead.AccessibleContext.accessibleName")); // NOI18N
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabSelect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSelect
-        
+
         int no = Integer.parseInt(evt.getActionCommand());
         parentFrame.ShowScreen(no);
-        
-        
+
+
     }//GEN-LAST:event_LabSelect
+
+    private void jPanelOuterCenterComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelOuterCenterComponentResized
+        int maxW = 800;
+        int maxH = 600;
+        java.awt.Dimension currentSize = jPanelCenter.getSize();
+        java.awt.Dimension outerSize = jPanelOuterCenter.getSize();
+
+        if (outerSize.width > maxW) {
+            currentSize.width = maxW;
+        } else {
+            currentSize.width = outerSize.width;
+        }
+
+        if (outerSize.height > maxH) {
+            currentSize.height = maxH;
+        } else {
+            currentSize.height = outerSize.height;
+        }
+
+        jPanelCenter.setSize(currentSize);    
+        jPanelOuterCenter.invalidate();
+        jPanelCenter.setLocation(
+                (jPanelOuterCenter.getWidth() - jPanelCenter.getWidth())/2 ,
+                (jPanelOuterCenter.getHeight() - jPanelCenter.getHeight())/2 );
+
+    }//GEN-LAST:event_jPanelOuterCenterComponentResized
+
+    private void jPanelOuterCenterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanelOuterCenterPropertyChange
+        
+    }//GEN-LAST:event_jPanelOuterCenterPropertyChange
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -195,5 +280,6 @@ public class HomeJPanel extends ScreenJPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabelHead;
     private javax.swing.JPanel jPanelCenter;
+    private javax.swing.JPanel jPanelOuterCenter;
     // End of variables declaration//GEN-END:variables
 }
