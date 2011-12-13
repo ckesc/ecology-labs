@@ -17,44 +17,37 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="1"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelPicture" min="-2" max="-2" attributes="1"/>
+                      <Component id="jLabelVar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jComboBoxVar" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelVar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBoxVar" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="1"/>
-                      </Group>
-                  </Group>
+                  <Component id="jPanelPicture" alignment="0" min="-2" max="-2" attributes="1"/>
               </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Component id="jPanelCharts" pref="529" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Component id="jPanelCharts" pref="453" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanelCharts" alignment="0" pref="546" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanelCharts" alignment="0" pref="581" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelVar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBoxVar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="jPanelPicture" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanelPicture" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -97,43 +90,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabeldH" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelH0" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelHn" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelVaq" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jTextFieldVaq" max="32767" attributes="1"/>
-                      <Component id="jTextFielddH" alignment="0" max="32767" attributes="1"/>
-                      <Component id="jTextFieldHn" alignment="0" max="32767" attributes="1"/>
-                      <Component id="jTextFieldH0" alignment="1" min="-2" pref="86" max="-2" attributes="1"/>
-                  </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabelDh2o1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelVa" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelDh2o3" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabeldDh2o2" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextFieldDh2o3" alignment="0" max="32767" attributes="1"/>
-                      <Group type="102" alignment="0" attributes="1">
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDh2o2" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTextFieldDh2o1" alignment="0" pref="89" max="32767" attributes="1"/>
-                      <Component id="jTextFieldVa" alignment="0" max="32767" attributes="1"/>
+                      <Component id="jPanel2" alignment="0" max="32767" attributes="1"/>
+                      <Component id="jLabel2" alignment="0" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,53 +108,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="jLabel2" min="-2" pref="295" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldVa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelVa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldDh2o1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelDh2o1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldDh2o2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabeldDh2o2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldVaq" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelVaq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldH0" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelH0" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFielddH" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabeldH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldHn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelHn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="1"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -200,169 +127,329 @@
             <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldVaq">
+        <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldVaq.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="&#x412;&#x44b;&#x441;&#x43e;&#x442;&#x430; &#x441;&#x43a;&#x440;&#x443;&#x431;&#x431;&#x435;&#x440;&#x430;">
+                  <Property name="titleX" resourceKey="jPanel1.border.title"/>
+                </TitledBorder>
+              </Border>
             </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldVaq" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jPanel1" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldVa">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelH0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabeldH" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelHn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="5" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextFieldHn" alignment="1" max="32767" attributes="1"/>
+                          <Component id="jTextFielddH" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jTextFieldH0" alignment="0" pref="87" max="32767" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldH0" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelH0" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFielddH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabeldH" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldHn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelHn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="jTextFieldH0">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldH0.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldH0" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelH0">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelH0.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelH0.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelH0" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabeldH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabeldH.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldH.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabeldH" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFielddH">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFielddH.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFielddH" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldHn">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldHn.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldHn" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelHn">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelHn.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelHn.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelHn" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldVa.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="&#x41e;&#x431;&#x44a;&#x451;&#x43c; &#x440;&#x430;&#x441;&#x445;&#x43e;&#x434;&#x430;">
+                  <Property name="titleX" resourceKey="jPanel2.border.title"/>
+                  <Property name="color" resourceKey="jPanel2.border.titleColor"/>
+                </TitledBorder>
+              </Border>
             </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldVa" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelVaq">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabelVaq" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldVaq" min="-2" pref="84" max="-2" attributes="1"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="jLabelVa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldVa" pref="90" max="32767" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelVaq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldVaq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldVa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelVa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabelVa">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelVa.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVa.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelVa" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jLabelVa.AccessibleContext.accessibleName"/>
+              </AccessibilityProperties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldVaq">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldVaq.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldVaq" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelVaq">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelVaq.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVaq.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelVaq" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldVa">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldVa.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldVa" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelVaq.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVaq.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelVaq" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelVa">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelVa.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelVa.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelVa" noResource="true"/>
-          </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jLabelVa.AccessibleContext.accessibleName"/>
-          </AccessibilityProperties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldH0">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldH0.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="&#x414;&#x438;&#x430;&#x43c;&#x435;&#x442;&#x440; &#x43a;&#x430;&#x43f;&#x43b;&#x438; &#x432;&#x43e;&#x434;&#x44b;">
+                  <Property name="titleX" resourceKey="jPanel3.border.title"/>
+                </TitledBorder>
+              </Border>
             </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldH0" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jPanel3" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFielddH">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFielddH.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jTextFielddH" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldHn">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldHn.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldHn" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelH0">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelH0.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelH0.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelH0" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabeldH">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabeldH.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldH.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabeldH" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelHn">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelHn.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelHn.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelHn" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelDh2o1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o1.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o1.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelDh2o1" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabeldDh2o2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabeldDh2o2.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldDh2o2.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabeldDh2o2" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelDh2o3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o3.text"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o3.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jLabelDh2o3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDh2o3">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o3.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldDh2o3" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDh2o2">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o2.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldDh2o2" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDh2o1">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o1.text"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[12, 20]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jTextFieldDh2o1" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
-          </Events>
-        </Component>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabeldDh2o2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDh2o1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDh2o3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jTextFieldDh2o3" max="32767" attributes="1"/>
+                          <Component id="jTextFieldDh2o2" alignment="1" max="32767" attributes="1"/>
+                          <Component id="jTextFieldDh2o1" alignment="1" min="-2" pref="89" max="-2" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldDh2o1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDh2o1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldDh2o2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabeldDh2o2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDh2o3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="jTextFieldDh2o1">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o1.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldDh2o1" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDh2o1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o1.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o1.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelDh2o1" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabeldDh2o2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabeldDh2o2.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabeldDh2o2.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabeldDh2o2" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldDh2o2">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o2.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldDh2o2" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldDh2o3">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jTextFieldDh2o3.text"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 20]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jTextFieldDh2o3" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDh2o3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jLabeldDh2o2.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="jLabelDh2o3.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jLabelDh2o3.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jLabelDh2o3" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelCharts">
@@ -380,11 +467,11 @@
             <Property name="name" type="java.lang.String" value="jTextField&#x3b7;&#x3c3;1" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -396,11 +483,11 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDsol2ActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyTyped"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="1" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="1" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -414,7 +501,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="3" insetsLeft="0" insetsBottom="3" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="2" gridWidth="2" gridHeight="1" fill="0" ipadX="100" ipadY="0" insetsTop="3" insetsLeft="0" insetsBottom="3" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -424,19 +511,19 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="20" ipadY="20" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.2"/>
+              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="20" ipadY="20" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.2"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="226" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="501" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -447,23 +534,36 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="20" ipadY="20" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.2"/>
+              <GridBagConstraints gridX="1" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="20" ipadY="20" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.1" weightY="0.2"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="227" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="501" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel3.font"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel3.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="2" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

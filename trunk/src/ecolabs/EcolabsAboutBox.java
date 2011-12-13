@@ -153,7 +153,7 @@ public class EcolabsAboutBox extends javax.swing.JDialog {
     private void appHomepageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appHomepageLabelMouseClicked
         try {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.rsreu.ru"));
-        } catch (URISyntaxException | IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_appHomepageLabelMouseClicked
