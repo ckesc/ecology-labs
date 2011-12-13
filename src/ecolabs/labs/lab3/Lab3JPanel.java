@@ -69,7 +69,7 @@ public class Lab3JPanel extends ScreenJPanel {
     ArrayList<Double> constW = new ArrayList<Double>();
     private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();
     private static String fileName = "LabVariants_№3.txt";
-    private final String calcResultTemplate = "<html>d<sub>min</sub>(D,ω) = %6.2f";
+    private final String calcResultTemplate = "<html>d<sub>min</sub>(D,ω) = %8.2f";
 
     /**
      * Расчет минимального размера частиц пыли, улавливаемых циклоном
