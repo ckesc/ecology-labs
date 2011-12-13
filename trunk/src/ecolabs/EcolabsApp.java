@@ -4,6 +4,7 @@
 package ecolabs;
 
 import java.awt.SplashScreen;
+import javax.swing.UIManager;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -17,18 +18,18 @@ public class EcolabsApp extends SingleFrameApplication {
      */
     @Override
     protected void startup() {
-        //Устанавливаем внешний вид как в системе
-//        try {
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (UnsupportedLookAndFeelException ex) {
-//            Logger.getLogger(EcolabsApp.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            System.out.println("you have old java. Switching to windows look. Обновите java для более красивого внешнего вида");
+            //Устанавливаем внешний вид как в системе
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ex) {
+                System.err.println(ex);
+            }
+           
+        }
 
         show(new EcolabsView(this));
     }
@@ -54,6 +55,7 @@ public class EcolabsApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+
 //        final SplashScreen splash = SplashScreen.getSplashScreen();
 //        if (splash == null) {
 //            System.out.println("SplashScreen.getSplashScreen() returned null");

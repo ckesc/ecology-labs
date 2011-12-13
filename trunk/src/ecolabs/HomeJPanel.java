@@ -82,6 +82,7 @@ public class HomeJPanel extends ScreenJPanel {
         jPanelCenter.setOpaque(false);
         jPanelCenter.setLayout(new java.awt.GridBagLayout());
 
+        jButton1.setFont(resourceMap.getFont("jButton3.font")); // NOI18N
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setMnemonic('1');
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
@@ -104,6 +105,7 @@ public class HomeJPanel extends ScreenJPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         jPanelCenter.add(jButton1, gridBagConstraints);
 
+        jButton2.setFont(resourceMap.getFont("jButton3.font")); // NOI18N
         jButton2.setIcon(resourceMap.getIcon("jButton2.icon")); // NOI18N
         jButton2.setMnemonic('2');
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
@@ -126,6 +128,7 @@ public class HomeJPanel extends ScreenJPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         jPanelCenter.add(jButton2, gridBagConstraints);
 
+        jButton3.setFont(resourceMap.getFont("jButton3.font")); // NOI18N
         jButton3.setIcon(resourceMap.getIcon("jButton3.icon")); // NOI18N
         jButton3.setMnemonic('3');
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
@@ -181,7 +184,7 @@ public class HomeJPanel extends ScreenJPanel {
 
     private void jPanelOuterCenterComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelOuterCenterComponentResized
         int maxW = 600;
-        int maxH = 470;
+        int maxH = 350;
         java.awt.Dimension currentSize = jPanelCenter.getSize();
         java.awt.Dimension outerSize = jPanelOuterCenter.getSize();
 

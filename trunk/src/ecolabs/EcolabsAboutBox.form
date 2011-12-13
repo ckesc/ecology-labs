@@ -30,33 +30,24 @@
           <Group type="102" attributes="0">
               <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="appTitleLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="versionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="vendorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="appHomepageLabel" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="appVendorLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="appVersionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="appTitleLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="versionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="homepageLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="appDescLabel" alignment="0" min="-2" pref="391" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="closeButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="appHomepageLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="appVendorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="appVersionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Component id="appDescLabel" alignment="0" pref="311" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,9 +56,9 @@
           <Group type="102" alignment="0" attributes="1">
               <EmptySpace min="11" pref="11" max="11" attributes="0"/>
               <Component id="appTitleLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="appDescLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="versionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="appVersionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,27 +73,15 @@
                   <Component id="homepageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="appHomepageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="closeButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="imageLabel" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="closeButton">
-      <Properties>
-        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-          <action class="ecolabs.EcolabsAboutBox" id="closeAboutBox" methodName="closeAboutBox"/>
-        </Property>
-        <Property name="text" type="java.lang.String" resourceKey="closeButton.text"/>
-        <Property name="name" type="java.lang.String" value="closeButton" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="appTitleLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.beaninfo.editors.FontEditor">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="15" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="Application.title"/>
@@ -115,7 +94,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="versionLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.beaninfo.editors.FontEditor">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="versionLabel.text"/>
@@ -138,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="vendorLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.beaninfo.editors.FontEditor">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="vendorLabel.text"/>
@@ -163,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="homepageLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.beaninfo.editors.FontEditor">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="homepageLabel.text"/>
@@ -194,6 +173,7 @@
     <Component class="javax.swing.JLabel" name="appDescLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" resourceKey="appVendorLabel.font"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" resourceKey="appDescLabel.text"/>
         <Property name="name" type="java.lang.String" value="appDescLabel" noResource="true"/>
       </Properties>

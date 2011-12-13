@@ -90,6 +90,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jButton3.font"/>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jButton1.icon"/>
                 <Property name="mnemonic" type="int" value="49"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
@@ -110,6 +111,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jButton3.font"/>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jButton2.icon"/>
                 <Property name="mnemonic" type="int" value="50"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButton2.text"/>
@@ -130,6 +132,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="jButton3.font"/>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jButton3.icon"/>
                 <Property name="mnemonic" type="int" value="51"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButton3.text"/>
