@@ -4,6 +4,7 @@
  */
 package ecolabs.labs;
 
+import com.sun.security.auth.NTDomainPrincipal;
 import ecolabs.EcolabsView;
 import java.awt.Color;
 import java.awt.Component;
@@ -44,6 +45,8 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
      */
     protected EcolabsView parentFrame;
 
+    protected Font likeFont =  new Font("Century Gothic",Font.BOLD,12);
+    
     /**
      * Переключает на начальный экран
      */
