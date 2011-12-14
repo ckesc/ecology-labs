@@ -152,7 +152,7 @@ public class HomeJPanel extends ScreenJPanel {
         jPanelCenter.add(jButton3, gridBagConstraints);
 
         jPanelOuterCenter.add(jPanelCenter);
-        jPanelCenter.setBounds(20, 0, 390, 350);
+        jPanelCenter.setBounds(20, 0, 450, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -160,15 +160,15 @@ public class HomeJPanel extends ScreenJPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabelHead, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE))
-            .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addComponent(jLabelHead, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
+            .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
+                .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
         );
 
         jLabelHead.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelHead.AccessibleContext.accessibleName")); // NOI18N
@@ -179,12 +179,11 @@ public class HomeJPanel extends ScreenJPanel {
         int no = Integer.parseInt(evt.getActionCommand());
         parentFrame.ShowScreen(no);
 
-
     }//GEN-LAST:event_LabSelect
 
     private void jPanelOuterCenterComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelOuterCenterComponentResized
-        int maxW = 600;
-        int maxH = 350;
+        int maxW = 450;
+        int maxH = 450;
         java.awt.Dimension currentSize = jPanelCenter.getSize();
         java.awt.Dimension outerSize = jPanelOuterCenter.getSize();
 
