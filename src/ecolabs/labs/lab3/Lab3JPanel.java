@@ -325,7 +325,7 @@ public class Lab3JPanel extends ScreenJPanel {
         chartPanel2.setLayout(chartPanel2Layout);
         chartPanel2Layout.setHorizontalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 256, Short.MAX_VALUE)
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +348,7 @@ public class Lab3JPanel extends ScreenJPanel {
         chartPanel1.setLayout(chartPanel1Layout);
         chartPanel1Layout.setHorizontalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGap(0, 254, Short.MAX_VALUE)
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,17 +624,17 @@ public class Lab3JPanel extends ScreenJPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                            .addComponent(jLabelFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelFormula))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

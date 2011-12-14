@@ -651,7 +651,7 @@ public class Lab1JPanel extends ScreenJPanel {
                         .addGap(14, 14, 14)
                         .addComponent(jLabelVar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addContainerGap())
