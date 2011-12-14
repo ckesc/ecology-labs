@@ -345,7 +345,7 @@ public class EcolabsView extends FrameView {
 
     private void jButtonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHelpActionPerformed
         try {
-            desktop.open(new File("doc.docx"));
+            desktop.open(new File("doc.doc"));
         } catch (IOException ioe) {            
             ioe.printStackTrace();
         }
