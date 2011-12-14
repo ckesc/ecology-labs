@@ -24,9 +24,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-              <Component id="jLabelHead" pref="433" max="32767" attributes="0"/>
+              <Component id="jLabelHead" pref="559" max="32767" attributes="0"/>
           </Group>
-          <Component id="jPanelOuterCenter" alignment="0" pref="443" max="32767" attributes="0"/>
+          <Component id="jPanelOuterCenter" alignment="0" pref="569" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -34,7 +34,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabelHead" min="-2" pref="92" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanelOuterCenter" pref="364" max="32767" attributes="0"/>
+              <Component id="jPanelOuterCenter" pref="446" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +82,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="0" width="390" height="350"/>
+              <AbsoluteConstraints x="20" y="0" width="450" height="420"/>
             </Constraint>
           </Constraints>
 
