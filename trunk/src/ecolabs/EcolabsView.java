@@ -7,6 +7,7 @@ import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
 import ecolabs.labs.lab2.Lab2JPanel;
 import ecolabs.labs.lab3.Lab3JPanel;
+import java.awt.Desktop;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -14,6 +15,8 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import javax.swing.Timer;
 import javax.swing.Icon;
@@ -34,6 +37,7 @@ public class EcolabsView extends FrameView {
      * Массив экранов лаб
      */
     public ScreenJPanel[] LabScreens = new ScreenJPanel[6];
+    Desktop desktop = null;
 
     private void myInit() {
         LabScreens[0] = new Lab1JPanel(this);
@@ -44,6 +48,10 @@ public class EcolabsView extends FrameView {
 
     public EcolabsView(SingleFrameApplication app) {
         super(app);
+
+        if (Desktop.isDesktopSupported()) {
+            desktop = Desktop.getDesktop();
+        }
 
         initComponents();
         myInit();
@@ -119,24 +127,24 @@ public class EcolabsView extends FrameView {
         EcolabsApp.getApplication().show(aboutBox);
     }
 
-    public String getStatus () {        
-        String[] mas = statusMessageLabel.getText().split("\\p{Space}",2);
-        if (mas.length>1) {
+    public String getStatus() {
+        String[] mas = statusMessageLabel.getText().split("\\p{Space}", 2);
+        if (mas.length > 1) {
             return mas[1];
         } else {
             return null;
         }
     }
-    
+
     /**
      * Устанавливает статусное состояние. приписывается текущее время.
      * Если msg == null стирает всякое сообщение
      * @param msg сообщение для установки
      * @return сформированное сообщение
      */
-    public String setStatus(String msg) {         
+    public String setStatus(String msg) {
         if (msg != null) {
-            String outMsg =String.format("%tT %s", new Date(), msg);            
+            String outMsg = String.format("%tT %s", new Date(), msg);
             statusMessageLabel.setText(outMsg);
             return outMsg;
         } else {
@@ -199,11 +207,15 @@ public class EcolabsView extends FrameView {
         jButtonAbout.setToolTipText(resourceMap.getString("jButtonAbout.toolTipText")); // NOI18N
         jButtonAbout.setName("jButtonAbout"); // NOI18N
 
-        jButtonHelp.setAction(actionMap.get("showAboutBox")); // NOI18N
         jButtonHelp.setIcon(resourceMap.getIcon("jButtonHelp.icon")); // NOI18N
         jButtonHelp.setText(resourceMap.getString("jButtonHelp.text")); // NOI18N
         jButtonHelp.setToolTipText(resourceMap.getString("jButtonHelp.toolTipText")); // NOI18N
         jButtonHelp.setName("jButtonHelp"); // NOI18N
+        jButtonHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHelpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
         jPanelTop.setLayout(jPanelTopLayout);
@@ -331,6 +343,14 @@ public class EcolabsView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHelpActionPerformed
+        try {
+            desktop.open(new File("doc.docx"));
+        } catch (IOException ioe) {            
+            ioe.printStackTrace();
+        }
+    }//GEN-LAST:event_jButtonHelpActionPerformed
+
     /**
      * Переключает центральну область на отображение лабораторной работы или начального экрана
      * @param labNo Номер лабораторной работы. -1 соответствует начальному экрану.
@@ -359,10 +379,10 @@ public class EcolabsView extends FrameView {
             return;
         }
         String oldTitle = getFrame().getTitle();
-        String strLoading = "Загрузка \""+newScreen.Title+"\"";
+        String strLoading = "Загрузка \"" + newScreen.Title + "\"";
         getFrame().setTitle(strLoading);
-        
-        
+
+
         newScreen.ScreenInit();
         jPanelTop.setVisible(true);
         workingPanel.removeAll();
@@ -371,8 +391,8 @@ public class EcolabsView extends FrameView {
         getFrame().setTitle(newScreen.Title);
         jLabelCaption.setText(newScreen.Caption);
         workingPanel.validate();
-        workingPanel.repaint(); 
-        
+        workingPanel.repaint();
+
         if (getFrame().getTitle().equals(strLoading)) {
             getFrame().setTitle(oldTitle);
         }

@@ -96,14 +96,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonHelp">
               <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ecolabs.EcolabsView" id="showAboutBox" methodName="showAboutBox"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jButtonHelp.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButtonHelp.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="jButtonHelp.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="jButtonHelp" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHelpActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
