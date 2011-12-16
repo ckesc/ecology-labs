@@ -7,6 +7,7 @@ import ecolabs.labs.ScreenJPanel;
 import ecolabs.labs.lab1.Lab1JPanel;
 import ecolabs.labs.lab2.Lab2JPanel;
 import ecolabs.labs.lab3.Lab3JPanel;
+import ecolabs.labs.lab4.Lab4JPanel;
 import java.awt.Desktop;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -43,6 +44,7 @@ public class EcolabsView extends FrameView {
         LabScreens[0] = new Lab1JPanel(this);
         LabScreens[1] = new Lab2JPanel(this);
         LabScreens[2] = new Lab3JPanel(this);
+        LabScreens[3] = new Lab4JPanel(this);
         homeJPanel = new HomeJPanel(this);
     }
 

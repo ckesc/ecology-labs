@@ -22,8 +22,8 @@ public class HomeJPanel extends ScreenJPanel {
     }
 
     private void initButtons() {
-        JButton[] buttons = {jButton1, jButton2, jButton3, /*jButton4, jButton5, jButton6*/};
-        for (int i = 0; i < 6; i++) {
+        JButton[] buttons = {jButton1, jButton2, jButton3, jButton4, /*jButton5, jButton6*/};
+        for (int i = 0; i < 4; i++) {
             if (parentFrame.LabScreens[i] != null) {
                 buttons[i].setText(String.format(
                         "<html><b>%s</b><br>%s</html>",
@@ -50,6 +50,7 @@ public class HomeJPanel extends ScreenJPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(791, 483));
         setName("Form"); // NOI18N
@@ -151,6 +152,29 @@ public class HomeJPanel extends ScreenJPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         jPanelCenter.add(jButton3, gridBagConstraints);
 
+        jButton4.setFont(resourceMap.getFont("jButton4.font")); // NOI18N
+        jButton4.setIcon(null);
+        jButton4.setMnemonic('4');
+        jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setActionCommand(resourceMap.getString("jButton4.actionCommand")); // NOI18N
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton4.setName("jButton4"); // NOI18N
+        jButton4.setOpaque(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabSelect(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
+        jPanelCenter.add(jButton4, gridBagConstraints);
+
         jPanelOuterCenter.add(jPanelCenter);
         jPanelCenter.setBounds(20, 0, 450, 420);
 
@@ -168,7 +192,7 @@ public class HomeJPanel extends ScreenJPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
+                .addComponent(jPanelOuterCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
         );
 
         jLabelHead.getAccessibleContext().setAccessibleName(resourceMap.getString("jLabelHead.AccessibleContext.accessibleName")); // NOI18N
@@ -215,6 +239,7 @@ public class HomeJPanel extends ScreenJPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabelHead;
     private javax.swing.JPanel jPanelCenter;
     private javax.swing.JPanel jPanelOuterCenter;
