@@ -115,7 +115,8 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
             bufferedReader.close();
             fileReader.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
+            System.out.println("Variants load error");
         }
         return lines;
     }
