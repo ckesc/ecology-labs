@@ -36,9 +36,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonBack" min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonEditVar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelCaption" pref="733" max="32767" attributes="0"/>
+                      <Component id="jButtonExport" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelCaption" pref="557" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jButtonAbout" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jButtonHelp" min="-2" pref="23" max="-2" attributes="0"/>
@@ -49,10 +53,6 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonBack" pref="42" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonAbout" min="-2" pref="23" max="-2" attributes="0"/>
@@ -60,6 +60,14 @@
                       <Component id="jButtonHelp" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabelCaption" alignment="0" pref="53" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButtonExport" alignment="0" pref="42" max="32767" attributes="0"/>
+                          <Component id="jButtonEditVar" alignment="0" pref="42" max="32767" attributes="0"/>
+                          <Component id="jButtonBack" alignment="0" pref="42" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -103,6 +111,29 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHelpActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonExport">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jButtonExport.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jButtonExport.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jButtonExport" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[51, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExportActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonEditVar">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jButtonEditVar.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="jButtonEditVar.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="jButtonEditVar" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditVarActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

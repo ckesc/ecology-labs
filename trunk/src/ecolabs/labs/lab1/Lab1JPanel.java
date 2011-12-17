@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /*
  * Lab1JPanel.java
@@ -16,6 +12,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
+//import org.docx4j.XmlUtils;
+//import org.docx4j.openpackaging.io.SaveToZipFile;
+//import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+//import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
+//import org.docx4j.wml.Document;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
@@ -42,11 +43,9 @@ public class Lab1JPanel extends ScreenJPanel {
          * м3/с;
          */
         public double Va;
-
         public double Dh2o1;
         public double Dh2o2;
         public double Dh2o3;
-        
         /**
          *  Коэффициент захвата частицы каплей воды;
          */
@@ -56,13 +55,11 @@ public class Lab1JPanel extends ScreenJPanel {
     private final String H0Default = "0.01";
     private final String dHDefault = "0.01";
     private final String HnDefault = "2.0";
-    
     /**
      * Для завершения цикла если идёт слишком долго
      */
     Date date1;
-    
-    private static String fileName = "LabVariants_№1.txt";
+    //private static String fileName = "LabVariants_№1.txt";
     private Variant data = new Variant();
     private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();
     /**
@@ -84,6 +81,7 @@ public class Lab1JPanel extends ScreenJPanel {
         initComponents();
         Title = "Лабораторная работа №1";
         Caption = "Расчет параметров полого форсуночного скруббера";
+        labDatabaseFileName = "LabVariants_№1.txt";
     }
 
     @Override
@@ -92,7 +90,7 @@ public class Lab1JPanel extends ScreenJPanel {
         loadVariants();
         Execute();
     }
-    
+
     /**
      * Степень очистки газа
      * @param H Высота скруббера,
@@ -118,8 +116,8 @@ public class Lab1JPanel extends ScreenJPanel {
         Date date2;
         for (double H = H0; H <= Hn; H += dH) {
             points.put(H, η(H, Dh2o, Dsol));
-            date2 = new Date(); 
-            if (date2.getTime() - date1.getTime() > 4000){
+            date2 = new Date();
+            if (date2.getTime() - date1.getTime() > 4000) {
                 throw new Exception("TimeException");
             }
         }
@@ -135,7 +133,6 @@ public class Lab1JPanel extends ScreenJPanel {
 //        BufferedImage image = chart.createBufferedImage(jLabel.getWidth(), jLabel.getHeight());
 //        jLabel.getGraphics().drawImage(image, 0, 0, this);
 //    }
-
     /**
      * Вычисляет все 3 кривых на одном графике
      * @param Dsol
@@ -170,31 +167,30 @@ public class Lab1JPanel extends ScreenJPanel {
         try {
             data.Vaq = Double.parseDouble(jTextFieldVaq.getText());
             data.Va = Double.parseDouble(jTextFieldVa.getText());
-            
+
             date1 = new Date();
             chart1 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol1.getText())));
             chart2 = new JFreeChart(createChart(Double.parseDouble(jTextFieldDsol2.getText())));
 
             chartPanel1.setChart(chart1);
             chartPanel2.setChart(chart2);
-           
+
             parentFrame.setStatus("Расчёты произведены");
         } catch (Exception e) {
-            if (e.getMessage().equals("TimeException"))
-            {
+            if (e.getMessage().equals("TimeException")) {
                 parentFrame.setStatus("Превышено время расчётов");
             } else {
                 parentFrame.setStatus("Ошибка при расчётах");
             }
         }
     }
-    
+
     /**
      * Загрузка вариантов
      */
     public void loadVariants() {
         jComboBoxVar.setModel(new DefaultComboBoxModel());
-        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 8);
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(labDatabaseFileName, 8);
         Variant v;
         int varNum;
         for (String[] parameters : lines) {
@@ -220,7 +216,73 @@ public class Lab1JPanel extends ScreenJPanel {
         }
         jComboBoxVarItemStateChanged(null);
     }
-    
+
+    @Override
+    public void export() {
+        super.export();
+
+        try {
+            //вариант с Apache POI - для doc
+
+//        POIFSFileSystem fSFileSystem = new POIFSFileSystem(new FileInputStream("empty.doc"));
+//        HWPFDocument doc = new HWPFDocument(fSFileSystem);
+//        
+//        org.apache.poi.hwpf.usermodel.Picture p = new Picture(null);
+//        
+//                
+//        doc.getRange().getSection(0).getParagraph(0).insertBefore("Test zzz!");
+//        doc.getRange().getSection(0).getParagraph(0).insertBefore("zzz! ");
+//        
+//        doc.write(new FileOutputStream("new-hwpf-file.doc"));
+
+            //для docx
+            // Create the package
+
+//           com.javadocx.CreateDocx doc = new CreateDocx(".docx");
+//           doc.addText("Porvertka поверочка");
+//           doc.createDocx("javadocx");  
+            
+            
+            
+//            String inputfilepath = "templ.docx";
+//
+//            String outputfilepath = "test-out.docx";
+//
+//
+//            // Open a document from the file system
+//            // 1. Load the Package
+//            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(inputfilepath));
+//
+//            // 2. Fetch the document part           
+//            MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+//
+//            org.docx4j.wml.Document wmlDocumentEl = (org.docx4j.wml.Document) documentPart.getJaxbElement();
+//
+//            //xml --> string
+//            String xml = XmlUtils.marshaltoString(wmlDocumentEl, true);
+//
+//            HashMap<String, String> mappings = new HashMap<String, String>();
+//
+//            mappings.put("color", "green");
+//
+//            //valorize template
+//            Object obj = XmlUtils.unmarshallFromTemplate(xml, mappings);
+//
+//            //change  JaxbElement
+//            documentPart.setJaxbElement((Document) obj);
+//
+//            // Save it                
+//
+//            SaveToZipFile saver = new SaveToZipFile(wordMLPackage);
+//            saver.save(outputfilepath);
+//            System.out.println("Saved output to:" + outputfilepath);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -687,7 +749,7 @@ private void jTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
      */
 private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxVarItemStateChanged
 
-   Variant var;
+    Variant var;
     try {
         int varNum = Integer.parseInt(jComboBoxVar.getSelectedItem().toString());
         var = variants.get(varNum);

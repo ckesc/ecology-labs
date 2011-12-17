@@ -35,8 +35,7 @@ public class Lab2JPanel extends ScreenJPanel {
         public double Hp;
         public double V;
         public double v0;
-    }
-    private final String fileName = "LabVariants_№2.txt";
+    }    
     private Variant data = new Variant();
     private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();
 
@@ -47,6 +46,7 @@ public class Lab2JPanel extends ScreenJPanel {
         initComponents();
         Title = "Лабораторная работа №2";
         Caption = "Расчет пенного пылеуловителя";
+        labDatabaseFileName = "LabVariants_№2.txt";
     }
 
     /** This method is called from within the constructor to
@@ -542,7 +542,7 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
      */
     public void loadVariants() {
         jComboBoxVar.setModel(new DefaultComboBoxModel());
-        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 4);
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(labDatabaseFileName, 4);
         Variant v;
         int varNum;
         for (String[] parameters : lines) {

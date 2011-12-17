@@ -153,7 +153,7 @@ public class HomeJPanel extends ScreenJPanel {
         jPanelCenter.add(jButton3, gridBagConstraints);
 
         jButton4.setFont(resourceMap.getFont("jButton4.font")); // NOI18N
-        jButton4.setIcon(null);
+        jButton4.setIcon(resourceMap.getIcon("jButton4.icon")); // NOI18N
         jButton4.setMnemonic('4');
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
         jButton4.setActionCommand(resourceMap.getString("jButton4.actionCommand")); // NOI18N
