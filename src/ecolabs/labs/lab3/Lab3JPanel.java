@@ -67,8 +67,7 @@ public class Lab3JPanel extends ScreenJPanel {
      * массив ω для построения графика
      */
     ArrayList<Double> constW = new ArrayList<Double>();
-    private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();
-    private static String fileName = "LabVariants_№3.txt";
+    private HashMap<Integer, Variant> variants = new HashMap<Integer, Variant>();    
     private final String calcResultTemplate = "<html><b>d<sub>min</sub>(D,ω)</b> = %8.2f мкм";
 
     /**
@@ -83,6 +82,7 @@ public class Lab3JPanel extends ScreenJPanel {
         initComponents();
         Title = "Лабораторная работа №3";
         Caption = "Определение минимального размера частиц пыли,улавливаемых циклоном";
+        labDatabaseFileName = "LabVariants_№3.txt";
 
 //        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ecolabs.EcolabsApp.class).getContext().getResourceMap(Lab3JPanel.class);
 //        String pattern = resourceMap.getString("jLabelVarInfo.text");
@@ -221,7 +221,7 @@ public class Lab3JPanel extends ScreenJPanel {
      */
     public void loadVariants() {
         jComboBoxVar.setModel(new DefaultComboBoxModel());
-        ArrayList<String[]> lines = ScreenJPanel.loadVariants(fileName, 7);
+        ArrayList<String[]> lines = ScreenJPanel.loadVariants(labDatabaseFileName, 7);
         Variant v;
         int varNum;
         for (String[] parameters : lines) {

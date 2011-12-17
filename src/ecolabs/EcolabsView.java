@@ -17,6 +17,7 @@ import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import javax.swing.Timer;
@@ -24,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * The application's main frame.
@@ -38,7 +40,14 @@ public class EcolabsView extends FrameView {
      * Массив экранов лаб
      */
     public ScreenJPanel[] LabScreens = new ScreenJPanel[6];
+    /**
+     * Необходим для открытия файлов средствами ОС
+     */
     Desktop desktop = null;
+    /**
+     * Экран, отображаемый в данный момент
+     */
+    ScreenJPanel currentScreen;
 
     private void myInit() {
         LabScreens[0] = new Lab1JPanel(this);
@@ -170,6 +179,8 @@ public class EcolabsView extends FrameView {
         jLabelCaption = new javax.swing.JLabel();
         jButtonAbout = new javax.swing.JButton();
         jButtonHelp = new javax.swing.JButton();
+        jButtonExport = new javax.swing.JButton();
+        jButtonEditVar = new javax.swing.JButton();
         jPanelContent = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -219,6 +230,25 @@ public class EcolabsView extends FrameView {
             }
         });
 
+        jButtonExport.setText(resourceMap.getString("jButtonExport.text")); // NOI18N
+        jButtonExport.setToolTipText(resourceMap.getString("jButtonExport.toolTipText")); // NOI18N
+        jButtonExport.setName("jButtonExport"); // NOI18N
+        jButtonExport.setPreferredSize(new java.awt.Dimension(51, 23));
+        jButtonExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportActionPerformed(evt);
+            }
+        });
+
+        jButtonEditVar.setText(resourceMap.getString("jButtonEditVar.text")); // NOI18N
+        jButtonEditVar.setToolTipText(resourceMap.getString("jButtonEditVar.toolTipText")); // NOI18N
+        jButtonEditVar.setName("jButtonEditVar"); // NOI18N
+        jButtonEditVar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditVarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
         jPanelTop.setLayout(jPanelTopLayout);
         jPanelTopLayout.setHorizontalGroup(
@@ -226,9 +256,13 @@ public class EcolabsView extends FrameView {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEditVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                .addComponent(jButtonExport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -236,15 +270,18 @@ public class EcolabsView extends FrameView {
         );
         jPanelTopLayout.setVerticalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonExport, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButtonEditVar, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
         );
 
         jPanelContent.setAutoscrolls(true);
@@ -348,10 +385,34 @@ public class EcolabsView extends FrameView {
     private void jButtonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHelpActionPerformed
         try {
             desktop.open(new File("doc.doc"));
-        } catch (IOException ioe) {            
-            ioe.printStackTrace();
+        } catch (IOException ioe) {
+            System.err.printf("Error while opening help. (%s)", ioe.getMessage());
         }
     }//GEN-LAST:event_jButtonHelpActionPerformed
+
+    private void jButtonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportActionPerformed
+        currentScreen.export();
+    }//GEN-LAST:event_jButtonExportActionPerformed
+
+    private void jButtonEditVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVarActionPerformed
+        if (new File(currentScreen.labDatabaseFileName).exists() == false) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    String.format("Файл вариантов не найден. (Необходим файл \"%s\")", currentScreen.labDatabaseFileName),
+                    "Варианты не найдены",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            desktop.open(new File(currentScreen.labDatabaseFileName));
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Не удалось открыть файл вариантов для редактирования.\nСкорее всего его нет рядом с программой.\n\nПодробная информация:\n" + ioe.toString(),
+                    "Ошибка открытия файла",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_jButtonEditVarActionPerformed
 
     /**
      * Переключает центральну область на отображение лабораторной работы или начального экрана
@@ -368,6 +429,7 @@ public class EcolabsView extends FrameView {
                 workingPanel.validate();
                 workingPanel.repaint();
                 getFrame().setTitle(homeJPanel.Title);
+                currentScreen = homeJPanel;
                 return;
 
             default:
@@ -398,6 +460,8 @@ public class EcolabsView extends FrameView {
         if (getFrame().getTitle().equals(strLoading)) {
             getFrame().setTitle(oldTitle);
         }
+
+        currentScreen = newScreen;
     }
 
     @Action
@@ -407,6 +471,8 @@ public class EcolabsView extends FrameView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAbout;
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonEditVar;
+    private javax.swing.JButton jButtonExport;
     private javax.swing.JButton jButtonHelp;
     private javax.swing.JLabel jLabelCaption;
     private javax.swing.JMenuItem jMenuItem2;

@@ -48,6 +48,10 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
     protected Font likeFont =  new Font("Century Gothic",Font.BOLD,12);
     
     /**
+     * Имя файла с вариантами
+     */
+    public String labDatabaseFileName;
+    /**
      * Переключает на начальный экран
      */
     public void BackToHome() {
@@ -138,4 +142,12 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
 
         super.paint(g);
     }
+    
+    /**
+     * Экспорт в doc файл
+     */
+    public void export() {
+        
+    }        
+    
 }
