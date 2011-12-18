@@ -27,6 +27,8 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * The application's main frame.
@@ -69,6 +71,7 @@ public class EcolabsView extends FrameView {
         initComponents();
         myInit();
         menuBar.setVisible(false);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("HTML - файлы", "htm","html"));
 
         ShowScreen(-1);
 
@@ -397,8 +400,14 @@ public class EcolabsView extends FrameView {
     }//GEN-LAST:event_jButtonHelpActionPerformed
 
     private void jButtonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportActionPerformed
-        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-            currentScreen.export(fileChooser.getSelectedFile());
+        fileChooser.setApproveButtonText("Сохранить");
+        fileChooser.setDialogTitle("Экспорт результатов. Выберите место для сохранения файла");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setDialogType(JFileChooser.SAVE_DIALOG);
+                
+        if (fileChooser.showDialog(null, "Сохранить") == JFileChooser.APPROVE_OPTION) {
+            File file = new File (fileChooser.getSelectedFile().getPath()+".html");            
+            currentScreen.export(file);
         }
     }//GEN-LAST:event_jButtonExportActionPerformed
 
@@ -418,7 +427,6 @@ public class EcolabsView extends FrameView {
                     "Не удалось открыть файл вариантов для редактирования.\nСкорее всего его нет рядом с программой.\n\nПодробная информация:\n" + ioe.toString(),
                     "Ошибка открытия файла",
                     JOptionPane.ERROR_MESSAGE);
-
         }
     }//GEN-LAST:event_jButtonEditVarActionPerformed
 
