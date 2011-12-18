@@ -85,7 +85,7 @@ public class Lab1JPanel extends ScreenJPanel {
         super(parent);
         initComponents();
         Title = "Лабораторная работа №1";
-        Caption = "Расчет параметров полого форсуночного скруббера";
+        Caption = "Расчёт параметров полого форсуночного скруббера";
         labDatabaseFileName = "LabVariants_№1.txt";
     }
 
