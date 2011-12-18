@@ -8,6 +8,7 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -218,8 +219,8 @@ public class Lab1JPanel extends ScreenJPanel {
     }
 
     @Override
-    public void export() {
-        super.export();
+    public void export(File file) {
+        super.export(file);
 
         try {
             //вариант с Apache POI - для doc
