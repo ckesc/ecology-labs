@@ -16,6 +16,7 @@ import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -146,7 +147,7 @@ public abstract class ScreenJPanel extends javax.swing.JPanel {
     /**
      * Экспорт в doc файл
      */
-    public void export() {
+    public void export(File file) {
         
     }        
     

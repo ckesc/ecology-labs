@@ -24,6 +24,7 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -48,6 +49,7 @@ public class EcolabsView extends FrameView {
      * Экран, отображаемый в данный момент
      */
     ScreenJPanel currentScreen;
+    JFileChooser fileChooser = new JFileChooser();
 
     private void myInit() {
         LabScreens[0] = new Lab1JPanel(this);
@@ -230,6 +232,7 @@ public class EcolabsView extends FrameView {
             }
         });
 
+        jButtonExport.setIcon(resourceMap.getIcon("jButtonExport.icon")); // NOI18N
         jButtonExport.setText(resourceMap.getString("jButtonExport.text")); // NOI18N
         jButtonExport.setToolTipText(resourceMap.getString("jButtonExport.toolTipText")); // NOI18N
         jButtonExport.setName("jButtonExport"); // NOI18N
@@ -240,6 +243,7 @@ public class EcolabsView extends FrameView {
             }
         });
 
+        jButtonEditVar.setIcon(resourceMap.getIcon("jButtonEditVar.icon")); // NOI18N
         jButtonEditVar.setText(resourceMap.getString("jButtonEditVar.text")); // NOI18N
         jButtonEditVar.setToolTipText(resourceMap.getString("jButtonEditVar.toolTipText")); // NOI18N
         jButtonEditVar.setName("jButtonEditVar"); // NOI18N
@@ -257,9 +261,9 @@ public class EcolabsView extends FrameView {
                 .addContainerGap()
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonEditVar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonEditVar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonExport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonExport, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
                 .addGap(54, 54, 54)
@@ -275,13 +279,15 @@ public class EcolabsView extends FrameView {
                 .addComponent(jButtonAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jButtonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonExport, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(jButtonEditVar, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonExport, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+            .addComponent(jLabelCaption, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
 
         jPanelContent.setAutoscrolls(true);
@@ -391,7 +397,9 @@ public class EcolabsView extends FrameView {
     }//GEN-LAST:event_jButtonHelpActionPerformed
 
     private void jButtonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportActionPerformed
-        currentScreen.export();
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            currentScreen.export(fileChooser.getSelectedFile());
+        }
     }//GEN-LAST:event_jButtonExportActionPerformed
 
     private void jButtonEditVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVarActionPerformed

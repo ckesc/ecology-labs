@@ -37,9 +37,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonBack" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonEditVar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEditVar" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonExport" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonExport" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelCaption" pref="557" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -59,15 +59,18 @@
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="jButtonHelp" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabelCaption" alignment="0" pref="53" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonExport" alignment="0" pref="42" max="32767" attributes="0"/>
                           <Component id="jButtonEditVar" alignment="0" pref="42" max="32767" attributes="0"/>
                           <Component id="jButtonBack" alignment="0" pref="42" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonExport" pref="42" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLabelCaption" alignment="0" pref="53" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -115,6 +118,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonExport">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="jButtonExport.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButtonExport.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="jButtonExport.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="jButtonExport" noResource="true"/>
@@ -128,6 +132,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEditVar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="jButtonEditVar.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="jButtonEditVar.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="jButtonEditVar.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="jButtonEditVar" noResource="true"/>
