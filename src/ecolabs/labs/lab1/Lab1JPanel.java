@@ -8,10 +8,14 @@ package ecolabs.labs.lab1;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 //import org.docx4j.XmlUtils;
 //import org.docx4j.openpackaging.io.SaveToZipFile;
@@ -223,61 +227,37 @@ public class Lab1JPanel extends ScreenJPanel {
         super.export(file);
 
         try {
-            //вариант с Apache POI - для doc
-
-//        POIFSFileSystem fSFileSystem = new POIFSFileSystem(new FileInputStream("empty.doc"));
-//        HWPFDocument doc = new HWPFDocument(fSFileSystem);
-//        
-//        org.apache.poi.hwpf.usermodel.Picture p = new Picture(null);
-//        
-//                
-//        doc.getRange().getSection(0).getParagraph(0).insertBefore("Test zzz!");
-//        doc.getRange().getSection(0).getParagraph(0).insertBefore("zzz! ");
-//        
-//        doc.write(new FileOutputStream("new-hwpf-file.doc"));
-
-            //для docx
-            // Create the package
-
-//           com.javadocx.CreateDocx doc = new CreateDocx(".docx");
-//           doc.addText("Porvertka поверочка");
-//           doc.createDocx("javadocx");  
+            BufferedImage image1 = chart1.createBufferedImage(500, 500);
+            BufferedImage image2 = chart2.createBufferedImage(500, 500);
+            File imageFile1 = new File(file.getParent()+"\\chart1Lab1.png");
+            File imageFile2 = new File(file.getParent()+"\\chart2Lab1.png");
+            ImageIO.write(image1, "png", imageFile1);
+            ImageIO.write(image2, "png", imageFile2);
             
+            String htmlText = String.format("<html>"
+                    + "<head> <title> %s </title>"
+                    + "</head>"
+                    + "<body>"
+                    + "<h1>Исходные данные:</h1>"
+                    + "Объемный расход орошающей жидкости, м<sup>3</sup>/с = %s<br>"
+                    + "Объемный расход газа на выходе из скруббера при рабочих условиях, м<sup>3</sup>/с = %s<br>"
+                    + "<h1>Графики зависимости степени очистки газа от высоты скруббера:</h1>"
+                    + "Коэффициент захвата частицы каплей воды σ: %s<br><img src=chart1Lab1.png></img><br>"
+                    + "Коэффициент захвата частицы каплей воды σ: %s<br><img src=chart2Lab1.png></img><br>"
+                    + "</body> "
+                    + "</html>", 
+                    Title + ". " + Caption,
+                    jTextFieldVaq.getText(),
+                    jTextFieldVa.getText(),
+                    jTextFieldDsol1.getText(),
+                    jTextFieldDsol2.getText());
             
-            
-//            String inputfilepath = "templ.docx";
-//
-//            String outputfilepath = "test-out.docx";
-//
-//
-//            // Open a document from the file system
-//            // 1. Load the Package
-//            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(inputfilepath));
-//
-//            // 2. Fetch the document part           
-//            MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
-//
-//            org.docx4j.wml.Document wmlDocumentEl = (org.docx4j.wml.Document) documentPart.getJaxbElement();
-//
-//            //xml --> string
-//            String xml = XmlUtils.marshaltoString(wmlDocumentEl, true);
-//
-//            HashMap<String, String> mappings = new HashMap<String, String>();
-//
-//            mappings.put("color", "green");
-//
-//            //valorize template
-//            Object obj = XmlUtils.unmarshallFromTemplate(xml, mappings);
-//
-//            //change  JaxbElement
-//            documentPart.setJaxbElement((Document) obj);
-//
-//            // Save it                
-//
-//            SaveToZipFile saver = new SaveToZipFile(wordMLPackage);
-//            saver.save(outputfilepath);
-//            System.out.println("Saved output to:" + outputfilepath);
-
+            // Создаём поток записи
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter, true);
+            printWriter.print(htmlText);
+            fileWriter.close();
+            printWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -12,9 +12,14 @@ package ecolabs.labs.lab3;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
@@ -30,7 +35,8 @@ import org.jfree.data.xy.XYSeriesCollection;
  * @author Ск
  */
 public class Lab3JPanel extends ScreenJPanel {
-
+            JFreeChart chart1;
+            JFreeChart chart2;
     class Variant {
 
         /**
@@ -75,6 +81,55 @@ public class Lab3JPanel extends ScreenJPanel {
      */
     private double d_min(double D, double ω) {
         return (data.d * data.k * 1000d * Math.sqrt(1000d * D * data.μ / (data.ρ * ω)));
+    }
+
+    @Override
+    public void export(File file) {
+        super.export(file);
+                        try {
+            BufferedImage image1 = chart1.createBufferedImage(500, 500);
+            BufferedImage image2 = chart2.createBufferedImage(500, 500);
+            File imageFile1 = new File(file.getParent()+"\\chart1Lab3.png");
+            File imageFile2 = new File(file.getParent()+"\\chart2Lab3.png");
+            ImageIO.write(image1, "png", imageFile1);
+            ImageIO.write(image2, "png", imageFile2);
+            
+            String htmlText = String.format("<html>"
+                    + "<head><title>%s</title>"
+                    + "</head>"
+                    + "<body>"
+                    + "<h1>Исходные данные:</h1>"
+                    + "Диаметр циклона, м = %s<br>"
+                    + "скорость движения газа, м/с = %s<br>"
+                    + "Cредний размер частиц пыли, улавливаемых на 50, мкм = %s<br>"
+                    + "Коэффициент, учитывающий тип циклона = %s<br>"
+                    + "Вязкость газа, Па.c = %s<br>"
+                    + "Плотность пылевых частиц, кг/м<sub>3</sub> = %s<br>"
+                    + "<h1>Результаты:</h1>"
+                    + "%s<br>"
+                    + "<h1>Графики влияния диаметра и скорости движения газа  на минимальный размер частиц пыли, улавливаемых циклоном:</h1>"
+                    + "<br><img src=chart1Lab3.png></img><br>"
+                    + "<br><img src=chart2Lab3.png></img><br>"
+                    + "</body> "
+                    + "</html>", 
+                    Title + ". " + Caption,
+                    jTextFieldD.getText(),
+                    jTextFieldw.getText(),
+                    jTextFieldd.getText(),
+                    jTextFieldk.getText(),
+                    jTextFieldu.getText(),
+                    jTextFieldp.getText(),
+                    jLabelCalcResult.getText());
+            
+            // Создаём поток записи
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter, true);
+            printWriter.print(htmlText);
+            fileWriter.close();
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Lab3JPanel(EcolabsView parent) {
@@ -200,9 +255,6 @@ public class Lab3JPanel extends ScreenJPanel {
             data.k = Double.valueOf(jTextFieldk.getText());
             data.ρ = Double.valueOf(jTextFieldp.getText());
             data.μ = Double.valueOf(jTextFieldu.getText());
-
-            JFreeChart chart1;
-            JFreeChart chart2;
 
             chart1 = new JFreeChart(createChart_Dconst());
             chart2 = new JFreeChart(createChart_Wconst());

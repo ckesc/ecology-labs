@@ -12,8 +12,13 @@ package ecolabs.labs.lab2;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -534,6 +539,54 @@ private void jComboBoxVarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-F
             parentFrame.setStatus("Расчёты произведены");
         } catch (Exception e) {
             parentFrame.setStatus("Ошибка при расчётах");
+        }
+    }
+
+    @Override
+    public void export(File file) {
+        super.export(file);
+                try {
+            BufferedImage image1 = chart1.createBufferedImage(500, 500);
+            BufferedImage image2 = chart2.createBufferedImage(500, 500);
+            File imageFile1 = new File(file.getParent()+"\\chart1Lab2.png");
+            File imageFile2 = new File(file.getParent()+"\\chart2Lab2.png");
+            ImageIO.write(image1, "png", imageFile1);
+            ImageIO.write(image2, "png", imageFile2);
+            
+            String htmlText = String.format("<html>"
+                    + "<head><title>%s</title>"
+                    + "</head>"
+                    + "<body>"
+                    + "<h1>Исходные данные:</h1>"
+                    + "Общий расход газа = %s<br>"
+                    + "Скорость газа в сечении аппарата = %s<br>"
+                    + "Высота слоя пены = %s<br>"
+                    + "<h1>Результаты:</h1>"
+                    + "Действительная скорость газа в сечении аппарата = %s<br>"
+                    + "Живое сечение дырчатой решетки = %s<br>"
+                    + "Полное гидравлическое сопротивление аппарата = %s<br>"
+                    + "<h1>График зависимости эффективности от диаметра корпуса аппарата:</h1>"
+                    + "<br><img src=chart1Lab2.png></img><br>"
+                    + "<h1>График зависимости эффективности от скорости газа:</h1>"
+                    + "<br><img src=chart2Lab2.png></img><br>"
+                    + "</body> "
+                    + "</html>", 
+                    Title + ". " + Caption,
+                    jTextFieldV.getText(),
+                    jTextFieldv0.getText(),
+                    jTextFieldHp.getText(),
+                    jLabelv2.getText(),
+                    jLabelSp.getText(),
+                    jLabelP.getText());
+            
+            // Создаём поток записи
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter, true);
+            printWriter.print(htmlText);
+            fileWriter.close();
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
