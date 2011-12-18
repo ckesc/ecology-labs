@@ -12,9 +12,14 @@ package ecolabs.labs.lab4;
 
 import ecolabs.EcolabsView;
 import ecolabs.labs.ScreenJPanel;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -238,6 +243,56 @@ public class Lab4JPanel extends ScreenJPanel {
         }
     }
 
+    @Override
+    public void export(File file) {
+        super.export(file);
+                                try {
+            BufferedImage image1 = chart1.createBufferedImage(500, 500);
+            BufferedImage image2 = chart2.createBufferedImage(500, 500);
+            File imageFile1 = new File(file.getParent()+"\\chart1Lab4.png");
+            File imageFile2 = new File(file.getParent()+"\\chart2Lab4.png");
+            ImageIO.write(image1, "png", imageFile1);
+            ImageIO.write(image2, "png", imageFile2);
+            
+            String htmlText = String.format("<html>"
+                    + "<head><title>%s</title>"
+                    + "</head>"
+                    + "<body>"
+                    + "<h1>Исходные данные:</h1>"
+                    + "Поверхность осаждения фильтра = %s<br>"
+                    + "Напряженность электрического поля = %s<br>"
+                    + "Вязкость газа = %s<br>"
+                    + "Диаметр частицы пыли = %s<br>"
+                    + "Объём газа = %s<br>"
+                    + "<h1>Результаты:</h1>"
+                    + "Скорость дрейфа частиц %s<br>"
+                    + "Эффективность очистки газа %s<br>"
+                    + "<h1>Зависимость эффективности очистки от диаметра частицы пыли::</h1>"
+                    + "<br><img src=chart1Lab4.png></img><br>"
+                    + "<h1>Зависимость эффективности очистки от напряженности электирческого поля::</h1>"
+                    + "<br><img src=chart2Lab4.png></img><br>"
+                    + "</body> "
+                    + "</html>", 
+                    Title + ". " + Caption,
+                    jTextFieldF.getText(),
+                    jTextFieldE.getText(),
+                    jTextFieldµ.getText(),
+                    jTextFieldd.getText(),
+                    jTextFieldV.getText(),
+                    jLabelw.getText(),
+                    jLabeln.getText());
+            
+            // Создаём поток записи
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter, true);
+            printWriter.print(htmlText);
+            fileWriter.close();
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -273,7 +328,6 @@ public class Lab4JPanel extends ScreenJPanel {
         jLabeln = new javax.swing.JLabel();
         jLabelw = new javax.swing.JLabel();
         jLabelFormula = new javax.swing.JLabel();
-        jLabelFormula1 = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
@@ -287,11 +341,11 @@ public class Lab4JPanel extends ScreenJPanel {
         chartPanel1.setLayout(chartPanel1Layout);
         chartPanel1Layout.setHorizontalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGap(0, 634, Short.MAX_VALUE)
         );
         chartPanel1Layout.setVerticalGroup(
             chartPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGap(0, 265, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -310,11 +364,11 @@ public class Lab4JPanel extends ScreenJPanel {
         chartPanel2.setLayout(chartPanel2Layout);
         chartPanel2Layout.setHorizontalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGap(0, 634, Short.MAX_VALUE)
         );
         chartPanel2Layout.setVerticalGroup(
             chartPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGap(0, 265, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -477,7 +531,7 @@ public class Lab4JPanel extends ScreenJPanel {
                         .addComponent(jLabelDsol3, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(jTextFieldµ, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,9 +572,11 @@ public class Lab4JPanel extends ScreenJPanel {
         jPanel3.setOpaque(false);
 
         jLabeln.setText(resourceMap.getString("jLabeln.text")); // NOI18N
+        jLabeln.setToolTipText(resourceMap.getString("jLabeln.toolTipText")); // NOI18N
         jLabeln.setName("jLabeln"); // NOI18N
 
         jLabelw.setText(resourceMap.getString("jLabelw.text")); // NOI18N
+        jLabelw.setToolTipText(resourceMap.getString("jLabelw.toolTipText")); // NOI18N
         jLabelw.setName("jLabelw"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -532,7 +588,7 @@ public class Lab4JPanel extends ScreenJPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelw)
                     .addComponent(jLabeln))
-                .addContainerGap(349, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,38 +599,32 @@ public class Lab4JPanel extends ScreenJPanel {
         );
 
         jLabelFormula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFormula.setIcon(resourceMap.getIcon("jLabelFormula.icon")); // NOI18N
         jLabelFormula.setText(resourceMap.getString("jLabelFormula.text")); // NOI18N
         jLabelFormula.setName("jLabelFormula"); // NOI18N
-
-        jLabelFormula1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFormula1.setIcon(resourceMap.getIcon("jLabelFormula1.icon")); // NOI18N
-        jLabelFormula1.setText(resourceMap.getString("jLabelFormula1.text")); // NOI18N
-        jLabelFormula1.setName("jLabelFormula1"); // NOI18N
+        jLabelFormula.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelFormula, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+            .addComponent(jLabelScheme, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabelFormula1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-            .addComponent(jLabelScheme, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-            .addComponent(jLabelFormula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabelFormula1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFormula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelScheme, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelScheme, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -594,7 +644,7 @@ public class Lab4JPanel extends ScreenJPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxVar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE))
+                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,14 +654,13 @@ public class Lab4JPanel extends ScreenJPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                                .addComponent(jPanelCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                                 .addGap(3, 3, 3))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24))))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -657,7 +706,6 @@ private void keyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyRele
     private javax.swing.JLabel jLabelDsol2;
     private javax.swing.JLabel jLabelDsol3;
     private javax.swing.JLabel jLabelFormula;
-    private javax.swing.JLabel jLabelFormula1;
     private javax.swing.JLabel jLabelScheme;
     private javax.swing.JLabel jLabelVa;
     private javax.swing.JLabel jLabelVar;
