@@ -58,7 +58,7 @@ public class EcolabsAboutBox extends javax.swing.JDialog {
         appVersionLabel.setText(resourceMap.getString("Application.version")); // NOI18N
         appVersionLabel.setName("appVersionLabel"); // NOI18N
 
-        vendorLabel.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        vendorLabel.setFont(new java.awt.Font("Century Gothic", 1, 11));
         vendorLabel.setText(resourceMap.getString("vendorLabel.text")); // NOI18N
         vendorLabel.setName("vendorLabel"); // NOI18N
 
