@@ -237,14 +237,14 @@ public class Lab1JPanel extends ScreenJPanel {
             String htmlText = String.format("<html>"
                     + "<head> <title> %s </title>"
                     + "</head>"
-                    + "<body>"
-                    + "<h1>Исходные данные:</h1>"
+                    + "<body><center>"
+                    + "<h3>Исходные данные:</h3>"
                     + "Объемный расход орошающей жидкости, м<sup>3</sup>/с = %s<br>"
                     + "Объемный расход газа на выходе из скруббера при рабочих условиях, м<sup>3</sup>/с = %s<br>"
-                    + "<h1>Графики зависимости степени очистки газа от высоты скруббера:</h1>"
+                    + "<h3>Графики зависимости степени очистки газа от высоты скруббера:</h3>"
                     + "Коэффициент захвата частицы каплей воды σ: %s<br><img src=chart1Lab1.png></img><br>"
                     + "Коэффициент захвата частицы каплей воды σ: %s<br><img src=chart2Lab1.png></img><br>"
-                    + "</body> "
+                    + "</center></body> "
                     + "</html>", 
                     Title + ". " + Caption,
                     jTextFieldVaq.getText(),

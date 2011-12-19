@@ -96,7 +96,7 @@ public class Lab4JPanel extends ScreenJPanel {
     public HashMap<Double, Double> Calculateηd() throws Exception {
         HashMap<Double, Double> points = new HashMap<Double, Double>();
         double d0 = 0; //Double.parseDouble(jTextFieldH0.getText());
-        double dh = 0.1;//Double.parseDouble(jTextFielddH.getText());
+        double dh = 1;//Double.parseDouble(jTextFielddH.getText());
         double dn = 50;// Double.parseDouble(jTextFieldHn.getText());
         Date date2;
         for (double d = d0; d <= dn; d += dh) {
@@ -117,7 +117,7 @@ public class Lab4JPanel extends ScreenJPanel {
     public HashMap<Double, Double> CalculateηE(double F, double d) throws Exception {
         HashMap<Double, Double> points = new HashMap<Double, Double>();
         double E0 = 0; //Double.parseDouble(jTextFieldH0.getText());
-        double dE = 100;//Double.parseDouble(jTextFielddH.getText());
+        double dE = 1000;//Double.parseDouble(jTextFielddH.getText());
         double En = 300000;// Double.parseDouble(jTextFieldHn.getText());
         Date date2;
         for (double E = E0; E <= En; E += dE) {
@@ -258,19 +258,21 @@ public class Lab4JPanel extends ScreenJPanel {
                     + "<head><title>%s</title>"
                     + "</head>"
                     + "<body>"
-                    + "<h1>Исходные данные:</h1>"
+                    + "<center>"
+                    + "<h3>Исходные данные:</h3>"
                     + "Поверхность осаждения фильтра = %s<br>"
                     + "Напряженность электрического поля = %s<br>"
                     + "Вязкость газа = %s<br>"
                     + "Диаметр частицы пыли = %s<br>"
                     + "Объём газа = %s<br>"
-                    + "<h1>Результаты:</h1>"
+                    + "<h3>Результаты:</h3>"
                     + "Скорость дрейфа частиц %s<br>"
                     + "Эффективность очистки газа %s<br>"
-                    + "<h1>Зависимость эффективности очистки от диаметра частицы пыли::</h1>"
+                    + "<h3>Зависимость эффективности очистки от диаметра частицы пыли:</h3>"
                     + "<br><img src=chart1Lab4.png></img><br>"
-                    + "<h1>Зависимость эффективности очистки от напряженности электирческого поля::</h1>"
+                    + "<h3>Зависимость эффективности очистки от напряженности электирческого поля:</h3>"
                     + "<br><img src=chart2Lab4.png></img><br>"
+                    + "</center>"
                     + "</body> "
                     + "</html>", 
                     Title + ". " + Caption,
